@@ -73,7 +73,7 @@ $result = mysqli_query($con, $qry);
                                     <td class="border-gray-400 py-2 px-4"><?php echo $data['location'] ?></td>
                                     <td class="border-gray-400 py-3 px-4">
                                         <a href="editbin.php?eid=<?php echo $data['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
-                                        <a href="deletebin.php?did=<?php echo $data['id'] ?>" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete</a>
+                                        <a onclick="showDelete(<?php echo $data['id'] ?>);"class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete</a>
                                     </td>
                                 </tr>
                             <?php
@@ -86,6 +86,39 @@ $result = mysqli_query($con, $qry);
             </div>
         </div>
     </div>
+
+
+    <div id="deletebox" class="hidden fixed inset-0 bg-opacity-40 backdrop-blur-sm">
+        <div class="flex h-full justify-center items-center">
+            <div class="flex flex-col p-10 rounded-lg shadow bg-white">
+                <div class="text-center">
+                    <h2 class="font-semibold text-gray-800">Are you sure want to delete?</h2>
+                </div>
+                <div class="flex items-center mt-6">
+                    <button onclick="hideDelete()" class="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md">
+                        Cancel
+                    </button>
+                    <a href="" id="agree" class="flex-1 px-4 py-2 ml-2 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium rounded-md text-center">
+                        Agree
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showDelete(x) {
+            document.getElementById("deletebox").style.display = "block";
+            document.getElementById('agree').href = "deletebin.php?id="+x;
+
+        }
+
+        function hideDelete() {
+            document.getElementById("deletebox").style.display = "none";
+        }
+    </script>
+
+
 
 </body>
 

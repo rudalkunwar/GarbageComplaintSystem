@@ -12,47 +12,48 @@
 
 <body>
     <?php include('../layout/dashlayout.php') ?>
-    <div class="w-full container mx-auto">
-        <div class="flex justify-center px-6 my-12">
+    <div class="w-full container mx-auto ">
+        <div class="flex justify-center px-6 my-12 ">
             <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
                 <h3 class="pt-4 text-2xl text-center">Add New Driver</h3>
-                <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded" method="post" action="">
-                    <div class="mb-4 md:mr-2 md:mb-0">
-                        <label class="block mb-2 text-sm font-bold text-gray-700" for="driverid">
+                <form method="POST" action="" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:w-[50%] m-[30px_auto] flex flex-wrap">
+                    <div class="mb-4 w-full md:w-[50%] pr-1">
+                        <label for="driverid" class="block text-gray-700 text-sm font-bold mb-2">
                             Driver ID
                         </label>
-                        <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="driverid" name="driverid" type="text" placeholder="Driver ID" required />
+                        <input type="text" id="driverid" name="driverid" placeholder="Driver ID" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
                     </div>
-                    <div class="mb-5 md:mr-2 md:mb-0">
-                        <label class="block mb-2 text-sm font-bold text-gray-700" for="Name">
+                    <div class="mb-4 w-full md:w-[50%] pl-1">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">
                             Name
                         </label>
-                        <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="Name" name="drivername" type="text" placeholder="Name" required />
+                        <input type="text" id="name" name="drivername" placeholder="Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
                     </div>
-                    <div class="mb-5">
-                        <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
+                    <div class="mb-4 w-full md:w-[50%] pl-1">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">
                             Email
                         </label>
-                        <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Email" required />
+                        <input type="email" id="email" name="email" placeholder="Email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
                     </div>
-                    <div class="mb-5">
-                        <label class="block mb-2 text-sm font-bold text-gray-700" for="pass">
-                            Password
-                        </label>
-                        <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="pass" name="password" type="password" placeholder="********" required />
-                    </div>
-                    <div class="mb-5">
-                        <label class="block mb-2 text-sm font-bold text-gray-700" for="addr">
+                    <div class="mb-4 w-full md:w-[50%] pl-1">
+                        <label for="address" class="block text-gray-700 text-sm font-bold mb-2">
                             Address
                         </label>
-                        <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="addr" name="address" type="text" placeholder="Address" required />
+                        <input type="text" id="address" name="address" placeholder="Address" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
                     </div>
-                    <div class="mb-5 text-center">
-                        <input type="submit" value="Add Driver" name="adddriver" class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+                    <div class="mb-4 w-full md:w-[50%] pl-1">
+                        <label for="password" class="block text-gray-700 text-sm font-bold mb-2">
+                            Password
+                        </label>
+                        <input type="password" id="password" name="password" placeholder="*********" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
+                    </div>
+                    <div class="mb-4 w-full md:w-[50%] pl-1 text-center">
+                        <input type="submit" name="adddriver" value="Add Driver" class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline">
                     </div>
                 </form>
             </div>
         </div>
+    </div>
     </div>
     </div>
 </body>

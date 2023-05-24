@@ -103,7 +103,7 @@ $driverid = $_SESSION['driverid'];
                 </li>
             </ul>
             <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">
-                Copyright @2021
+                Copyright @2023
             </p>
         </div>
     </div>

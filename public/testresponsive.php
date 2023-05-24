@@ -1,39 +1,73 @@
-<link rel="stylesheet" href="style.css">
-<div class="w-full container mx-auto">
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="flex justify-center px-6 my-12">
-    <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-      <h3 class="pt-4 text-2xl text-center">Add New Driver</h3>
-      <form method="post" action="index.php" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:w-[50%] m-[30px_auto] flex flex-wrap">
-        <div class="mb-4 w-full md:w-[50%] pr-1">
-          <label for="driverid" class="block text-gray-700 text-sm font-bold mb-2">
-          Driver ID
-          </label>
-          <input type="text" id="driverid" placeholder="driverid" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-        <div class="mb-4 w-full md:w-[50%] pl-1">
-          <label for="hs-email" class="block text-gray-700 text-sm font-bold mb-2">
-          Name
-          </label>
-          <input type="email" id="hs-email" placeholder="Email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-        <div class="mb-4 w-full md:w-[50%] pl-1">
-          <label for="hs-email" class="block text-gray-700 text-sm font-bold mb-2">
-            Email
-          </label>
-          <input type="email" id="hs-email" placeholder="Email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div> <div class="mb-4 w-full md:w-[50%] pl-1">
-          <label for="hs-email" class="block text-gray-700 text-sm font-bold mb-2">
-            Email
-          </label>
-          <input type="email" id="hs-email" placeholder="Email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        </div>
-        <div class="">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-            Send
-          </button>
-        </div>
-      </form>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dahboard Layout</title>
     </div>
-  </div>
-</div>
+    <script src="https://kit.fontawesome.com/62f9066fa7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<section class="pt-10 lg:pt-32 pb-12 lg:pb-24 bg-gradient-to-r from-blue-300 to-violet-400">
+        <div class="container mx-auto ">
+            <div class="flex flex-wrap -mx-2">
+                <div class="w-full px-4">
+                    <div class="text-center mx-auto mb-12 lg:mb-16 max-w-[510px]">
+                        <h2 class="font-bold text-3xl sm:text-4xl md:text-5xl text-dark mb-4">
+                            Our Services
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-2">
+                <div class="w-full md:w-1/2 lg:w-1/3 px-2">
+                    <div class="ml-2 p-8 md:p-10 rounded-[10px] bg-green-300 shadow-md hover:shadow-lg mb-8 text-center">
+                        <div class="w-full h-[250px] flex items-center justify-center bg-slate-500 rounded-md">
+                            <img src="images/truck.png" alt="Feature 1" class="w-full h-full object-cover">
+
+
+                        </div>
+                        <h4 class="font-semibold text-xl sm:text-2xl md:text-xl lg:text-2xl text-dark mb-3 bg-yellow-200 p-2 mt-2">
+                            Efficient Waste Management
+                        </h4>
+                        <p class="text-body-color">
+                            Our system uses modern technology to efficiently manage waste disposal, reducing environmental impact and promoting sustainability.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 px-2">
+                    <div class="p-8 md:p-10 rounded-[10px] shadow-md hover:shadow-lg mb-8 text-center bg-green-300">
+                        <div class="w-full h-[250px] flex items-center justify-center bg-slate-500 rounded-md">
+                            <img src="images/c.png" alt="Feature 2" class="w-full h-full object-cover rounded-md">
+                        </div>
+                        <h4 class="font-semibold text-xl sm:text-2xl md:text-xl lg:text-2xl text-dark mb-3 bg-yellow-200 p-2 mt-2">
+                            Customizable Scheduling
+                        </h4>
+                        <p class="text-body-color">
+                            We offer customizable scheduling options to fit the unique needs of each client, ensuring that waste is collected in a timely and efficient manner.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 mr-1">
+                    <div class="p-8 md:p-10 rounded-[10px] bg-green-300 shadow-md hover:shadow-lg mb-8 text-center">
+                        <div class="w-full h-[250px] flex items-center justify-center bg-blue-200 rounded-md">
+                            <img src="images/echofriend.jpg" alt="Feature 3" class="w-full h-full object-cover rounded-md">
+                        </div>
+                        <h4 class="font-semibold text-xl sm:text-2xl md:text-xl lg:text-2xl text-dark mb-3 bg-yellow-200 p-2 mt-2">
+                            Environmentally Friendly
+                        </h4>
+                        <p class="text-body-color">
+                            Our system is designed to be environmentally friendly, reducing waste and promoting recycling and other sustainable practices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
