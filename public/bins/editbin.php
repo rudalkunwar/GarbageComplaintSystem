@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php
 $eid = $_GET['eid'];
 $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
@@ -7,7 +6,7 @@ if ($con === false) {
 }
 $qry = "SELECT * FROM garbagebins WHERE id=$eid";
 $result = mysqli_query($con, $qry);
-$data = mysqli_fetch_assoc($result);
+$updata = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +15,7 @@ $data = mysqli_fetch_assoc($result);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add bins</title>
+    <title>Edit bins</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -31,7 +30,7 @@ $data = mysqli_fetch_assoc($result);
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="binid">
                             Bin Id
                         </label>
-                        <input value="<?php echo $data['id'] ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="binid" name="binid" type="text" placeholder="Bin Id" required />
+                        <input value="<?php echo $updata['id'] ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="binid" name="binid" type="text" placeholder="Bin Id" required />
                     </div>
                     <div class="mb-4">
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="bintype">Bin Type</label>
@@ -45,13 +44,13 @@ $data = mysqli_fetch_assoc($result);
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="capacity">
                             Capacity
                         </label>
-                        <input value="<?php echo $data['capacity'] ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="capacity" name="capacity" type="text" placeholder="Capacity" required />
+                        <input value="<?php echo $updata['capacity'] ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="capacity" name="capacity" type="text" placeholder="Capacity" required />
                     </div>
                     <div class="mb-4">
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="location">
                             Location
                         </label>
-                        <input value="<?php echo $data['location'] ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="location" name="location" type="text" placeholder="Address" required />
+                        <input value="<?php echo $updata['location'] ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="location" name="location" type="text" placeholder="Address" required />
                     </div>
                     <div class="mb-6 text-center">
                         <input type="submit" value="Update Bin" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="addbin">

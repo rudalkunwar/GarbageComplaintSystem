@@ -1,13 +1,3 @@
-<?php
-session_start();
-$con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-if ($con === false) {
-    die("Eroor connection");
-}
-$qry = "SELECT * FROM garbagebins";
-$result = mysqli_query($con, $qry);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,16 +54,22 @@ $result = mysqli_query($con, $qry);
                         </thead>
                         <tbody>
                             <?php
-                            while ($data = mysqli_fetch_assoc($result)) {
+                            $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
+                            if ($con === false) {
+                                die("Eroor connection");
+                            }
+                            $qry = " SELECT * FROM garbagebins ";
+                            $result = mysqli_query($con, $qry);
+                            while ($d = mysqli_fetch_assoc($result)) {
                             ?>
                                 <tr>
-                                    <td class="border-gray-400 py-2 px-4"><?php echo $data['id'] ?></td>
-                                    <td class="border-gray-400 py-2 px-4"><?php echo $data['type'] ?></td>
-                                    <td class="border-gray-400 py-2 px-4"><?php echo $data['capacity'] ?></td>
-                                    <td class="border-gray-400 py-2 px-4"><?php echo $data['location'] ?></td>
+                                    <td class="border-gray-400 py-2 px-4"><?php echo $d['id'] ?></td>
+                                    <td class="border-gray-400 py-2 px-4"><?php echo $d['type'] ?></td>
+                                    <td class="border-gray-400 py-2 px-4"><?php echo $d['capacity'] ?></td>
+                                    <td class="border-gray-400 py-2 px-4"><?php echo $d['location'] ?></td>
                                     <td class="border-gray-400 py-3 px-4">
-                                        <a href="editbin.php?eid=<?php echo $data['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
-                                        <a onclick="showDelete(<?php echo $data['id'] ?>);"class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete</a>
+                                        <a href="editbin.php?eid=<?php echo $d['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+                                        <a onclick="showDelete(<?php echo $d['id'] ?>);" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete</a>
                                     </td>
                                 </tr>
                             <?php
@@ -109,7 +105,7 @@ $result = mysqli_query($con, $qry);
     <script>
         function showDelete(x) {
             document.getElementById("deletebox").style.display = "block";
-            document.getElementById('agree').href = "deletebin.php?id="+x;
+            document.getElementById('agree').href = "deletebin.php?id=" + x;
 
         }
 

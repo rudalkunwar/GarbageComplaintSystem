@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="style.css">
 <?php include('./layout/header.php') ?>
+<script src="https://cdn.tailwindcss.com"></script>
 
 <body>
     <section class="bg-gradient-to-r from-violet-200 to-blue-300 h-screen flex justify-center items-center">
@@ -30,7 +31,7 @@
     </section>
     <section class="pt-10 lg:pt-32 pb-12 lg:pb-24 bg-gradient-to-r from-blue-300 to-violet-400">
         <div class="container mx-auto ">
-            <div class="flex flex-wrap -mx-2">
+            <div class="flex flex-wrap">
                 <div class="w-full px-4">
                     <div class="text-center mx-auto mb-12 lg:mb-16 max-w-[510px]">
                         <h2 class="font-bold text-3xl sm:text-4xl md:text-5xl text-dark mb-4">
@@ -39,7 +40,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-wrap -mx-2">
+            <div class="flex flex-wrap">
                 <div class="w-full md:w-1/2 lg:w-1/3 px-4">
                     <div class="ml-2 p-8 md:p-10 rounded-[10px] bg-green-300 shadow-md hover:shadow-lg mb-8 text-center">
                         <div class="w-full h-[250px] flex items-center justify-center bg-slate-500 rounded-md">
@@ -158,47 +159,54 @@
             </div>
         </main>
     </section>
-    <section id="contact">
-        <div class="text-center bg-red-100">
-            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl p-10">
-                <span class="block">Contact Us</span>
-            </h2>
-            <p class="mt-4 text-lg text-gray-600">
-                Have any questions or concerns? Reach out to us!
-            </p>
-        </div>
-        </div>
-        <div class="bg-gray-300">
-            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-                <div class="max-w-lg mx-auto">
-                    <form class="grid grid-cols-1 gap-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                            <div class="mt-1">
-                                <input type="text" name="name" id="name" class="py-3 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300 rounded-md" />
-                            </div>
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <div class="mt-1">
-                                <input id="email" name="email" type="email" class="py-3 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300 rounded-md" />
-                            </div>
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                            <div class="mt-1">
-                                <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300 rounded-md"></textarea>
-                            </div>
-                        </div>
-                        <div>
-                            <button type="submit" id="submitBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
-                                Submit
-                            </button>
-                        </div>
-                    </form>
+    <section id="contact" class="pt-12 bg-gradient-to-r from-cyan-300 to-blue-100">
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-lg">
+            <div class="flex justify-center">
+                <div class="text-center lg:max-w-3xl md:max-w-xl">
+                    <h2 class="text-3xl font-bold px-6">Contact us</h2>
+                    <p class="text-lg text-gray-600 text-center">Have any questions or concerns? Reach out to us!</p>
                 </div>
             </div>
-        </div>
+            <div class="flex flex-col items-center flex-1 justify-center px-4 py-10 sm:px-0">
+                <div class="flex rounded-lg shadow-lg w-full sm:w-3/4 lg:w-full sm:mx-0 bg-red-200">
+                    <div class="flex flex-col w-full md:w-1/2 p-4">
+                        <div class="flex flex-col flex-1 justify-center">
+                            <div class="w-full mt-4">
+                                <form class="grid grid-cols-1 gap-y-6">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                                        <div class="mt-1">
+                                            <input type="text" name="name" id="name" class="py-2 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                        <div class="mt-1">
+                                            <input id="email" name="email" type="email" class="py-2 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                        <div class="mt-1">
+                                            <textarea id="message" name="message" rows="4" class="py-2 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300"></textarea>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="submit" id="submitBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" md:block md:w-1/2 rounded-r-lg " style="background:url('./images/contact.png'); background-size:cover; background-position:center;">
+                    </div>
+                </div>
+            </div>
+
+        </main>
     </section>
     <?php include('./layout/footer.php') ?>
 </body>

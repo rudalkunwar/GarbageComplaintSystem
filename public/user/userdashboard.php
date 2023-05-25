@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-red-100">
-    <?php include('../layout/userdashlayout.php'); ?>
+    <?php include('userdashlayout.php'); ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
         <div class="w-full my-5">
             <h2 class="text-3xl border-b-2 border-blue-600">Dashboard</h2>

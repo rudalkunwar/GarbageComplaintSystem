@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['auth'])) {
-	header('location:alogin.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,11 +49,6 @@ if (!isset($_SESSION['auth'])) {
 					</div>
 				</div>
 			</div>
-
-			<!-- Table for pickups -->
-			<div class="w-full p-5">
-			<h2 class="text-3xl border-b-2 border-blue-600">Active Bins</h2>
-		</div>
 			<?php
 			$con = mysqli_connect('localhost', 'root', '', 'gcs_database');
 			if ($con === false) {
@@ -68,6 +57,10 @@ if (!isset($_SESSION['auth'])) {
 			$qry = "SELECT * FROM garbagebins";
 			$result = mysqli_query($con, $qry);
 			?>
+			<!-- Table for pickups -->
+			<div class="w-full p-5">
+				<h2 class="text-3xl border-b-2 border-blue-600">Active Bins</h2>
+			</div>
 			<div class="container max-w-3xl px-4 mx-auto sm:px-8">
 				<div class="py-8">
 					<div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">

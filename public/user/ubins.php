@@ -13,7 +13,7 @@
 <body class="bg-green-300">
     <?php
 
-    include('../layout/userdashlayout.php');
+    include('userdashlayout.php');
     $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
     if ($con === false) {
         die("Eroor connection");

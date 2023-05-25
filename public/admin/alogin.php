@@ -68,8 +68,10 @@ if (isset($_POST['login'])) {
         if (mysqli_num_rows($reslt) > 0) {
             $_SESSION['admin'] = $user;
             $_SESSION['auth'] = "yes";
-            // header('location:dashboard.php');
             header('location:dashboard.php');
+        }else
+        {
+            echo '<script> alert("Invalid Username or Password"); </script> ';
         }
     }
 }
