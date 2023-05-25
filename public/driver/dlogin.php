@@ -72,7 +72,7 @@ if (isset($_POST['login'])) {
     if (mysqli_num_rows($result) > 0) {
       $data = mysqli_fetch_assoc($result);
       $_SESSION['drivername'] = $data['name'];
-      $_SESSION['email'] = $data['email'];
+      $_SESSION['driveremail'] = $data['email'];
       $_SESSION['driverid'] = $data['id'];
       header('location:ddash.php');
     } else {

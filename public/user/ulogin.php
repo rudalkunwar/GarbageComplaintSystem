@@ -1,6 +1,7 @@
-<?php session_start();
+<?php
+session_start();
 if (isset($_SESSION['username'])) {
-  header('location:userdashboard.php');
+ header('location:userdashboard.php');
 }
 ?>
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ if (isset($_SESSION['username'])) {
                   <input id="name" type="text" class="flex-grow h-8 px-2 border rounded border-grey-400" name="user" placeholder="Name" />
                 </div>
                 <div class="flex flex-col mt-4">
-                  <input id="email" type="text" class="flex-grow h-8 px-2 border rounded border-grey-400" name="email" placeholder="Email" />
+                  <input id="email" type="text" class="flex-grow h-8 px-2 border rounded border-grey-400" name="uemail" placeholder="Email" />
                 </div>
                 <div class="flex flex-col mt-4">
                   <input id="password" type="password" class="flex-grow h-8 px-2 rounded border border-grey-400" name="password" required placeholder="Password" />
@@ -38,7 +39,7 @@ if (isset($_SESSION['username'])) {
               </form>
               <div class="text-center mt-4">
                 <a class="no-underline hover:underline text-blue-dark text-xs" href="uregister.php">
-                 Register here ?
+                  Register here ?
                 </a>
               </div>
               <div class="text-center mt-2">
@@ -64,19 +65,19 @@ if (isset($_POST['login'])) {
   if (!$con) {
     die("Unable to connect to the database");
   }
-
-  $uname = $_POST['user'];
-  $email = $_POST['email'];
+  $user = $_POST['user'];
+  $useremail = $_POST['uemail'];
   $pass = $_POST['password'];
-
-  // $hpass=md5($pass);
-  $qry = "SELECT * from users WHERE email='$email' AND password='$pass'";
-  if (mysqli_query($con, $qry)) {
-    $_SESSION['username'] = $user;
-    $_SESSION['email'] = $email;
-    header('location:userdashboard.php');
-  } else {
-    echo '<script> alert("Error username or password"); </script>';
+  $qry = "SELECT * from users WHERE name='$user' AND email='$useremail' AND password='$pass'";
+  if ($result = mysqli_query($con, $qry)) {
+    if (mysqli_num_rows($result) > 0) {
+      $data = mysqli_fetch_assoc($result);
+      $_SESSION['username'] = $data['name'];
+      $_SESSION['useremail'] = $data['email'];
+      header('location:userdashboard.php');
+    } else {
+      echo '<script> alert("Error username or password"); </script>';
+    }
   }
 }
 ?>

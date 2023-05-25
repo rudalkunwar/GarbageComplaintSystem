@@ -22,11 +22,11 @@
 
         <!-- Table for Bins -->
         <div class="w-full px-4 mb-8 ">
-            <div class="rounded-lg shadow-md p-6 bg-sky-300 ">
+            <div class="rounded-lg shadow-md p-6 bg-green-300 ">
                 <div class="flex justify-between p-2">
                     <!-- <h2 class="text-3xl font-semibold mb-1">Drivers</h2> -->
                     <div>
-                        <a href="addbin.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Bins</a>
+                        <a href="addbin.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Bin</a>
 
                     </div>
                     <?php if (isset($_SESSION['message'])) {

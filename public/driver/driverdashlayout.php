@@ -1,7 +1,7 @@
 <?php
 
 $driver = $_SESSION['drivername'];
-$email = $_SESSION['email'];
+$email = $_SESSION['driveremail'];
 $driverid = $_SESSION['driverid'];
 
 ?>

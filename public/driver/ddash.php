@@ -4,7 +4,7 @@ if (!isset($_SESSION['drivername'])) {
     header('location:dlogin.php');
 }
 $user = $_SESSION['drivername'];
-$email = $_SESSION['email'];
+$email = $_SESSION['driveremail'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@ $email = $_SESSION['email'];
 </head>
 
 <body class="">
-    <?php include('../layout/driverdashlayout.php'); ?>
+    <?php include('driverdashlayout.php'); ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 bg-red-100">
         <div class="w-full my-5">
             <h2 class="text-3xl border-b-2 border-blue-600">Dashboard</h2>

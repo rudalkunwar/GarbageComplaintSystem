@@ -1,18 +1,27 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['username'])) {
-//     header('location:ulogin.php');
-// }
-// $user = $_SESSION['username'];
-// $email = $_SESSION['email'];
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('location:ulogin.php');
+}
+$user = $_SESSION['username'];
+$uemail = $_SESSION['useremail'];
+?>
+<?php
+$con = mysqli_connect('localhost', 'root', '', 'gcs_database');
+if ($con === false) {
+    die("Eroor connection");
+}
+$qry = "SELECT * FROM users WHERE email = '$uemail'";
+$result = mysqli_query($con, $qry);
+$data = mysqli_fetch_assoc($result);
 ?>
 <div class="flex">
     <div class="fixed h-screen flex flex-col w-14 hover:w-64 md:w-64 bg-gray-900 text-white transition-all duration-300 border-none z-10 sidebar">
         <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
             <div class="fixed w-full flex items-center h-14 text-white z-10">
                 <div class="flex items-center justify-start  pl-3 w-14 md:w-64 h-14 bg-gray-800 border-none">
-                    <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" src="../images/prateek.png" />
-                    <span class="hidden md:block"><?php echo $user; ?> </span>
+                    <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" src="<?php echo $data['picture']?>" />
+                    <span class="hidden md:block"><?php echo $data['name'] ?> </span>
                 </div>
             </div>
             <ul class="flex flex-col mt-10 py-4 space-y-1">
@@ -96,10 +105,10 @@
                     <a href="../user/logout.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                         <span class="inline-flex justify-center items-center ml-4">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                             </svg>
                         </span>
-                       
+
                         <span class="ml-2 text-sm tracking-wide truncate"> Logout</span>
                     </a>
                 </li>
