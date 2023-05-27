@@ -18,7 +18,7 @@
     if ($con === false) {
         die("Error connection");
     }
-    $qry = "SELECT * FROM drivers WHERE id = $myid";
+    $qry = "SELECT * FROM drivers WHERE driver_id = $myid";
     $data = mysqli_query($con, $qry);
     $result = mysqli_fetch_assoc($data);
     ?>
@@ -31,7 +31,7 @@
                         <label for="driverid" class="block text-gray-700 text-sm font-bold mb-2">
                             Driver ID
                         </label>
-                        <input type="text" id="driverid" name="driverid" value="<?php echo $result['id'] ?>" placeholder="Driver ID" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
+                        <input type="text" id="driverid" name="driverid" value="<?php echo $result['driver_id'] ?>" placeholder="Driver ID" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
                     </div>
                     <div class="mb-4 w-full pl-1">
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">
@@ -85,7 +85,7 @@ if (isset($_POST['updatedriver'])) {
         die("Eroor connection");
     }
 
-    $qry = "UPDATE drivers SET id=$did,name='$dname',password='$pass',email='$email',address='$addr' WHERE id=$myid";
+    $qry = "UPDATE drivers SET driver_id=$did,name='$dname',password=md5('$pass'),email='$email',address='$addr' WHERE id=$myid";
 
     if (mysqli_query($con, $qry)) {
 

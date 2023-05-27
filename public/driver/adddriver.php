@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include('dashlayout.php') ?>
+    <?php include('../layout/dashlayout.php') ?>
     <div class="w-full container mx-auto ">
         <div class="flex justify-center px-6 my-12 ">
             <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
@@ -73,7 +73,7 @@ if (isset($_POST['adddriver'])) {
         die("Eroor connection");
     }
 
-    $qry = "INSERT INTO drivers VALUES($did,'$dname','$pass','$email','$addr')";
+    $qry = "INSERT INTO drivers VALUES($did,'$dname',md5('$pass'),'$email','$addr')";
 
     if (mysqli_query($con, $qry)) {
         $_SESSION['message'] = "Driver Added successfully!";
@@ -81,6 +81,7 @@ if (isset($_POST['adddriver'])) {
     } else {
         echo '<script>alert("Error Adding Driver");</scritp>';
     }
+    $con->close();
 }
 
 

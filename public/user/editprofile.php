@@ -20,7 +20,7 @@
     $qry = "SELECT * FROM users WHERE email = '$uemail'";
     $result = mysqli_query($con, $qry);
     $data = mysqli_fetch_assoc($result);
-    $userid = $data['id'];
+    $userid = $data['user_id'];
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
         <div class="w-full my-5">
@@ -90,7 +90,7 @@ if (isset($_POST['updateprofile'])) {
     $folder = "profilepic/" . $filename;
     move_uploaded_file($tempname, $folder);
 
-    $qry = "UPDATE users SET name='$name',email = '$email',address='$addr',contact='$contact',picture='$folder' WHERE id=$userid ";
+    $qry = "UPDATE users SET name='$name',email = '$email',address='$addr',contact='$contact',picture='$folder' WHERE user_id=$userid ";
     if ($reslt = mysqli_query($con, $qry)) {
 
         echo '<script> alert("Profile Updated Sucessfully"); </script> ';

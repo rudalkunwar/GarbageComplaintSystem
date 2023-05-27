@@ -6,7 +6,7 @@ if($con === false)
 {
     die("Error connection");
 }
-$qry = "DELETE FROM drivers WHERE id=$delid";
+$qry = "DELETE FROM drivers WHERE driver_id=$delid";
 
 if(mysqli_query($con,$qry)){
     $_SESSION['message'] = "Driver Delete successfully!";

@@ -65,7 +65,7 @@ if (isset($_POST['addbin'])) {
         die("Eroor connection");
     }
 
-    $qry = "INSERT INTO garbagebins VALUES($id,'$type','$location','$capacity')";
+    $qry = "INSERT INTO garbagebins VALUES($bin_id,'$type','$location','$capacity')";
     if (mysqli_query($con, $qry)) {
 
 
@@ -75,4 +75,5 @@ if (isset($_POST['addbin'])) {
 
     }
 }
+mysqli_close($con);
 ?>

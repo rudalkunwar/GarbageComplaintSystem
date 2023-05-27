@@ -42,7 +42,7 @@
             </div>
             <div class="flex flex-wrap">
                 <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-                    <div class="ml-2 p-8 md:p-10 rounded-[10px] bg-green-300 shadow-md hover:shadow-lg mb-8 text-center">
+                    <div class="ml-2 p-8 md:p-10 rounded-[10px] bg-cyan-200 shadow-md hover:shadow-lg mb-8 text-center">
                         <div class="w-full h-[250px] flex items-center justify-center bg-slate-500 rounded-md">
                             <img src="images/truck.png" alt="Feature 1" class="w-full h-full object-cover">
 
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-                    <div class="p-8 md:p-10 rounded-[10px] shadow-md hover:shadow-lg mb-8 text-center bg-green-300">
+                    <div class="p-8 md:p-10 rounded-[10px] shadow-md hover:shadow-lg mb-8 text-center bg-cyan-200">
                         <div class="w-full h-[250px] flex items-center justify-center bg-slate-500 rounded-md">
                             <img src="images/c.png" alt="Feature 2" class="w-full h-full object-cover rounded-md">
                         </div>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-                    <div class="p-8 md:p-10 rounded-[10px] bg-green-300 shadow-md hover:shadow-lg mb-8 text-center">
+                    <div class="p-8 md:p-10 rounded-[10px] bg-cyan-200 shadow-md hover:shadow-lg mb-8 text-center">
                         <div class="w-full h-[250px] flex items-center justify-center bg-blue-200 rounded-md">
                             <img src="images/echofriend.jpg" alt="Feature 3" class="w-full h-full object-cover rounded-md">
                         </div>
@@ -160,51 +160,73 @@
         </main>
     </section>
     <section id="contact" class="pt-12 bg-gradient-to-r from-cyan-300 to-blue-100">
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-lg">
-            <div class="flex justify-center">
-                <div class="text-center lg:max-w-3xl md:max-w-xl">
-                    <h2 class="text-3xl font-bold px-6">Contact us</h2>
-                    <p class="text-lg text-gray-600 text-center">Have any questions or concerns? Reach out to us!</p>
-                </div>
-            </div>
-            <div class="flex flex-col items-center flex-1 justify-center px-4 py-10 sm:px-0">
-                <div class="flex rounded-lg shadow-lg w-full sm:w-3/4 lg:w-full sm:mx-0 bg-red-200">
+        <div class="h-screen">
+            <div class="flex flex-col items-center  h-full justify-center px-4 sm:px-0">
+                <div class="flex rounded-lg w-full sm:w-3/4 lg:w-10/12 sm:mx-0" style="height: 500px">
+                    <div class="md:w-1/2 h-full flex items-center justify-center ">
+                        <div class="w-full flex flex-col text-center rounded-lg p-6 md:p-10">
+                            <div class="w-full mx-auto mb-6 flex">
+                                <div class="w-1/2">
+                                    <i class="text-5xl fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h4 class="text-2xl font-bold">Our Location</h4>
+                                    <p class="text-gray-600">Bharatpur, Chitwan, Nepal</p>
+                                </div>
+                            </div>
+                            <div class="w-full mx-auto mb-6 flex">
+                                <div class="w-1/2">
+                                    <i class="text-5xl fa-solid fa-phone"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h4 class="text-2xl font-bold">Call Us</h4>
+                                    <p class="text-gray-600">+977 056 527237</p>
+                                </div>
+                            </div>
+                            <div class="w-full mx-auto flex">
+                                <div class="w-1/2">
+                                    <i class="text-5xl fa-solid fa-envelope"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h4 class="text-2xl font-bold">Email Us</h4>
+                                    <p class="text-gray-600">info@gcs.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="flex flex-col w-full md:w-1/2 p-4">
-                        <div class="flex flex-col flex-1 justify-center">
+                        <div class="flex flex-col flex-1 justify-center mb-8">
+                            <div class="mb-4">
+                                <h6 class="text-gray-600 uppercase font-bold mb-2">Need Help?</h6>
+                                <h1 class="text-4xl font-bold">Send Us A Message</h1>
+                            </div>
                             <div class="w-full mt-4">
-                                <form class="grid grid-cols-1 gap-y-6">
-                                    <div>
-                                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                                        <div class="mt-1">
-                                            <input type="text" name="name" id="name" class="py-2 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300" />
-                                        </div>
+                                <form class="form-horizontal mx-auto" method="POST" action="">
+                                    <div class="mb-6">
+                                        <input type="text" class="w-1/2 shadow-md border-1  border-gray-400 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:border-blue-500 bg-white-100" placeholder="Your Name" required="required">
                                     </div>
-                                    <div>
-                                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                        <div class="mt-1">
-                                            <input id="email" name="email" type="email" class="py-2 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300" />
-                                        </div>
+                                    <div class="mb-6">
+                                        <input type="email" class="w-full shadow-md border-1  border-gray-400 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:border-blue-500" placeholder="Your Email" required="required">
                                     </div>
-                                    <div>
-                                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                                        <div class="mt-1">
-                                            <textarea id="message" name="message" rows="4" class="py-2 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border-gray-300"></textarea>
-                                        </div>
+                                    <div class="mb-6">
+                                        <textarea class="w-full shadow-md border-1  border-gray-400 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:border-blue-500" rows="5" placeholder="Message" required="required"></textarea>
                                     </div>
-                                    <div>
-                                        <button type="submit" id="submitBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
-                                            Submit
-                                        </button>
+                                    <div class="w-full text-center">
+                                        <button class="w-1/2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-md" type="submit">Send Message</button>
                                     </div>
                                 </form>
 
                             </div>
                         </div>
                     </div>
-                    <div class=" md:block md:w-1/2 rounded-r-lg " style="background:url('./images/contact.png'); background-size:cover; background-position:center;">
-                    </div>
+
                 </div>
             </div>
+        </div>
+
+
 
         </main>
     </section>

@@ -68,7 +68,7 @@ if (isset($_POST['login'])) {
   $user = $_POST['user'];
   $useremail = $_POST['uemail'];
   $pass = $_POST['password'];
-  $qry = "SELECT * from users WHERE name='$user' AND email='$useremail' AND password='$pass'";
+  $qry = "SELECT * from users WHERE name='$user' AND email='$useremail' AND password=md5('$pass')";
   if ($result = mysqli_query($con, $qry)) {
     if (mysqli_num_rows($result) > 0) {
       $data = mysqli_fetch_assoc($result);

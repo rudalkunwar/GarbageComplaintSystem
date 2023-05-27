@@ -16,7 +16,7 @@
     if ($con === false) {
         die("Eroor connection");
     }
-    $qry = "SELECT id,name,address,email FROM drivers";
+    $qry = "SELECT driver_id,name,address,email FROM drivers";
     $result = mysqli_query($con, $qry);
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
@@ -63,13 +63,13 @@
                             while ($data = mysqli_fetch_assoc($result)) {
                             ?>
                                 <tr>
-                                    <td class="border-gray-400 py-2 px-4"><?php echo $data['id']; ?></td>
+                                    <td class="border-gray-400 py-2 px-4"><?php echo $data['driver_id']; ?></td>
                                     <td class="border-gray-400 py-2 px-4"><?php echo $data['name']; ?></td>
                                     <td class="border-gray-400 py-2 px-4"><?php echo $data['address']; ?></td>
                                     <td class="border-gray-400 py-2 px-4"><?php echo $data['email']; ?></td>
                                     <td class="border-gray-400 py-3 px-4">
-                                        <a href="editdriver.php?editid=<?php echo $data['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
-                                        <a onclick="showDelete(<?php echo $data['id'] ?>);" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded cursor-pointer">Delete</a>
+                                        <a href="editdriver.php?editid=<?php echo $data['driver_id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+                                        <a onclick="showDelete(<?php echo $data['driver_id'] ?>);" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded cursor-pointer">Delete</a>
                                     </td>
                                 </tr>
                             <?php

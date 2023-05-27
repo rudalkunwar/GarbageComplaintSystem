@@ -69,10 +69,10 @@ if (isset($_POST['login'])) {
             $_SESSION['admin'] = $user;
             $_SESSION['auth'] = "yes";
             header('location:dashboard.php');
-        }else
-        {
+        } else {
             echo '<script> alert("Invalid Username or Password"); </script> ';
         }
     }
+    mysqli_close($con);
 }
 ?>

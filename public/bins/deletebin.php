@@ -6,7 +6,7 @@ if($con === false)
 {
     die("Error connection");
 }
-$qry = "DELETE FROM garbagebins WHERE id=$delid";
+$qry = "DELETE FROM garbagebins WHERE bin_id=$delid";
 
 if(mysqli_query($con,$qry)){
     $_SESSION['message'] = "Bin Delete successfully!";
@@ -19,4 +19,5 @@ else
 
     echo '<script>window.location.href = "driver.php";</script>';
 }
+mysqli_close($con);
 ?>

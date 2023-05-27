@@ -70,8 +70,7 @@ if (isset($_POST['register'])) {
   $email = $_POST['email'];
   $addr = $_POST['address'];
   $contact = $_POST['contact'];
-  $pass = $_POST['password'];
-  $cpass = $_POST['cpassword'];
+  $pass = md5($_POST['password']);
 
   //encrypting password
   // $hpass = md5($pass);
@@ -82,7 +81,7 @@ if (isset($_POST['register'])) {
   if (mysqli_num_rows($result) > 0) {
     echo '<script> alert("Email already Exits") </script> ';
   } else {
-    $qry = "INSERT INTO users(name,email,password,cpassword,address,contact) values('$name','$email','$pass','$cpass','$addr','$contact')";
+    $qry = "INSERT INTO users(name,email,password,address,contact) values('$name','$email','$pass','$addr','$contact')";
     $r = mysqli_query($con, $qry);
     if ($r > 0) {
       echo '<script> alert("You are Registered.Now you Can login") </script> ';

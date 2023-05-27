@@ -67,7 +67,7 @@ if (isset($_POST['login'])) {
   $did = $_POST['driverid'];
   $email = $_POST['email'];
   $pass = $_POST['password'];
-  $qry = "SELECT * from drivers WHERE id=$did AND email='$email' AND password='$pass'";
+  $qry = "SELECT * from drivers WHERE driver_id=$did AND email='$email' AND password=md5('$pass')";
   if ($result = mysqli_query($con, $qry)) {
     if (mysqli_num_rows($result) > 0) {
       $data = mysqli_fetch_assoc($result);
