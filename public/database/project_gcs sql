@@ -1,0 +1,257 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 31, 2023 at 07:31 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `project_gcs`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `picture` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `name`, `email`, `password`, `picture`) VALUES
+(1, 'Rudal', 'ankushruzal@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'profilepic/images.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assigned_bin`
+--
+
+CREATE TABLE `assigned_bin` (
+  `assign_id` int(11) NOT NULL,
+  `complain_id` int(11) DEFAULT NULL,
+  `assigned_driver` varchar(255) NOT NULL,
+  `assignment_date` date DEFAULT NULL,
+  `description` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `assigned_bin`
+--
+
+INSERT INTO `assigned_bin` (`assign_id`, `complain_id`, `assigned_driver`, `assignment_date`, `description`) VALUES
+(1, 5, 'sohan kafle', '2023-06-02', 'driver assigned');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `complaints`
+--
+
+CREATE TABLE `complaints` (
+  `complain_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `bin_id` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `bin_picture` varchar(500) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `complain_status` varchar(30) NOT NULL DEFAULT 'new'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `complaints`
+--
+
+INSERT INTO `complaints` (`complain_id`, `user_id`, `bin_id`, `description`, `bin_picture`, `timestamp`, `complain_status`) VALUES
+(5, 1, 5920, 'Bin is full please collect soon', 'binpic/WIN_20230315_15_33_04_Pro.jpg', '2023-05-31 09:54:53', 'Accept');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drivers`
+--
+
+CREATE TABLE `drivers` (
+  `driver_id` int(11) NOT NULL,
+  `driver_name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `driver_status` varchar(30) DEFAULT 'free'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `drivers`
+--
+
+INSERT INTO `drivers` (`driver_id`, `driver_name`, `password`, `email`, `address`, `driver_status`) VALUES
+(400, 'driver3', 'e44435627359f4c3de71b538cdefdc14', 'driver3@gmail.com', 'Gaidakot-5', 'free'),
+(1234, 'driver1', 'b85aef08608180db9d4ddad38ae40545', 'driver1@gmail.com', 'Gaidakot-3', 'free'),
+(2200, 'sohan kafle', '829e4a4a102526021855e3744bd8a86f', 'kaflesohan@gmail.com', 'Gaidakot-1', 'Assigned'),
+(3499, 'driver2', 'd95784faa6597a0253e483e500ced3ee', 'driver2@gmail.com', 'bharatpur', 'free');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `garbagebins`
+--
+
+CREATE TABLE `garbagebins` (
+  `bin_id` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  `bin_status` varchar(30) NOT NULL DEFAULT 'use'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `garbagebins`
+--
+
+INSERT INTO `garbagebins` (`bin_id`, `type`, `location`, `capacity`, `bin_status`) VALUES
+(204, 'Metallic', 'Bharatpur-11', 100, 'use'),
+(300, 'Inorganic', 'Bharatpur bishnu chow', 100, 'use'),
+(330, 'Inorganic', 'ghorkhali chowk,bharatpur', 100, 'use'),
+(500, 'Organic', 'Kaligandaki chowk', 100, 'use'),
+(5920, 'Metallic', 'Bharatpur devi chowk', 120, 'use');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `profilepic` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `email`, `password`, `address`, `contact`, `profilepic`) VALUES
+(1, 'pratik', 'parajuli@gmail.com', '0cb2b62754dfd12b6ed0161d4b447df7', 'Gaidakot-1', '9870273227', 'profilepic/Screenshot 2023-04-28 224213.png'),
+(2, 'user1', 'user1@gmail.com', '24c9e15e52afc47c225b757e7bee1f9d', 'Gaidakot-1', '9870273227', '');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `assigned_bin`
+--
+ALTER TABLE `assigned_bin`
+  ADD PRIMARY KEY (`assign_id`),
+  ADD KEY `complain_id` (`complain_id`),
+  ADD KEY `fk_driver_name` (`assigned_driver`);
+
+--
+-- Indexes for table `complaints`
+--
+ALTER TABLE `complaints`
+  ADD PRIMARY KEY (`complain_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `bin_id` (`bin_id`);
+
+--
+-- Indexes for table `drivers`
+--
+ALTER TABLE `drivers`
+  ADD PRIMARY KEY (`driver_id`),
+  ADD UNIQUE KEY `driver_name` (`driver_name`);
+
+--
+-- Indexes for table `garbagebins`
+--
+ALTER TABLE `garbagebins`
+  ADD PRIMARY KEY (`bin_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `assigned_bin`
+--
+ALTER TABLE `assigned_bin`
+  MODIFY `assign_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `complaints`
+--
+ALTER TABLE `complaints`
+  MODIFY `complain_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `assigned_bin`
+--
+ALTER TABLE `assigned_bin`
+  ADD CONSTRAINT `assigned_bin_ibfk_1` FOREIGN KEY (`complain_id`) REFERENCES `complaints` (`complain_id`),
+  ADD CONSTRAINT `fk_driver_name` FOREIGN KEY (`assigned_driver`) REFERENCES `drivers` (`driver_name`);
+
+--
+-- Constraints for table `complaints`
+--
+ALTER TABLE `complaints`
+  ADD CONSTRAINT `complaints_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `complaints_ibfk_2` FOREIGN KEY (`bin_id`) REFERENCES `garbagebins` (`bin_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
