@@ -12,11 +12,7 @@
 <body>
     <?php include('../layout/dashlayout.php') ?>
     <?php
-    $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-    if ($con === false) {
-        die("Eroor connection");
-    }
-    $qry = "SELECT driver_id,name,address,email FROM drivers";
+    $qry = "SELECT driver_id,driver_name,address,email FROM drivers";
     $result = mysqli_query($con, $qry);
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
@@ -64,7 +60,7 @@
                             ?>
                                 <tr>
                                     <td class="border-gray-400 py-2 px-4"><?php echo $data['driver_id']; ?></td>
-                                    <td class="border-gray-400 py-2 px-4"><?php echo $data['name']; ?></td>
+                                    <td class="border-gray-400 py-2 px-4"><?php echo $data['driver_name']; ?></td>
                                     <td class="border-gray-400 py-2 px-4"><?php echo $data['address']; ?></td>
                                     <td class="border-gray-400 py-2 px-4"><?php echo $data['email']; ?></td>
                                     <td class="border-gray-400 py-3 px-4">

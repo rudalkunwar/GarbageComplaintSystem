@@ -66,10 +66,6 @@
 
 <?php
 if (isset($_POST['updatepass'])) {
-    $con = mysqli_connect("localhost", "root", "", "gcs_database");
-    if ($con === false) {
-        die("Error connection ");
-    }
     $oldpass = $_POST['oldpass'];
     $newpass = $_POST['newpass'];
     $cnewpass = $_POST['cnewpass'];

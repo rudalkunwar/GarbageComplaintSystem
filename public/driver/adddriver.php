@@ -68,12 +68,7 @@ if (isset($_POST['adddriver'])) {
     $email = $_POST['email'];
     $addr = $_POST['address'];
 
-    $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-    if ($con === false) {
-        die("Eroor connection");
-    }
-
-    $qry = "INSERT INTO drivers VALUES($did,'$dname',md5('$pass'),'$email','$addr')";
+    $qry = "INSERT INTO drivers(driver_id,driver_name,password,email,address) VALUES($did,'$dname',md5('$pass'),'$email','$addr')";
 
     if (mysqli_query($con, $qry)) {
         $_SESSION['message'] = "Driver Added successfully!";

@@ -62,10 +62,10 @@
 </script>
 <?php
 if (isset($_POST['register'])) {
-  $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-  if (!$con) {
-    die("Unable to connect to the database");
-  }
+  $con = mysqli_connect("localhost", "root", "", "project_gcs");
+    if ($con === false) {
+        die("Error connection ");
+    }
   $name = $_POST['name'];
   $email = $_POST['email'];
   $addr = $_POST['address'];
@@ -76,12 +76,12 @@ if (isset($_POST['register'])) {
   // $hpass = md5($pass);
   // $chpass = md5($cpass);
 
-  $qry1 = "SELECT id FROM users where email = '$email' ";
+  $qry1 = "SELECT user_id FROM users where email = '$email' ";
   $result = mysqli_query($con, $qry1);
   if (mysqli_num_rows($result) > 0) {
     echo '<script> alert("Email already Exits") </script> ';
   } else {
-    $qry = "INSERT INTO users(name,email,password,address,contact) values('$name','$email','$pass','$addr','$contact')";
+    $qry = "INSERT INTO users(user_name,email,password,address,contact) values('$name','$email','$pass','$addr','$contact')";
     $r = mysqli_query($con, $qry);
     if ($r > 0) {
       echo '<script> alert("You are Registered.Now you Can login") </script> ';

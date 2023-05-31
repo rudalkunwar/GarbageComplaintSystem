@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $delid = $_GET['did'];
-$con = mysqli_connect('localhost','root','','gcs_database');
+$con = mysqli_connect('localhost','root','','project_gcs');
 if($con === false)
 {
     die("Error connection");

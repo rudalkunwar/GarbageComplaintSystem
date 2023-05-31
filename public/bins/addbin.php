@@ -55,17 +55,12 @@
 </html>
 <?php
 if (isset($_POST['addbin'])) {
-    $id = $_POST['binid'];
+    $binid = $_POST['binid'];
     $type = $_POST['bintype'];
     $capacity = $_POST['capacity'];
     $location = $_POST['location'];
 
-    $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-    if ($con === false) {
-        die("Eroor connection");
-    }
-
-    $qry = "INSERT INTO garbagebins VALUES($bin_id,'$type','$location','$capacity')";
+    $qry = "INSERT INTO garbagebins(bin_id,type,location,capacity) VALUES($binid,'$type','$location','$capacity')";
     if (mysqli_query($con, $qry)) {
 
 

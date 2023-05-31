@@ -5,10 +5,10 @@ if (!isset($_SESSION['auth'])) {
 }
 ?>
 <?php
-$con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-if ($con === false) {
-    die("Eroor connection");
-}
+ $con = mysqli_connect("localhost", "root", "", "project_gcs");
+ if ($con === false) {
+     die("Error connection ");
+ }
 $qry = "SELECT * FROM admin";
 $result = mysqli_query($con, $qry);
 $data = mysqli_fetch_assoc($result);
@@ -69,9 +69,15 @@ $data = mysqli_fetch_assoc($result);
                         </a>
                     </li>
                     <li>
-                        <a href="" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
+                        <a href="../admin/usercomplain.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                             <i class="ml-4 fa-solid fa-envelope"></i>
                             <span class="ml-2 text-sm tracking-wide truncate">User Complains</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../admin/complainhistory.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
+                            <i class="ml-4 fa-solid fa-envelope"></i>
+                            <span class="ml-2 text-sm tracking-wide truncate">Complains History</span>
                         </a>
                     </li>
                     <li>

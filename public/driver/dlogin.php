@@ -60,7 +60,7 @@ if (isset($_SESSION['driverid'])) {
 </html>
 <?php
 if (isset($_POST['login'])) {
-  $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
+  $con = mysqli_connect('localhost', 'root', '', 'project_gcs');
   if (!$con) {
     die("Unable to connect to the database");
   }
@@ -71,9 +71,9 @@ if (isset($_POST['login'])) {
   if ($result = mysqli_query($con, $qry)) {
     if (mysqli_num_rows($result) > 0) {
       $data = mysqli_fetch_assoc($result);
-      $_SESSION['drivername'] = $data['name'];
+      $_SESSION['drivername'] = $data['driver_name'];
       $_SESSION['driveremail'] = $data['email'];
-      $_SESSION['driverid'] = $data['id'];
+      $_SESSION['driverid'] = $data['driver_id'];
       header('location:ddash.php');
     } else {
       echo '<script> alert("Error username or password"); </script>';

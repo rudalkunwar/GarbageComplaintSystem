@@ -73,11 +73,6 @@ if (isset($_POST['addbin'])) {
     $capacity = $_POST['capacity'];
     $location = $_POST['location'];
 
-    $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-    if ($con === false) {
-        die("Eroor connection");
-    }
-
     $qry = "UPDATE garbagebins set id=$bin_id,type='$type',location='$location',capacity='$capacity' WHERE id=$eid";
     if (mysqli_query($con, $qry)) {
 

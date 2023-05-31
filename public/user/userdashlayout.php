@@ -1,28 +1,28 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['user_name'])) {
     header('location:ulogin.php');
 }
-$user = $_SESSION['username'];
-$uemail = $_SESSION['useremail'];
+$user = $_SESSION['user_name'];
+// $uemail = $_SESSION['user_email'];
 ?>
 <?php
-$con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-if ($con === false) {
-    die("Eroor connection");
-}
-$sql = "SELECT * FROM users WHERE email = '$uemail'";
+ $con = mysqli_connect("localhost", "root", "", "project_gcs");
+ if ($con === false) {
+     die("Error connection ");
+ }
+$sql = "SELECT * FROM users WHERE user_name = '$user'";
 $result = mysqli_query($con, $sql);
 $data = mysqli_fetch_assoc($result);
-$uid = $data['user_id'];
+$userid = $data['user_id'];
 ?>
 <div class="flex">
-    <div class="fixed h-screen flex flex-col w-14 hover:w-64 md:w-64 bg-gray-900 text-white transition-all duration-300 border-none z-10 sidebar">
+    <div class="fixed h-full flex flex-col w-14 hover:w-64 md:w-64 bg-gray-900 text-white transition-all duration-300 border-none z-10 sidebar">
         <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
             <div class="fixed w-full flex items-center h-14 text-white z-10">
                 <div class="flex items-center justify-start  pl-3 w-14 md:w-64 h-14 bg-gray-800 border-none">
-                    <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" src="<?php echo $data['picture']?>" />
-                    <span class="hidden md:block"><?php echo $data['name'] ?> </span>
+                    <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" src="<?php echo $data['profilepic']?>" />
+                    <span class="hidden md:block"><?php echo $user  ?> </span>
                 </div>
             </div>
             <ul class="flex flex-col mt-10 py-4 space-y-1">

@@ -12,10 +12,6 @@
 <body class="bg-gray-100">
     <?php
     $binid = $_GET['binid'];
-    $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-    if ($con === false) {
-        die("Eroor connection");
-    }
     $qry = "SELECT * FROM garbagebins WHERE bin_id = $binid";
     $result = mysqli_query($con, $qry);
     $row = mysqli_fetch_assoc($result);
@@ -78,8 +74,7 @@ if(isset($_POST['submit']))
     $comp_msg = $_POST['complaint_message'];
 
     // $qry2 = "INSERT INTO complaints VALUES(1,$uid,$binid,'$comp_msg','$folder')";
-    $qry2 = "INSERT INTO complaints (user_id, bin_id, description, bin_picture, timestamp) VALUES ($uid, $binid, '$comp_msg', '$folder', CURRENT_TIMESTAMP)";
-
+    $qry2 = "INSERT INTO complaints (user_id, bin_id, description, bin_picture, timestamp) VALUES ($userid, $binid, '$comp_msg', '$folder', CURRENT_TIMESTAMP)";
     if(mysqli_query($con,$qry2))
     {
         echo '<script> alert("Bin Complain Sucessfully"); </script> ';

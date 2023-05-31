@@ -54,10 +54,6 @@
                         </thead>
                         <tbody>
                             <?php
-                            $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-                            if ($con === false) {
-                                die("Eroor connection");
-                            }
                             $qry = " SELECT * FROM garbagebins ";
                             $result = mysqli_query($con, $qry);
                             while ($d = mysqli_fetch_assoc($result)) {

@@ -55,7 +55,7 @@ if (isset($_SESSION['admin'])) {
 
 <?php
 if (isset($_POST['login'])) {
-    $con = mysqli_connect("localhost", "root", "", "gcs_database");
+    $con = mysqli_connect("localhost", "root", "", "project_gcs");
     if ($con === false) {
         die("Error connection ");
     }
@@ -64,8 +64,8 @@ if (isset($_POST['login'])) {
 
     $qry  = "SELECT * FROM admin WHERE name = '$user' AND password=md5('$pass')";
 
-    if ($reslt = mysqli_query($con, $qry)) {
-        if (mysqli_num_rows($reslt) > 0) {
+    if ($res = mysqli_query($con, $qry)) {
+        if (mysqli_num_rows($res) > 0) {
             $_SESSION['admin'] = $user;
             $_SESSION['auth'] = "yes";
             header('location:dashboard.php');

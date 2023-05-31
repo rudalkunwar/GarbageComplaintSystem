@@ -12,12 +12,8 @@
 <body>
     <?php include('userdashlayout.php'); ?>
     <?php
-    $uemail = $_SESSION['useremail'];
-    $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-    if ($con === false) {
-        die("Eroor connection");
-    }
-    $qry = "SELECT * FROM users WHERE email = '$uemail'";
+    $username = $_SESSION['user_name'];
+    $qry = "SELECT * FROM users WHERE user_name = '$username'";
     $result = mysqli_query($con, $qry);
     $data = mysqli_fetch_assoc($result);
     $userid = $data['user_id'];
@@ -33,7 +29,7 @@
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
                             Name
                         </label>
-                        <input value="<?php echo $data['name']; ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="name" name="name" placeholder="Name" type="text" required />
+                        <input value="<?php echo $data['user_name']; ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="name" name="name" placeholder="Name" type="text" required />
                     </div>
                     <div class="mb-4">
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
@@ -76,10 +72,6 @@
 
 <?php
 if (isset($_POST['updateprofile'])) {
-    $con = mysqli_connect("localhost", "root", "", "gcs_database");
-    if ($con === false) {
-        die("Error connection ");
-    }
     $name = $_POST['name'];
     $email = $_POST['email'];
     $addr = $_POST['address'];
@@ -90,7 +82,7 @@ if (isset($_POST['updateprofile'])) {
     $folder = "profilepic/" . $filename;
     move_uploaded_file($tempname, $folder);
 
-    $qry = "UPDATE users SET name='$name',email = '$email',address='$addr',contact='$contact',picture='$folder' WHERE user_id=$userid ";
+    $qry = "UPDATE users SET user_name='$name',email = '$email',address='$addr',contact='$contact',profilepic='$folder' WHERE user_id=$userid ";
     if ($reslt = mysqli_query($con, $qry)) {
 
         echo '<script> alert("Profile Updated Sucessfully"); </script> ';

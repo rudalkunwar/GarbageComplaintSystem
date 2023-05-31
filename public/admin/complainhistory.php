@@ -7,13 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaints Report</title>
     <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
 <body>
-    <?php include('userdashlayout.php') ?>
+    <?php include('../layout/dashlayout.php') ?>
     <?php
-    $joinqry = "SELECT * FROM complaints C JOIN garbagebins b ON c.bin_id = b.bin_id WHERE user_id = $userid  ";
-    $r2 = mysqli_query($con, $joinqry);
+    $asqry = "SELECT * FROM assigned_bin a JOIN complaints c ON a.complain_id = c.complain_id;";
+    $res = mysqli_query($con, $asqry);
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
         <div class="w-full p-5 ">
@@ -36,21 +38,22 @@
                                         Bin ID
                                     </th>
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Location
-                                    </th>
-                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                         Complain Message
+                                    </th>
+
+                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                        Assigned Driver
                                     </th>
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                         Status
                                     </th>
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Action
+                                        Details
                                     </th>
                             </thead>
                             <tbody>
                                 <?php
-                                while ($data = mysqli_fetch_assoc($r2)) {
+                                while ($data = mysqli_fetch_assoc($res)) {
                                 ?>
                                     <tr>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
@@ -62,7 +65,7 @@
                                         </td>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap w-full h-24 pb-[50%] relative">
-                                                <img src="<?php echo $data['bin_picture'] ?>" class="absolute inset-0 w-full h-full object-cover" alt="">
+                                                <img src="../user/<?php echo $data['bin_picture'] ?>" class="absolute inset-0 w-full h-full object-cover" alt="">
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
@@ -72,25 +75,23 @@
                                         </td>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['location'] ?>
+                                                <?php echo $data['description'] ?>
 
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['description'] ?>
-
+                                                <?php echo $data['assigned_driver'] ?>
                                             </p>
                                         </td>
-
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 <?php echo $data['complain_status'] ?>
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm border-b border-gray-200">
-                                            <p class="px-2 py-3 bg-green-300  rounded-md text-center">
-                                                Load More
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                <button class="px-2 py-3 bg-green-300  rounded-md text-black">View More</button>
                                             </p>
                                         </td>
                                     </tr>

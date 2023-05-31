@@ -5,7 +5,7 @@ if (!isset($_SESSION['auth'])) {
 }
 ?>
 <?php
-$con = mysqli_connect('localhost', 'root', '', 'gcs_database');
+$con = mysqli_connect('localhost', 'root', '', 'project_gcs');
 if ($con === false) {
     die("Eroor connection");
 }
@@ -34,7 +34,7 @@ $data = mysqli_fetch_assoc($result);
                 <div class="fixed w-full flex items-center h-14 text-white z-10">
                     <div class="flex items-center justify-start  pl-3 w-14 md:w-64 h-14 bg-gray-700 border-none">
                         <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-sm overflow-hidden" src="../admin/<?php echo $data['picture'] ?>" />
-                        <span class="hidden md:block"><?php echo $data['name'] ?></span>
+                        <span class="hidden md:block"></span>
                     </div>
                 </div>
                 <ul class="flex flex-col mt-10 py-4 space-y-1">
@@ -74,6 +74,7 @@ $data = mysqli_fetch_assoc($result);
                             <span class="ml-2 text-sm tracking-wide truncate">User Complains</span>
                         </a>
                     </li>
+
                     <li>
                         <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                             <span class="inline-flex justify-center items-center ml-4">

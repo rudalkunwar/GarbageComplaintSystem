@@ -12,10 +12,6 @@
 <body>
     <?php include('../layout/dashlayout.php'); ?>
     <?php
-    $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-    if ($con === false) {
-        die("Eroor connection");
-    }
     $qry = "SELECT * FROM admin";
     $result = mysqli_query($con, $qry);
     $data = mysqli_fetch_assoc($result);
@@ -62,10 +58,6 @@
 
 <?php
 if (isset($_POST['updateprofile'])) {
-    $con = mysqli_connect("localhost", "root", "", "gcs_database");
-    if ($con === false) {
-        die("Error connection ");
-    }
     $name = $_POST['name'];
     $email = $_POST['email'];
 

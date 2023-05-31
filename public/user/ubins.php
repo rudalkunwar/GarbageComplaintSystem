@@ -14,11 +14,7 @@
     <?php
 
     include('userdashlayout.php');
-    $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-    if ($con === false) {
-        die("Eroor connection");
-    }
-    $qry = "SELECT * FROM garbagebins";
+    $qry = "SELECT * FROM garbagebins WHERE bin_status = 'use'";
     $result = mysqli_query($con, $qry);
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64">
@@ -81,17 +77,14 @@
 
                                             </p>
                                         </td>
-
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                            <span class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
-                                                <span aria-hidden="true" class="absolute inset-0 bg-green-200 rounded-full opacity-50">
-                                                </span>
-                                                <span class="relative">
-                                                </span>
-                                            </span>
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                <?php echo $data['bin_status'] ?>
+
+                                            </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                            <a href="complainbin.php?binid=<?php echo $data['bin_id']?>" class="text-indigo-600 hover:text-indigo-900">
+                                            <a href="complainbin.php?binid=<?php echo $data['bin_id'] ?>" class="text-indigo-600 hover:text-indigo-900">
                                                 Add Complain
                                             </a>
                                         </td>

@@ -14,10 +14,6 @@
 
     <?php
     $myid = $_GET['editid'];
-    $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-    if ($con === false) {
-        die("Error connection");
-    }
     $qry = "SELECT * FROM drivers WHERE driver_id = $myid";
     $data = mysqli_query($con, $qry);
     $result = mysqli_fetch_assoc($data);
@@ -37,7 +33,7 @@
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">
                             Name
                         </label>
-                        <input type="email" id="name" name="drivername" value="<?php echo $result['name'] ?>" placeholder="Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
+                        <input type="email" id="name" name="drivername" value="<?php echo $result['driver_name'] ?>" placeholder="Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required />
                     </div>
                     <div class="mb-4 w-full pl-1">
                         <label for="email" class="block text-gray-700 text-sm font-bold mb-2">

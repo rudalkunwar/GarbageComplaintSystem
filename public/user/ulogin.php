@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['username'])) {
- header('location:userdashboard.php');
+  header('location:userdashboard.php');
 }
 ?>
 <!DOCTYPE html>
@@ -61,22 +61,21 @@ if (isset($_SESSION['username'])) {
 </html>
 <?php
 if (isset($_POST['login'])) {
-  $con = mysqli_connect('localhost', 'root', '', 'gcs_database');
-  if (!$con) {
-    die("Unable to connect to the database");
+  $con = mysqli_connect("localhost", "root", "", "project_gcs");
+  if ($con === false) {
+    die("Error connection ");
   }
   $user = $_POST['user'];
   $useremail = $_POST['uemail'];
   $pass = $_POST['password'];
-  $qry = "SELECT * from users WHERE name='$user' AND email='$useremail' AND password=md5('$pass')";
-  if ($result = mysqli_query($con, $qry)) {
-    if (mysqli_num_rows($result) > 0) {
-      $data = mysqli_fetch_assoc($result);
-      $_SESSION['username'] = $data['name'];
-      $_SESSION['useremail'] = $data['email'];
+  $sql = "SELECT * FROM users WHERE user_name = '$user' AND email='$useremail' AND password=md5('$pass')";
+  if ($r = mysqli_query($con, $sql)) {
+    if (mysqli_num_rows($r) > 0) {
+      $_SESSION['user_name'] = $user;
+      $_SESSION['user_email'] = $user;
       header('location:userdashboard.php');
     } else {
-      echo '<script> alert("Error username or password"); </script>';
+      echo '<script> alert("Invalid Username or Password"); </script> ';
     }
   }
 }
