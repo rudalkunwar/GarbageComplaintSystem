@@ -50,6 +50,7 @@
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                         Details
                                     </th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <?php
@@ -91,9 +92,12 @@
                                         </td>
                                         <td class="px-5 py-5 text-sm border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                <button class="px-2 py-3 bg-green-300  rounded-md text-black">View More</button>
+                                                <button onclick="assignBin(<?php echo $data['complain_id'] ?>)" class="px-2 py-3 bg-green-300  rounded-md text-black">View More</button>
                                             </p>
                                         </td>
+                                    </tr>
+
+                                    <tr class="mt-10 bg-blue-100">
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -107,3 +111,12 @@
 </body>
 
 </html>
+
+<script>
+    function assignBin(x) {
+        var rowId = 'ucol_' + x;
+        var row = document.getElementById(rowId);
+
+        row.classList.toggle('hidden');
+    }
+</script>

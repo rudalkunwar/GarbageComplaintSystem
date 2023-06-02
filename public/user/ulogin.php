@@ -71,7 +71,7 @@ if (isset($_POST['login'])) {
   $sql = "SELECT * FROM users WHERE user_name = '$user' AND email='$useremail' AND password=md5('$pass')";
   if ($r = mysqli_query($con, $sql)) {
     if (mysqli_num_rows($r) > 0) {
-      $_SESSION['user_name'] = $user;
+      $_SESSION['username'] = $user;
       $_SESSION['user_email'] = $user;
       header('location:userdashboard.php');
     } else {

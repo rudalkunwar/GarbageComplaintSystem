@@ -7,7 +7,7 @@ if (!isset($_SESSION['auth'])) {
 <?php
 $con = mysqli_connect('localhost', 'root', '', 'project_gcs');
 if ($con === false) {
-    die("Eroor connection");
+    die("Error connection");
 }
 $qry = "SELECT * FROM admin";
 $result = mysqli_query($con, $qry);

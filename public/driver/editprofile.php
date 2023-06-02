@@ -10,13 +10,11 @@
 </head>
 
 <body>
-    <?php include('userdashlayout.php'); ?>
-    <?php
-    $username = $_SESSION['username'];
-    $qry = "SELECT * FROM users WHERE user_name = '$username'";
+    <?php 
+    include('driverdashlayout.php');
+    $qry = "SELECT * FROM drivers where driver_name = '$driver' ";
     $result = mysqli_query($con, $qry);
     $data = mysqli_fetch_assoc($result);
-    $userid = $data['user_id'];
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
         <div class="w-full my-5">
@@ -29,25 +27,13 @@
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
                             Name
                         </label>
-                        <input value="<?php echo $data['user_name']; ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="name" name="name" placeholder="Name" type="text" required />
+                        <input value="<?php echo $data['drvier_name']; ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="name" name="name" placeholder="Name" type="text" required />
                     </div>
                     <div class="mb-4">
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
                             Email
                         </label>
                         <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="email" value="<?php echo $data['email']; ?>" name="email" type="email" placeholder="Email" required />
-                    </div>
-                    <div class="mb-4">
-                        <label class="block mb-2 text-sm font-bold text-gray-700" for="address">
-                            Address
-                        </label>
-                        <input value="<?php echo $data['address']; ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="address" name="address" placeholder="Address" type="text" required />
-                    </div>
-                    <div class="mb-4">
-                        <label class="block mb-2 text-sm font-bold text-gray-700" for="contact">
-                            Contact Number
-                        </label>
-                        <input value="<?php echo $data['contact']; ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="contact" name="contact" placeholder="Contact Number" type="text" required />
                     </div>
                     <div class="mb-4">
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
@@ -74,19 +60,17 @@
 if (isset($_POST['updateprofile'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $addr = $_POST['address'];
-    $contact = $_POST['contact'];
 
     $filename = $_FILES["photo"]["name"];
     $tempname = $_FILES["photo"]["tmp_name"];
     $folder = "profilepic/" . $filename;
     move_uploaded_file($tempname, $folder);
 
-    $qry = "UPDATE users SET user_name='$name',email = '$email',address='$addr',contact='$contact',profilepic='$folder' WHERE user_id=$userid ";
+    $qry = "UPDATE admin SET name='$name',email = '$email',picture='$folder' WHERE id=1 ";
     if ($reslt = mysqli_query($con, $qry)) {
 
         echo '<script> alert("Profile Updated Sucessfully"); </script> ';
-        echo '<script>window.location.href = "userdashboard.php";</script>';
+        echo '<script>window.location.href = "dashboard.php";</script>';
     } else {
         echo '<script> alert("Unable to Update Profile"); </script> ';
     }
