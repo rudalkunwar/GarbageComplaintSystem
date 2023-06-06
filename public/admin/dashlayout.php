@@ -25,7 +25,10 @@ $data = mysqli_fetch_assoc($result);
     <title>Dahboard Layout</title>
     </div>
     <script src="https://kit.fontawesome.com/62f9066fa7.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
+
 
 <body>
     <div class="flex">

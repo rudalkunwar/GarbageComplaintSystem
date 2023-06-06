@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php 
+    <?php
     include('driverdashlayout.php');
     $qry = "SELECT * FROM drivers where driver_name = '$driver' ";
     $result = mysqli_query($con, $qry);
@@ -27,7 +27,7 @@
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
                             Name
                         </label>
-                        <input value="<?php echo $data['drvier_name']; ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="name" name="name" placeholder="Name" type="text" required />
+                        <input value="<?php echo $driver ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="name" name="name" placeholder="Name" type="text" required />
                     </div>
                     <div class="mb-4">
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
@@ -41,7 +41,7 @@
                         </label>
                         <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="file" name="photo" id="uploadfile">
                         <div class="w-full h-1/2 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none">
-                            <img src="<?php echo $folder ?>" alt="">
+                            <img src="<?php echo $data['driver_picture'] ?>" alt="">
                         </div>
                     </div>
                     <div class="mb-6 text-center">
@@ -66,11 +66,13 @@ if (isset($_POST['updateprofile'])) {
     $folder = "profilepic/" . $filename;
     move_uploaded_file($tempname, $folder);
 
-    $qry = "UPDATE admin SET name='$name',email = '$email',picture='$folder' WHERE id=1 ";
+    $qry = "UPDATE drivers SET driver_name='$name',email = '$email',driver_picture='$folder' WHERE driver_name='$driver' ";
     if ($reslt = mysqli_query($con, $qry)) {
 
         echo '<script> alert("Profile Updated Sucessfully"); </script> ';
-        echo '<script>window.location.href = "dashboard.php";</script>';
+        session_unset();
+        session_destroy();
+        echo '<script>window.location.href = "dlogin.php";</script>';
     } else {
         echo '<script> alert("Unable to Update Profile"); </script> ';
     }

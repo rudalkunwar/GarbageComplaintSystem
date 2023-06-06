@@ -14,7 +14,7 @@
 <body>
     <?php include('../layout/dashlayout.php') ?>
     <?php
-    $asqry = "SELECT * FROM assigned_bin a JOIN complaints c ON a.complain_id = c.complain_id;";
+    $asqry = "SELECT * FROM assigned_bin a JOIN complaints c ON a.complain_id = c.complain_id";
     $res = mysqli_query($con, $asqry);
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
@@ -40,10 +40,6 @@
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                         Complain Message
                                     </th>
-
-                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Assigned Driver
-                                    </th>
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                         Status
                                     </th>
@@ -57,47 +53,42 @@
                                 while ($data = mysqli_fetch_assoc($res)) {
                                 ?>
                                     <tr>
+                                        <input id="aidpop" type="hidden" value="<?php echo $data['assign_id']; ?>">
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['timestamp'] ?>
+                                                <?php echo $data['timestamp']; ?>
                                             </p>
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap w-full h-24 pb-[50%] relative">
-                                                <img src="../user/<?php echo $data['bin_picture'] ?>" class="absolute inset-0 w-full h-full object-cover" alt="">
+                                                <img src="../user/<?php echo $data['bin_picture']; ?>" class="absolute inset-0 w-full h-full object-cover" alt="">
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['bin_id'] ?>
+                                                <?php echo $data['bin_id']; ?>
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['description'] ?>
+                                                <?php echo $data['description']; ?>
 
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['assigned_driver'] ?>
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['complain_status'] ?>
+                                                <?php echo $data['complain_status']; ?>
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                <button onclick="assignBin(<?php echo $data['complain_id'] ?>)" class="px-2 py-3 bg-green-300  rounded-md text-black">View More</button>
+
+                              
+                                            <a href="detailscomplain.php?aid=<?php echo $data['assign_id'] ?>"  class="px-2 py-3 bg-green-300  rounded-md text-black" >View More</a>
                                             </p>
                                         </td>
-                                    </tr>
-
-                                    <tr class="mt-10 bg-blue-100">
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -111,12 +102,3 @@
 </body>
 
 </html>
-
-<script>
-    function assignBin(x) {
-        var rowId = 'ucol_' + x;
-        var row = document.getElementById(rowId);
-
-        row.classList.toggle('hidden');
-    }
-</script>

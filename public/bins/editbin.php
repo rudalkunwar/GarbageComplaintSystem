@@ -1,11 +1,11 @@
 <?php
-$eid = $_GET['eid'];
-$con = mysqli_connect('localhost', 'root', '', 'gcs_database');
+$eid = $_GET['editid'];
+$con = mysqli_connect('localhost', 'root', '', 'project_gcs');
 if ($con === false) {
     die("Eroor connection");
 }
-$qry = "SELECT * FROM garbagebins WHERE id=$eid";
-$result = mysqli_query($con, $qry);
+$eqry = "SELECT * FROM garbagebins WHERE bin_id=$eid";
+$result = mysqli_query($con, $eqry);
 $updata = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ $updata = mysqli_fetch_assoc($result);
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="binid">
                             Bin Id
                         </label>
-                        <input value="<?php echo $updata['id'] ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="binid" name="binid" type="text" placeholder="Bin Id" required />
+                        <input value="<?php echo $updata['bin_id'] ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="binid" name="binid" type="text" placeholder="Bin Id" required />
                     </div>
                     <div class="mb-4">
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="bintype">Bin Type</label>
@@ -73,7 +73,7 @@ if (isset($_POST['addbin'])) {
     $capacity = $_POST['capacity'];
     $location = $_POST['location'];
 
-    $qry = "UPDATE garbagebins set id=$bin_id,type='$type',location='$location',capacity='$capacity' WHERE id=$eid";
+    $qry = "UPDATE garbagebins set bin_id=$id,type='$type',location='$location',capacity='$capacity' WHERE bin_id=$eid";
     if (mysqli_query($con, $qry)) {
 
 

@@ -76,8 +76,10 @@ if (isset($_POST['updatepass'])) {
             $qry = "UPDATE admin SET password = md5('$newpass') WHERE password = md5('$oldpass')";
             $result = mysqli_query($con, $qry);
             if ($result) {
-                echo '<script> alert("Password Updated Sucessfully"); </script> ';
-                echo '<script>window.location.href = "dashboard.php";</script>';
+                echo '<script> alert("Password Updated Sucessfully,Session Expired!!!"); </script> ';
+                session_unset();
+                session_destroy();
+                echo '<script>window.location.href = "alogin.php";</script>';
             }
         } else {
             echo '<script> alert("Old password doesnot Match.Please Try again"); </script> ';

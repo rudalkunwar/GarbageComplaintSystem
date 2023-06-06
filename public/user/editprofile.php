@@ -85,8 +85,10 @@ if (isset($_POST['updateprofile'])) {
     $qry = "UPDATE users SET user_name='$name',email = '$email',address='$addr',contact='$contact',profilepic='$folder' WHERE user_id=$userid ";
     if ($reslt = mysqli_query($con, $qry)) {
 
-        echo '<script> alert("Profile Updated Sucessfully"); </script> ';
-        echo '<script>window.location.href = "userdashboard.php";</script>';
+        echo '<script> alert("Profile Updated Sucessfully,Session Expired!!!"); </script> ';
+        session_unset();
+        session_destroy();
+        echo '<script>window.location.href = "ulogin.php";</script>';
     } else {
         echo '<script> alert("Unable to Update Profile"); </script> ';
     }

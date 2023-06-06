@@ -74,7 +74,7 @@ if (isset($_POST['login'])) {
       $_SESSION['drivername'] = $data['driver_name'];
       $_SESSION['driveremail'] = $data['email'];
       $_SESSION['driverid'] = $data['driver_id'];
-      header('location:ddash.php');
+      header('location:driverdashboard.php');
     } else {
       echo '<script> alert("Error username or password"); </script>';
     }

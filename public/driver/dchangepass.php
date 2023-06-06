@@ -10,8 +10,9 @@
 </head>
 
 <body>
-    <?php include('userdashlayout.php'); ?>
-
+    <?php
+    include('driverdashlayout.php');
+    ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
         <div class="w-full my-5">
             <h2 class="text-3xl border-b-2 border-blue-600">Change Password</h2>
@@ -70,16 +71,15 @@ if (isset($_POST['updatepass'])) {
     $newpass = $_POST['newpass'];
     $cnewpass = $_POST['cnewpass'];
 
-    $qry1  = "SELECT user_id FROM users WHERE password=md5('$oldpass')";
+    $qry1  = "SELECT driver_id FROM drivers WHERE password=md5('$oldpass')";
     if ($reslt = mysqli_query($con, $qry1)) {
         if (mysqli_num_rows($reslt) > 0) {
-            $qry = "UPDATE users SET password = md5('$newpass') WHERE password = md5('$oldpass')";
-            $result = mysqli_query($con, $qry);
-            if ($result) {
+            $qry = "UPDATE drivers SET password = md5('$newpass') WHERE password = md5('$oldpass')";
+            if (mysqli_query($con, $qry)) {
                 echo '<script> alert("Password Updated Sucessfully,Session Expired!!!"); </script> ';
                 session_unset();
                 session_destroy();
-                echo '<script>window.location.href = "ulogin.php";</script>';
+                echo '<script>window.location.href = "dlogin.php";</script>';
             }
         } else {
             echo '<script> alert("Old password doesnot Match.Please Try again"); </script> ';

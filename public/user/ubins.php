@@ -5,119 +5,94 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bins</title>
+    <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <style>
+        .dataTables_filter input {
+            background-color: green;
+        }
 
+        .dataTables_wrapper {
+            padding: 20px;
+        }
+    </style>
 </head>
 
-<body class="bg-green-300">
-    <?php
+<body>
+    <?php include('userdashlayout.php');
 
-    include('userdashlayout.php');
-    $qry = "SELECT * FROM garbagebins WHERE bin_status = 'use'";
-    $result = mysqli_query($con, $qry);
     ?>
-    <div class="h-full w-full p-5 ml-14 md:ml-64">
-        <div class="w-full">
-            <h2 class="text-3xl border-b-2 border-blue-600">Bins</h2>
+    <div class="h-full w-full p-5 ml-14 md:ml-64 ">
+        <div class="w-full my-5">
+            <h2 class="text-3xl border-b-2 border-blue-600">Active Bins</h2>
         </div>
-        <div class="container max-w-3xl px-4 mx-auto sm:px-8">
-            <div class="py-8">
-                <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
-                    <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
-                        <table class="min-w-full leading-normal">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Bin ID
-                                    </th>
-                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Location
-                                    </th>
-                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Bin Type
-                                    </th>
-
-                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Capacity
-                                    </th>
-                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Status
-                                    </th>
-                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Action
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                while ($data = mysqli_fetch_assoc($result)) {
-                                ?>
-                                    <tr>
-                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['bin_id'] ?>
-                                            </p>
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['location'] ?>
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['type'] ?>
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['capacity'] ?>
-
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                <?php echo $data['bin_status'] ?>
-
-                                            </p>
-                                        </td>
-                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                            <a href="complainbin.php?binid=<?php echo $data['bin_id'] ?>" class="text-indigo-600 hover:text-indigo-900">
-                                                Add Complain
-                                            </a>
-                                        </td>
+        <div class="w-full px-4 mb-8 ">
+            <div class="bg-violet-100 rounded-lg shadow-md p-6">
+                <div class="container mx-auto px-4 py-8">
+                    <div class="w-full flex flex-col">
+                        <div class="flex-grow overflow-auto">
+                            <table id="myTable" class="w-full py-5 table-auto ">
+                                <thead>
+                                    <tr class="bg-green-100 ">
+                                        <th class="border-gray-400 mx-auto text-left">Bin ID</th>
+                                        <th class="border-gray-400 text-left">Location</th>
+                                        <th class="border-gray-400 text-left">Category</th>
+                                        <th class="border-gray-400 text-left">Capacity</th>
+                                        <th class="border-gray-400 text-left">Status</th>
+                                        <th class="border-gray-400 text-left">Acton</th>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                        <div class="flex flex-col items-center px-5 py-5 bg-white xs:flex-row xs:justify-between">
-                            <div class="flex items-center">
-                                <button type="button" class="w-full p-4 text-base text-gray-600 bg-white border rounded-l-xl hover:bg-gray-100">
-                                    <svg width="9" fill="currentColor" height="8" class="" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1427 301l-531 531 531 531q19 19 19 45t-19 45l-166 166q-19 19-45 19t-45-19l-742-742q-19-19-19-45t19-45l742-742q19-19 45-19t45 19l166 166q19 19 19 45t-19 45z">
-                                        </path>
-                                    </svg>
-                                </button>
-                                <button type="button" class="w-full px-4 py-2 text-base text-indigo-500 bg-white border-t border-b hover:bg-gray-100 ">
-                                    1
-                                </button>
-                                <button type="button" class="w-full p-4 text-base text-gray-600 bg-white border-t border-b border-r rounded-r-xl hover:bg-gray-100">
-                                    <svg width="9" fill="currentColor" height="8" class="" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $qry = "SELECT * FROM garbagebins WHERE bin_status = 'use'";
+                                    $result = mysqli_query($con, $qry);
+                                    while ($d = mysqli_fetch_assoc($result)) {
+                                    ?>
+                                        <tr class="">
+                                            <td class="border-gray-400 py-2 w-1/5"><?php echo $d['bin_id'] ?></td>
+                                            <td class="border-gray-400 py-2 w-1/5"><?php echo $d['location'] ?></td>
+                                            <td class="border-gray-400 py-2 w-1/5"><?php echo $d['type'] ?></td>
+                                            <td class="border-gray-400 py-2 w-1/5"><?php echo $d['capacity'] ?></td>
+                                            <th class="border-gray-400 text-left"><?php echo $d['bin_status'] ?></th>
+                                            <td class="border-gray-400 mt-3 px-4 w-1/5">
+                                                <a href="complainbin.php?binid=<?php echo $d['bin_id'] ?>" class="text-indigo-600 hover:text-indigo-900">
+                                                    Add Complain
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-
-
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                "language": {
+                    "search": "Search:",
+                    "lengthMenu": "Show _MENU_ entries",
+                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                    "paginate": {
+                        "first": "First",
+                        "last": "Last",
+                        "next": "Next",
+                        "previous": "Previous"
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

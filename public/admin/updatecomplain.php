@@ -16,7 +16,7 @@ if (isset($_POST['update'])) {
         }
     } else {
         mysqli_query($con, $qry1);
-        $qry2 = "INSERT INTO assigned_bin(complain_id,assigned_driver,assignment_date,description) VALUES ($complain,'$assigned_driver','$assigned_date','$assign_desc')";
+        $qry2 = "INSERT INTO assigned_bin(complain_id,assigned_driver,assignment_date,assign_des) VALUES ($complain,'$assigned_driver','$assigned_date','$assign_desc')";
         if (mysqli_query($con, $qry2)) {
             $qry3  = "UPDATE drivers set driver_status = 'Assigned' WHERE driver_name ='$assigned_driver'";
             mysqli_query($con, $qry3);

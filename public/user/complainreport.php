@@ -89,9 +89,9 @@
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm border-b border-gray-200">
-                                            <p class="px-2 py-3 bg-green-300  rounded-md text-center">
+                                            <a href="usercomplaindetail.php?complainid=<?php echo $data['complain_id'] ?>&userid=<?php echo $userid; ?>"  class="px-2 py-3 bg-green-300  rounded-md text-center">
                                                 Load More
-                                            </p>
+                                            </a >
                                         </td>
                                     </tr>
                                 <?php } ?>
