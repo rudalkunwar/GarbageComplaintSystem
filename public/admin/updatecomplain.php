@@ -9,7 +9,7 @@ if (isset($_POST['update'])) {
     $complainstatus = $_POST['complain_status'];
     echo "$complainstatus";
     $qry1 = "UPDATE complaints set complain_status='$complainstatus' WHERE complain_id = $complain ";
-    if (strcmp($complainstatus, 'Reject') == 0) {
+    if (strcmp($complainstatus, 'Rejected') == 0) {
         if (mysqli_query($con, $qry1)) {
             echo '<script> alert("Complain Rejected"); </script> ';
             header('location:dashboard.php');

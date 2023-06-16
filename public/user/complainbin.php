@@ -79,6 +79,8 @@ if(isset($_POST['submit']))
     {
         echo '<script> alert("Bin Complain Sucessfully"); </script> ';
         echo '<script>window.location.href = "userdashboard.php";</script>';
+
+        
     }else{
         echo '<script> alert("Error:Please try agian."); </script>';
     }

@@ -7,8 +7,8 @@
         <div class="container flex flex-col md:flex-row items-center">
             <div class="flex flex-col w-full lg:w-1/2  p-5 justify-center items-center">
                 <div class="flex flex-col justify-center items-center h-full ">
-                    <h1 class="block font-bold text-3xl my-4">Welcome to the Garbage Collection System</h1>
-                    <p class="leading-normal mb-4"> A modern way to manage garbage collection and disposal.</p>
+                    <h1 class="block font-bold text-3xl my-4">Welcome to the Garbage Complain System</h1>
+                    <p class="leading-normal mb-4"> A modern way to manage garbage complain, collection and disposal.</p>
                 </div>
 
                 <div class="mt-5 flex justify-center">
@@ -29,7 +29,7 @@
             </div>
         </div>
     </section>
-    <section class="pt-10 lg:pt-32 pb-12 lg:pb-24 bg-gradient-to-r from-blue-300 to-violet-400">
+    <section id="services" class="pt-10 lg:pt-32 pb-12 lg:pb-24 bg-gradient-to-r from-blue-300 to-violet-400">
         <div class="container mx-auto ">
             <div class="flex flex-wrap">
                 <div class="w-full px-4">
@@ -41,6 +41,33 @@
                 </div>
             </div>
             <div class="flex flex-wrap">
+
+                <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+                    <div class="p-8 md:p-10 rounded-[10px] shadow-md hover:shadow-lg mb-8 text-center bg-cyan-200">
+                        <div class="w-full h-[250px] flex items-center justify-center bg-slate-500 rounded-md">
+                            <img src="images/complain.jpg" alt="Feature 2" class="w-full h-full object-cover rounded-md">
+                        </div>
+                        <h4 class="font-semibold text-xl sm:text-2xl md:text-xl lg:text-2xl text-dark mb-3 bg-yellow-200 p-2 mt-2">
+                            Complaint Submission
+                        </h4>
+                        <p class="text-body-color">
+                            Our platform allows users to easily submit complaints regarding improper garbage disposal and initiate the resolution process.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+                    <div class="p-8 md:p-10 rounded-[10px] bg-cyan-200 shadow-md hover:shadow-lg mb-8 text-center">
+                        <div class="w-full h-[250px] flex items-center justify-center bg-blue-200 rounded-md">
+                            <img src="images/complaintrack.avif" alt="Feature 3" class="w-full h-full object-cover rounded-md">
+                        </div>
+                        <h4 class="font-semibold text-xl sm:text-2xl md:text-xl lg:text-2xl text-dark mb-3 bg-yellow-200 p-2 mt-2">
+                            Complaint Tracking
+                        </h4>
+                        <p class="text-body-color">
+                            Once a complaint is submitted, our system ensures transparency by providing users with the ability to track the progress of their complaints.
+                        </p>
+                    </div>
+                </div>
                 <div class="w-full md:w-1/2 lg:w-1/3 px-4">
                     <div class="ml-2 p-8 md:p-10 rounded-[10px] bg-cyan-200 shadow-md hover:shadow-lg mb-8 text-center">
                         <div class="w-full h-[250px] flex items-center justify-center bg-slate-500 rounded-md">
@@ -56,32 +83,6 @@
                         </p>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-                    <div class="p-8 md:p-10 rounded-[10px] shadow-md hover:shadow-lg mb-8 text-center bg-cyan-200">
-                        <div class="w-full h-[250px] flex items-center justify-center bg-slate-500 rounded-md">
-                            <img src="images/c.png" alt="Feature 2" class="w-full h-full object-cover rounded-md">
-                        </div>
-                        <h4 class="font-semibold text-xl sm:text-2xl md:text-xl lg:text-2xl text-dark mb-3 bg-yellow-200 p-2 mt-2">
-                            Customizable Scheduling
-                        </h4>
-                        <p class="text-body-color">
-                            We offer customizable scheduling options to fit the unique needs of each client, ensuring that waste is collected in a timely and efficient manner.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-                    <div class="p-8 md:p-10 rounded-[10px] bg-cyan-200 shadow-md hover:shadow-lg mb-8 text-center">
-                        <div class="w-full h-[250px] flex items-center justify-center bg-blue-200 rounded-md">
-                            <img src="images/echofriend.jpg" alt="Feature 3" class="w-full h-full object-cover rounded-md">
-                        </div>
-                        <h4 class="font-semibold text-xl sm:text-2xl md:text-xl lg:text-2xl text-dark mb-3 bg-yellow-200 p-2 mt-2">
-                            Environmentally Friendly
-                        </h4>
-                        <p class="text-body-color">
-                            Our system is designed to be environmentally friendly, reducing waste and promoting recycling and other sustainable practices.
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -92,16 +93,16 @@
                 <div class="flex flex-col lg:flex-row">
                     <div class="lg:w-1/2">
                         <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 lg:mb-6">
-                            About Garbage Collection System
+                            About Garbage Complain System
                         </h1>
                         <p class="text-lg leading-7 text-gray-700 mb-4">
-                            Garbage Collection System is a leading waste management company that provides efficient and reliable collection and disposal of waste materials. Our goal is to offer high-quality services to our customers while minimizing the impact on the environment.
+                            Welcome to the Garbage Complaint System! We are committed to creating a cleaner and more sustainable environment by addressing the issue of garbage disposal. Our platform serves as a dedicated space for individuals and communities to voice their concerns regarding waste management and work towards effective solutions.
                         </p>
                         <p class="text-lg leading-7 text-gray-700 mb-4">
                             We provide a wide range of services, including residential, commercial, and industrial waste collection, recycling, and composting. Our team of trained professionals is dedicated to delivering excellent customer service and ensuring that all waste materials are properly handled and disposed of.
                         </p>
                         <p class="text-lg leading-7 text-gray-700 mb-4">
-                            At Garbage Collection System, we are committed to sustainability and reducing our carbon footprint. We continuously seek ways to improve our operations and minimize our impact on the environment.
+                            At Garbage Complain System, we are committed to sustainability and reducing our carbon footprint. We continuously seek ways to improve our operations and minimize our impact on the environment.
                         </p>
                     </div>
                     <div class="lg:w-1/2 lg:pl-10 mt-8 lg:mt-0">
@@ -154,81 +155,91 @@
             <div class="mt-12">
                 <h2 class="text-xl lg:text-2xl font-bold text-gray-900">Our Mission</h2>
                 <p class="mt-4 leading-7 text-gray-700">
-                    Our mission is to provide efficient and reliable waste management services while minimizing the impact on the environment. We believe that waste management is an essential service that has a direct impact on public health and the environment, and we are committed to providing the best service possible to our customers.
+                    Our mission is to empower individuals and communities to take action against improper garbage disposal. We believe that everyone has the right to live in a clean and healthy environment, and we strive to facilitate positive change through a user-friendly and accessible platform.
                 </p>
             </div>
         </main>
     </section>
     <section id="contact" class="pt-12 bg-gradient-to-r from-cyan-300 to-blue-100">
-        <div class="h-screen">
-            <div class="flex flex-col items-center  h-full justify-center px-4 sm:px-0">
-                <div class="flex rounded-lg w-full sm:w-3/4 lg:w-10/12 sm:mx-0" style="height: 500px">
-                    <div class="md:w-1/2 h-full flex items-center justify-center ">
-                        <div class="w-full flex flex-col text-center rounded-lg p-6 md:p-10">
-                            <div class="w-full mx-auto mb-6 flex">
-                                <div class="w-1/2">
-                                    <i class="text-5xl fa-solid fa-location-dot"></i>
-                                </div>
-                                <div class="text-left">
-                                    <h4 class="text-2xl font-bold">Our Location</h4>
-                                    <p class="text-gray-600">Bharatpur, Chitwan, Nepal</p>
-                                </div>
+    <div class="h-screen">
+        <div class="flex flex-col items-center h-full justify-center px-4 sm:px-0">
+            <div class="flex flex-col sm:flex-row rounded-lg w-full sm:w-3/4 lg:w-10/12 sm:mx-0">
+                <div class="md:w-1/2 sm:h-full flex items-center justify-center">
+                    <div class="w-full flex flex-col text-center rounded-lg p-6 md:p-10">
+                        <div class="w-full mx-auto mb-6 flex">
+                            <div class="w-1/2">
+                                <i class="text-5xl fas fa-location-dot"></i>
                             </div>
-                            <div class="w-full mx-auto mb-6 flex">
-                                <div class="w-1/2">
-                                    <i class="text-5xl fa-solid fa-phone"></i>
-                                </div>
-                                <div class="text-left">
-                                    <h4 class="text-2xl font-bold">Call Us</h4>
-                                    <p class="text-gray-600">+977 056 527237</p>
-                                </div>
+                            <div class="text-left">
+                                <h4 class="text-2xl font-bold">Our Location</h4>
+                                <p class="text-gray-600">Bharatpur, Chitwan, Nepal</p>
                             </div>
-                            <div class="w-full mx-auto flex">
-                                <div class="w-1/2">
-                                    <i class="text-5xl fa-solid fa-envelope"></i>
-                                </div>
-                                <div class="text-left">
-                                    <h4 class="text-2xl font-bold">Email Us</h4>
-                                    <p class="text-gray-600">info@gcs.com</p>
-                                </div>
+                        </div>
+                        <div class="w-full mx-auto mb-6 flex">
+                            <div class="w-1/2">
+                                <i class="text-5xl fas fa-phone"></i>
+                            </div>
+                            <div class="text-left">
+                                <h4 class="text-2xl font-bold">Call Us</h4>
+                                <p class="text-gray-600">+977 056 527237</p>
+                            </div>
+                        </div>
+                        <div class="w-full mx-auto flex">
+                            <div class="w-1/2">
+                                <i class="text-5xl fas fa-envelope"></i>
+                            </div>
+                            <div class="text-left">
+                                <h4 class="text-2xl font-bold">Email Us</h4>
+                                <p class="text-gray-600">info@gcs.com</p>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="flex flex-col w-full md:w-1/2 p-4">
-                        <div class="flex flex-col flex-1 justify-center mb-8">
-                            <div class="mb-4">
-                                <h6 class="text-gray-600 uppercase font-bold mb-2">Need Help?</h6>
-                                <h1 class="text-4xl font-bold">Send Us A Message</h1>
-                            </div>
-                            <div class="w-full mt-4">
-                                <form class="form-horizontal mx-auto" method="POST" action="">
-                                    <div class="mb-6">
-                                        <input type="text" class="w-1/2 shadow-md border-1  border-gray-400 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:border-blue-500 bg-white-100" placeholder="Your Name" required="required">
-                                    </div>
-                                    <div class="mb-6">
-                                        <input type="email" class="w-full shadow-md border-1  border-gray-400 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:border-blue-500" placeholder="Your Email" required="required">
-                                    </div>
-                                    <div class="mb-6">
-                                        <textarea class="w-full shadow-md border-1  border-gray-400 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:border-blue-500" rows="5" placeholder="Message" required="required"></textarea>
-                                    </div>
-                                    <div class="w-full text-center">
-                                        <button class="w-1/2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-md" type="submit">Send Message</button>
-                                    </div>
-                                </form>
-
-                            </div>
+                </div>
+                <div class="flex flex-col w-full md:w-1/2 p-4">
+                    <div class="flex flex-col flex-1 justify-center mb-8">
+                        <div class="mb-4">
+                            <h6 class="text-gray-600 uppercase font-bold mb-2">Need Help?</h6>
+                            <h1 class="text-4xl font-bold">Send Us A Message</h1>
+                        </div>
+                        <div class="w-full mt-4">
+                            <form class="form-horizontal mx-auto" method="POST" action="">
+                                <div class="mb-6">
+                                    <input type="text" class="w-full shadow-md border-1 border-gray-400 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:border-blue-500 bg-white-100" placeholder="Your Name" name="name" required="required">
+                                </div>
+                                <div class="mb-6">
+                                    <input type="email" class="w-full shadow-md border-1 border-gray-400 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:border-blue-500" placeholder="Your Email" name="email" required="required">
+                                </div>
+                                <div class="mb-6">
+                                    <textarea class="w-full shadow-md border-1 border-gray-400 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:border-blue-500" rows="5" placeholder="Message" name="message" required="required"></textarea>
+                                </div>
+                                <div class="w-full text-center">
+                                    <input type="submit" name="submit"  class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-md" >
+                                </div>
+                            </form>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
+    <?php 
+    include('./layout/footer.php'); 
+    if(isset($_POST['submit'])){
+        $name=$_POST['name'];
+        $email=$_POST['email'];
+        $message=$_POST['message'];
 
-
-        </main>
-    </section>
-    <?php include('./layout/footer.php') ?>
+        $con = mysqli_connect('localhost','root','','project_gcs');
+        $sql = "INSERT INTO feedback(name,email,message) VALUES('$name','$email','$message')";
+        if(mysqli_query($con,$sql)){
+            echo '<script>alert("Message Submited.")</script>';
+        }
+        else{
+              echo '<script>alert("Error submitting, Please try again.")</script>';
+        }
+    }
+    
+    ?>
 </body>

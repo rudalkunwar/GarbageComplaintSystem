@@ -31,6 +31,7 @@
     $uquery = "SELECT user_name,email,contact from users WHERE user_id = $uid";
     $ures = mysqli_query($con, $uquery);
     $udata = mysqli_fetch_assoc($ures);
+    $useremail = $udata['email'];
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
         <div class="w-full p-5 ">
@@ -162,7 +163,7 @@
                 </div>
                 <div class="py-3">
                     <div class="text-center">
-                        <button onclick="openPopupForm(<?php echo $data['assign_id'] ?>)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Submit Work</button>
+                        <button onclick="openPopupForm(<?php echo $data['assign_id']; ?>,<?php echo $data['complain_id']; ?>,'<?php echo $useremail ?>')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Submit Work</button>
                     </div>
                 </div>
             </div>
@@ -187,7 +188,9 @@
                             </button> </span>
                     </div>
                     <form method="POST" action="" enctype="multipart/form-data">
-                        <input name="assign_id" id="hiddenid" type="hidden" value="">
+                        <input name="assign_id" id="assignid" type="hidden" value="">
+                        <input name="complain_id" id="complainid" type="hidden" value="">
+                        <input name="user_email" id="useremail" type="hidden" value="">
                         <select id="complain_status" name="collection_status" class="w-1/2  px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500" required>
                             <option value="Completed">Accept</option>
                             <option value="Rejected">Reject</option>
@@ -213,8 +216,10 @@
         </div>
     </div>
     <script>
-        function openPopupForm(x) {
-            document.getElementById('hiddenid').value = x;
+        function openPopupForm(x, y, z) {
+            document.getElementById('assignid').value = x;
+            document.getElementById('complainid').value = y;
+            document.getElementById('useremail').value = z;
             const popupForm = document.getElementById('popupForm');
             popupForm.classList.remove('hidden');
         }
@@ -230,7 +235,9 @@
     $con = mysqli_connect('localhost', 'root', '', 'project_gcs');
     if (isset($_POST['update'])) {
         $collectionstatus = $_POST['collection_status'];
+        $user_email = $_POST['user_email'];
         $assign = $_POST['assign_id'];
+        $complain = $_POST['complain_id'];
         $drivermsg = $_POST['description'];
         $completed_date = $_POST['complete_date'];
         //for photo
@@ -239,20 +246,44 @@
         $folder = "completedtask/" . $filename;
         move_uploaded_file($tempname, $folder);
 
+        // if collected
+        $qrya = "INSERT INTO collections (complain_id,assign_id,collected_picture,collection_des,collection_date,collection_status) 
+        VALUES($complain,$assign,'$folder','$drivermsg','$completed_date','$collectionstatus')";
 
-        $qrya = "INSERT INTO collections (assign_id,collected_picture,collection_des,collection_date,collection_status) 
-        VALUES($assign,'$folder','$drivermsg','$completed_date','$collectionstatus')";
-        $qryna = "INSERT INTO collections (assign_id,collection_des,collection_status) 
-        VALUES($assign,'$drivermsg','$collectionstatus')";
+        // if rejected
+        $qryna = "INSERT INTO collections (complain_id,assign_id,collection_des,collection_status) 
+        VALUES($complain,$assign,'$drivermsg','$collectionstatus')";
+
         if (strcmp($collectionstatus, 'Rejected') == 0) {
             if (mysqli_query($con, $qryna)) {
-                echo '<script>alert("Collection Reported")</script>';
-                echo '<script></script>';
+                echo '<script>alert("Collection Rejected")</script>';
             }
         }
 
+        // if (mysqli_query($con, $qrya)) {
+        //     $updriver = "UPDATE drivers SET driver_status = 'Free' WHERE driver_id = $driverid";
+        //     mysqli_query($con, $updriver);
+        //     echo '<script>alert("Bin Collection Completed")</script>';
+        // }
         if (mysqli_query($con, $qrya)) {
-            echo '<script>alert("Bin Collection Completed")</script>';
+
+            //update driver status
+            $updriver = "UPDATE drivers SET driver_status = 'Free' WHERE driver_id = $driverid";
+            mysqli_query($con, $updriver);
+
+            //update assign status
+            $upassign = "UPDATE assigned_bin SET assign_status = 'Completed' WHERE assign_id =  $assign ";
+            mysqli_query($con,  $upassign);
+
+            //send mail to the user 
+            $to = $email;
+            $message = "I hope this email finds you well. I am writing to inform you that I have successfully collected the garbage bins from your address as per your complaint registered in our system. It is my pleasure to provide you with an update on the status of your request.";
+            $subject = "New Garbage Complaint System";
+            $header = "From:drivergcs@gmail.com";
+            if (mail($to, $subject, $message, $header)) {
+                echo '<script>alert("Bin Collection Completed")</script>';
+            }
+            header('location:driverdashboard.php');
         }
     }
     $con->close();

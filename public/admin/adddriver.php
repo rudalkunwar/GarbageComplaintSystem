@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <?php include('../layout/dashlayout.php') ?>
+    <div class="flex">
+    <?php include('dashlayout.php') ?>
     <div class="w-full container mx-auto ">
         <div class="flex justify-center px-6 my-12 ">
             <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
@@ -71,7 +72,12 @@ if (isset($_POST['adddriver'])) {
     $qry = "INSERT INTO drivers(driver_id,driver_name,password,email,address) VALUES($did,'$dname',md5('$pass'),'$email','$addr')";
 
     if (mysqli_query($con, $qry)) {
-        $_SESSION['message'] = "Driver Added successfully!";
+        $to = $email;
+        $message = "I am reaching out to inform you that you have been selected as our new garbage complaint system.Your login: Driver id =$did,email=$email and password=$pass.You can login here to see your work,http://localhost/gcsproject/public/driver/dlogin.php";
+        $subject = "New Garbage Complaint System";
+        $header = "From:admingcs@gmail.com";
+        mail($to, $subject, $message, $header);
+        $_SESSION['message'] = "Driver Added successfully! and Mail also sent to driver";
         echo '<script>window.location.href = "driver.php";</script>';
     } else {
         echo '<script>alert("Error Adding Driver");</scritp>';

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Garbage Collection system</title>
+  <title>Garbage Complain system</title>
   <script src="https://kit.fontawesome.com/62f9066fa7.js" crossorigin="anonymous"></script>
 </head>
 
@@ -15,7 +15,7 @@
       <div class="flex justify-between">
         <div class="">
           <a href="index.php" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
-            <span class="font-bold">Garbage Collection system</span>
+            <span class="font-bold">Garbage Complain system</span>
           </a>
         </div>
 

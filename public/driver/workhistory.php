@@ -14,7 +14,7 @@
     <?php
 
     // $dqry = "SELECT * FROM assigned_bin WHERE assigned_driver = '$driver'";
-    $dqry = "SELECT * FROM assigned_bin WHERE assigned_driver = '$driver' AND assign_status='none' ";
+    $dqry = "SELECT * FROM assigned_bin a RIGHT JOIN collections c ON a.assign_id = c.assign_id WHERE assigned_driver = '$driver'";
     $dres = mysqli_query($con,$dqry);
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
@@ -76,7 +76,7 @@
                                         </td>
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                <a href="manageassigntask.php?aid=<?php echo $data['assign_id'] ?>" class="px-3 py-1 font-semibold leading-tight text-green-500">View Details</a>
+                                                <a href="workhistorydetails.php?aid=<?php echo $data['assign_id'] ?>" class="px-3 py-1 font-semibold leading-tight text-green-500">View Details</a>
                                             </p>
                                         </td>
                                     </tr>

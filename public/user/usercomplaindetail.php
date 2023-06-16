@@ -27,7 +27,7 @@
     $udata = mysqli_fetch_assoc($ures);
 
     // from driver on collection
-    $cqry = "SELECT * FROM collections WHERE assign_id = $assignid";
+    $cqry = "SELECT * FROM collections WHERE complain_id = $comid";
     $cres = mysqli_query($con, $cqry);
     $cdata = mysqli_fetch_assoc($cres);
     ?>

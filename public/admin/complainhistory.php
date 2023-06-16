@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <?php include('../layout/dashlayout.php') ?>
+    <div class="flex">
+    <?php include('dashlayout.php') ?>
     <?php
     $asqry = "SELECT * FROM assigned_bin a JOIN complaints c ON a.complain_id = c.complain_id";
     $res = mysqli_query($con, $asqry);

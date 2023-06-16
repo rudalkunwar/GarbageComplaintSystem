@@ -10,9 +10,10 @@
 </head>
 
 <body>
+    <div class="flex">
     <?php
     $myid = $_GET['editid']; 
-    include('../layout/dashlayout.php') ?>
+    include('dashlayout.php') ?>
     <?php
     $qry = "SELECT * FROM drivers WHERE driver_id = $myid";
     $data = mysqli_query($con, $qry);

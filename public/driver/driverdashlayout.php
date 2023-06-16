@@ -3,14 +3,17 @@ session_start();
 if (!isset($_SESSION['drivername'])) {
     header('location:dlogin.php');
 }
-$driver=$_SESSION['drivername'];
-$email=$_SESSION['driveremail'];
-$driverid=$_SESSION['driverid'];
+$driver = $_SESSION['drivername'];
+$email = $_SESSION['driveremail'];
+$driverid = $_SESSION['driverid'];
 
 $con = mysqli_connect("localhost", "root", "", "project_gcs");
 if ($con === false) {
     die("Error connection ");
 }
+$qry = "SELECT * FROM drivers where driver_id = $driverid";
+$result = mysqli_query($con, $qry);
+$data = mysqli_fetch_assoc($result);
 ?>
 <div class="flex">
     <div class="fixed h-screen flex flex-col w-14 hover:w-64 md:w-64 bg-violet-500 text-white transition-all duration-300 border-none z-10 sidebar">
@@ -18,7 +21,7 @@ if ($con === false) {
             <div class="fixed w-full flex items-center h-14 text-white z-10">
                 <div class="flex items-center pl-3 w-14 md:w-64 h-24 bg-gray-800 border-none">
                     <!-- <img class="w-7 h-7 md:w-10 md:h-10 mr-2 overflow-hidden" src="../images/aakas.jpg" /> -->
-                    <img class="mt-2 mr-2 h-16 w-16 md:w-10 md:h-10  overflow-hidden object-cover rounded-md" src="../images/prateek.png" />
+                    <img class="mt-2 mr-2 h-16 w-16 md:w-10 md:h-10  overflow-hidden object-cover rounded-md" src="<?php echo $data['driver_picture'] ?>" onerror="this.src='profilepic/dummyuser.jpg';" />
                     <span class="hidden md:block border-b-2 border-blue-400 "><?php echo $driver; ?> </span>
                 </div>
             </div>
@@ -53,7 +56,7 @@ if ($con === false) {
 
                 </li>
                 <li>
-                    <a href="" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
+                    <a href="workhistory.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                         <span class="inline-flex justify-center items-center ml-4">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>

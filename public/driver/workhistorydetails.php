@@ -11,10 +11,9 @@
 </head>
 
 <body>
-    <div class="flex">
     <?php $asinid = $_GET['aid']; ?>
 
-    <?php include('dashlayout.php') ?>
+    <?php include('driverdashlayout.php') ?>
     <?php
     $aqry = "SELECT * FROM assigned_bin a JOIN complaints c ON a.complain_id = c.complain_id WHERE assign_id = $asinid";
     $res =  mysqli_query($con, $aqry);
@@ -192,7 +191,9 @@
                                     <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                         <p class="text-gray-900 whitespace-no-wrap w-9/12 pb-[50%] relative">
 
-                                            <img src="../driver/<?php if($cdata !== null) {echo $cdata['collected_picture'];} ?>" class="absolute inset-0 w-full h-full object-cover" alt="">
+                                            <img src="../driver/<?php if ($cdata !== null) {
+                                                                    echo $cdata['collected_picture'];
+                                                                } ?>" class="absolute inset-0 w-full h-full object-cover" alt="">
                                         </p>
                                     </td>
                                 </tr>

@@ -10,14 +10,15 @@
 </head>
 
 <body>
-    <?php include('../layout/dashlayout.php'); ?>
+    <div class="flex">
+    <?php include('dashlayout.php'); ?>
     <?php
     $qry = "SELECT * FROM admin";
     $result = mysqli_query($con, $qry);
     $data = mysqli_fetch_assoc($result);
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
-        <div class="w-full my-5">
+        <div class="w-full p-5">
             <h2 class="text-3xl border-b-2 border-blue-600">Change Profile</h2>
         </div>
         <div class="flex justify-center">
@@ -51,6 +52,7 @@
             </div>
 
         </div>
+    </div>
     </div>
 </body>
 

@@ -10,39 +10,41 @@
 </head>
 
 <body>
-    <?php include('../layout/dashlayout.php'); ?>
+    <div class="flex">
+        <?php include('dashlayout.php'); ?>
 
-    <div class="h-full w-full p-5 ml-14 md:ml-64 ">
-        <div class="w-full my-5">
-            <h2 class="text-3xl border-b-2 border-blue-600">Change Password</h2>
-        </div>
-        <div class="flex justify-center">
-            <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-                <form name="form" class="px-8 pt-2 pb-8 mb-4 bg-white rounded" method="post" action="" onsubmit="return validate();">
-                    <div class="mb-4">
-                        <label class="block mb-2 text-sm font-bold text-gray-700" for="old-pass">
-                            Old Password
-                        </label>
-                        <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="old-pass" name="oldpass" type="password" placeholder="Old Password" required />
-                    </div>
-                    <div class="mb-4">
-                        <label class="block mb-2 text-sm font-bold text-gray-700" for="new-pass">
-                            New Password
-                        </label>
-                        <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="new-pass" name="newpass" type="password" placeholder="New Password" required />
-                    </div>
-                    <div class="mb-4">
-                        <label class="block mb-2 text-sm font-bold text-gray-700" for="cnew-pass">
-                            Conform New Password
-                        </label>
-                        <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="cnew-pass" name="cnewpass" type="password" placeholder="Conform New Password" required />
-                    </div>
-                    <div class="mb-6 text-center">
-                        <input type="submit" value="Update Password" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="updatepass">
-                    </div>
-                </form>
+        <div class="h-full w-full p-5 ml-14 md:ml-64 ">
+            <div class="w-full my-5">
+                <h2 class="text-3xl border-b-2 border-blue-600">Change Password</h2>
             </div>
+            <div class="flex justify-center">
+                <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+                    <form name="form" class="px-8 pt-2 pb-8 mb-4 bg-white rounded" method="post" action="" onsubmit="return validate();">
+                        <div class="mb-4">
+                            <label class="block mb-2 text-sm font-bold text-gray-700" for="old-pass">
+                                Old Password
+                            </label>
+                            <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="old-pass" name="oldpass" type="password" placeholder="Old Password" required />
+                        </div>
+                        <div class="mb-4">
+                            <label class="block mb-2 text-sm font-bold text-gray-700" for="new-pass">
+                                New Password
+                            </label>
+                            <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="new-pass" name="newpass" type="password" placeholder="New Password" required />
+                        </div>
+                        <div class="mb-4">
+                            <label class="block mb-2 text-sm font-bold text-gray-700" for="cnew-pass">
+                                Conform New Password
+                            </label>
+                            <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="cnew-pass" name="cnewpass" type="password" placeholder="Conform New Password" required />
+                        </div>
+                        <div class="mb-6 text-center">
+                            <input type="submit" value="Update Password" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="updatepass">
+                        </div>
+                    </form>
+                </div>
 
+            </div>
         </div>
     </div>
     <script>

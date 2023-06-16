@@ -9,10 +9,10 @@
     <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
       <h3 class="font-bold text-xl mb-4">Links</h3>
       <ul class="list-reset leading-normal">
-        <li class="hover:text-blue-600  mb-2"><a href="about.php">About Us</a></li>
-        <li class="hover:text-blue-600  mb-2"><a href="#">Services</a></li>
+        <li class="hover:text-blue-600  mb-2"><a href="#about">About Us</a></li>
+        <li class="hover:text-blue-600  mb-2"><a href="#services">Services</a></li>
         <li class="hover:text-blue-600  mb-2"><a href="#">FAQ</a></li>
-        <li class="hover:text-blue-600  mb-2"><a href="contact.php">Contact Us</a></li>
+        <li class="hover:text-blue-600  mb-2"><a href="#contact">Contact Us</a></li>
       </ul>
     </div>
     <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
@@ -26,6 +26,6 @@
     </div>
   </div>
   <div class="container mx-auto mt-8">
-    <p class="text-center text-gray-600">&copy; 2023 Garbage Collection System. All rights reserved.</p>
+    <p class="text-center text-gray-600">&copy; 2023 Garbage Complain System. All rights reserved.</p>
   </div>
 </footer>

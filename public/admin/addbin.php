@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <?php include('../layout/dashlayout.php') ?>
+    <div class="flex">
+        <?php include('dashlayout.php') ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
         <div class="flex justify-center">
             <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
@@ -49,7 +50,8 @@
                 </form>
             </div>
         </div>
-
+    </div>
+    </div>
 </body>
 
 </html>
