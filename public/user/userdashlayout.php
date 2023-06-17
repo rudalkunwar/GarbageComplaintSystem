@@ -7,10 +7,10 @@ $user = $_SESSION['username'];
 // $uemail = $_SESSION['user_email'];
 ?>
 <?php
- $con = mysqli_connect("localhost", "root", "", "project_gcs");
- if ($con === false) {
-     die("Error connection ");
- }
+$con = mysqli_connect("localhost", "root", "", "project_gcs");
+if ($con === false) {
+    die("Error connection ");
+}
 $sql = "SELECT * FROM users WHERE user_name = '$user'";
 $result = mysqli_query($con, $sql);
 $data = mysqli_fetch_assoc($result);
@@ -21,7 +21,7 @@ $userid = $data['user_id'];
         <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
             <div class="fixed w-full flex items-center h-14 text-white z-10">
                 <div class="flex items-center justify-start  pl-3 w-14 md:w-64 h-14 bg-gray-800 border-none">
-                    <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" src="<?php echo $data['profilepic']?>" onerror="this.src='profilepic/dummyuser.jpg';" />
+                    <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" src="<?php echo $data['profilepic'] ?>" onerror="this.src='profilepic/dummyuser.jpg';" />
                     <span class="hidden md:block"><?php echo $user  ?> </span>
                 </div>
             </div>
@@ -46,11 +46,11 @@ $userid = $data['user_id'];
                 <li>
                     <a href="../user/ubins.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                         <span class="inline-flex justify-center items-center ml-4">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+                                <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
                             </svg>
                         </span>
-                        <span class="ml-2 text-sm tracking-wide truncate">Bins</span>
+                        <span class="ml-2 text-sm tracking-wide truncate">Visit Bins</span>
                     </a>
 
                 </li>
@@ -62,16 +62,6 @@ $userid = $data['user_id'];
                             </svg>
                         </span>
                         <span class="ml-2 text-sm tracking-wide truncate">View Compalins</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
-                        <span class="inline-flex justify-center items-center ml-4">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-                            </svg>
-                        </span>
-                        <span class="ml-2 text-sm tracking-wide truncate">Notifications</span>
                     </a>
                 </li>
                 <li class="px-5 hidden md:block">

@@ -15,10 +15,10 @@
     <div class="flex">
     <?php include('dashlayout.php') ?>
     <?php
-    $asqry = "SELECT * FROM assigned_bin a JOIN complaints c ON a.complain_id = c.complain_id";
+    $asqry = "SELECT * FROM assigned_bin a RIGHT JOIN complaints c ON a.complain_id = c.complain_id WHERE c.complain_status <> 'new'";
     $res = mysqli_query($con, $asqry);
     ?>
-    <div class="h-full w-full p-5 ml-14 md:ml-64 ">
+    <div class="h-full w-full p-5 ml-14 md:ml-64">
         <div class="w-full p-5 ">
             <h2 class="text-3xl border-b-2 border-blue-600">Complain Reports</h2>
         </div>
@@ -87,7 +87,7 @@
                                             <p class="text-gray-900 whitespace-no-wrap">
 
                               
-                                            <a href="detailscomplain.php?aid=<?php echo $data['assign_id'] ?>"  class="px-2 py-3 bg-green-300  rounded-md text-black" >View More</a>
+                                            <a href="detailscomplain.php?cid=<?php echo $data['complain_id'] ?>"  class="px-2 py-3 bg-green-300  rounded-md text-black" >View More</a>
                                             </p>
                                         </td>
                                     </tr>

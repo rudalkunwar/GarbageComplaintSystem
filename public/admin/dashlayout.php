@@ -106,10 +106,8 @@ $data = mysqli_fetch_assoc($result);
                 <li>
                     <a href="feedback.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                         <span class="inline-flex justify-center items-center ml-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                                <path d="M12 2C6.48 2 2 6.48 2 12c0 2.88 1.16 5.48 3 7.35.77.63 1.68 1 2.65 1 .98 0 1.88-.37 2.65-1A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18V9"></path>
-                                <path d="M9 13h6"></path>
-                                <path d="M10 7h4v4h-4z"></path>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
                             </svg>
 
                         </span>
