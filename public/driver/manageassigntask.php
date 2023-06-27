@@ -105,7 +105,7 @@
 
                             <tr>
                                 <th class="px-5 py-3 text-lg font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                    Complain Message
+                                    User Complain Message
                                 </th>
                                 <td class="px-5 py-3 text-lg bg-white border-b border-gray-200">
                                     <?php echo $data['description']; ?>
@@ -150,7 +150,7 @@
                                 </tr>
                                 <tr>
                                     <th class="px-5 py-3 text-lg font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Update Message
+                                        Admin Update Message
                                     </th>
                                     <td class="px-5 py-3 text-lg bg-white border-b border-gray-200">
                                         <?php echo $data['assign_des']; ?>
@@ -252,38 +252,49 @@
 
         // if rejected
         $qryna = "INSERT INTO collections (complain_id,assign_id,collection_des,collection_status) 
-        VALUES($complain,$assign,'$drivermsg','$collectionstatus')";
+        VALUES($complain,$assign,'$drivermsg','Rejected by Driver')";
 
         if (strcmp($collectionstatus, 'Rejected') == 0) {
             if (mysqli_query($con, $qryna)) {
+                
+
+                //update driver status
+                $updriver = "UPDATE drivers SET driver_status = 'Free' WHERE driver_id = $driverid";
+                mysqli_query($con, $updriver);
+
+                //update complain status
+                $rsql = "UPDATE complaints set complain_status = 'Rejected by Driver.' WHERE complain_id = $complain";
+                mysqli_query($con, $rsql);
+
                 echo '<script>alert("Collection Rejected")</script>';
             }
-        }
+        } 
+        else 
+        {
+            if (mysqli_query($con, $qrya)) {
 
-        // if (mysqli_query($con, $qrya)) {
-        //     $updriver = "UPDATE drivers SET driver_status = 'Free' WHERE driver_id = $driverid";
-        //     mysqli_query($con, $updriver);
-        //     echo '<script>alert("Bin Collection Completed")</script>';
-        // }
-        if (mysqli_query($con, $qrya)) {
+                //update driver status
+                $updriver = "UPDATE drivers SET driver_status = 'Free' WHERE driver_id = $driverid";
+                mysqli_query($con, $updriver);
 
-            //update driver status
-            $updriver = "UPDATE drivers SET driver_status = 'Free' WHERE driver_id = $driverid";
-            mysqli_query($con, $updriver);
+                //update assign status
+                $upassign = "UPDATE assigned_bin SET assign_status = 'Completed' WHERE assign_id =  $assign ";
+                mysqli_query($con,  $upassign);
 
-            //update assign status
-            $upassign = "UPDATE assigned_bin SET assign_status = 'Completed' WHERE assign_id =  $assign ";
-            mysqli_query($con,  $upassign);
+                //update complain status
+                $rsql2 = "UPDATE complaints set complain_status = 'Completed' WHERE complain_id = $complain";
+                mysqli_query($con, $rsql2);
 
-            //send mail to the user 
-            $to = $email;
-            $message = "I hope this email finds you well. I am writing to inform you that I have successfully collected the garbage bins from your address as per your complaint registered in our system. It is my pleasure to provide you with an update on the status of your request.";
-            $subject = "New Garbage Complaint System";
-            $header = "From:drivergcs@gmail.com";
-            if (mail($to, $subject, $message, $header)) {
-                echo '<script>alert("Bin Collection Completed")</script>';
+                //send mail to the user 
+                $to = $email;
+                $message = "I hope this email finds you well. I am writing to inform you that I have successfully collected the garbage bins from your address as per your complaint registered in our system. It is my pleasure to provide you with an update on the status of your request.";
+                $subject = "New Garbage Complaint System";
+                $header = "From:drivergcs@gmail.com";
+                if (mail($to, $subject, $message, $header)) {
+                    echo '<script>alert("Bin Collection Completed")</script>';
+                }
+                header('location:driverdashboard.php');
             }
-            header('location:driverdashboard.php');
         }
     }
     $con->close();

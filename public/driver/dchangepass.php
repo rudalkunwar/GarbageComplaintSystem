@@ -39,7 +39,7 @@
                         <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="cnew-pass" name="cnewpass" type="password" placeholder="Conform New Password" required />
                     </div>
                     <div class="mb-6 text-center">
-                        <input type="submit" value="Update Password" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="updatepass">
+                        <input type="submit" value="Update Password" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="updatepass" onclick="return confirm('Are you sure to change password?')">
                     </div>
                 </form>
             </div>

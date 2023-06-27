@@ -21,6 +21,7 @@
     $uqry = "SELECT * FROM assigned_bin a RIGHT JOIN complaints c ON a.complain_id = c.complain_id WHERE c.complain_id= $comid";
     $res =  mysqli_query($con, $uqry);
     $data = mysqli_fetch_assoc($res);
+    $assignid = $data['assign_id'];
 
     $uquery = "SELECT user_name,email,contact from users WHERE user_id = $uid";
     $ures = mysqli_query($con, $uquery);
@@ -113,115 +114,119 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="py-3 bg-green-200">
-                    <div class="text-center">
-                        <p class="font-normal text-3xl uppercase">Tracking History</p>
-                    </div>
-                </div>
-                <div class="bg-gray-100">
-                    <div class="">
-                        <table class="min-w-full">
-                            <tbody>
-                                <tr>
-                                    <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Assigned Date
-                                    </th>
-                                    <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
-                                        <?php echo $data['assignment_date']; ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Assigned Driver
-                                    </th>
-                                    <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
-                                        <?php echo $data['assigned_driver']; ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Update Message
-                                    </th>
-                                    <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
-                                        <?php echo $data['assign_des']; ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Collection Status
-                                    </th>
-                                    <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
-                                        <?php echo $data['complain_status']; ?>
-                                    </td>
-                                </tr>
-                                <!-- Add any additional data rows as needed -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <?php
+                    if (empty($assignid)) {
+                        $assignid = 0;
+                    }
+                    if ($assignid != 0) {
+                        $cqry = "SELECT * FROM collections WHERE assign_id = $assignid";
+                        $cres = mysqli_query($con, $cqry);
+                        $cdata = mysqli_fetch_assoc($cres);
+                    ?>
+                        <div class="py-3 bg-green-200">
+                            <div class="text-center">
+                                <p class="font-normal text-3xl uppercase">Tracking History</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-100">
+                            <div class="">
+                                <table class="min-w-full">
+                                    <tbody>
+                                        <tr>
+                                            <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                Assigned Date
+                                            </th>
+                                            <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
+                                                <?php echo $data['assignment_date']; ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                Assigned Driver
+                                            </th>
+                                            <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
+                                                <?php echo $data['assigned_driver']; ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                Update Message
+                                            </th>
+                                            <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
+                                                <?php echo $data['assign_des']; ?>
+                                            </td>
+                                        </tr>
+                                        <!-- Add any additional data rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
-                <div class="py-3 bg-green-200">
-                    <div class="text-center">
-                        <p class="font-normal text-3xl uppercase">Collection Report</p>
-                    </div>
-                </div>
-                <div class="bg-gray-100">
-                    <div class="">
-                        <table class="min-w-full">
-                            <tbody>
-                                <tr>
-                                    <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Completed Date
-                                    </th>
-                                    <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
-                                        <?php
-                                        if ($cdata !== null) {
-                                            echo $cdata['collection_date'];
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Driver Message
-                                    </th>
-                                    <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
-                                        <?php
-                                        if ($cdata !== null) {
-                                            echo $cdata['collection_des'];
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Collected Picture
-                                    </th>
-                                    <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                        <p class="text-gray-900 whitespace-no-wrap w-9/12 pb-[50%] relative">
+                        <div class="py-3 bg-green-200">
+                            <div class="text-center">
+                                <p class="font-normal text-3xl uppercase">Collection Report</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-100">
+                            <div class="">
+                                <table class="min-w-full">
+                                    <tbody>
+                                        <tr>
+                                            <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                Completed Date
+                                            </th>
+                                            <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
+                                                <?php
+                                                if ($cdata !== null) {
+                                                    echo $cdata['collection_date'];
+                                                }
+                                                ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                Driver Message
+                                            </th>
+                                            <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
+                                                <?php
+                                                if ($cdata !== null) {
+                                                    echo $cdata['collection_des'];
+                                                }
+                                                ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                Collected Picture
+                                            </th>
+                                            <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                <p class="text-gray-900 whitespace-no-wrap w-9/12 pb-[50%] relative">
 
-                                            <img src="../driver/<?php if ($cdata !== null) {
-                                                                    echo $cdata['collected_picture'];
-                                                                } ?>" class="absolute inset-0 w-full h-full object-cover" alt="">
-                                        </p>
-                                    </td>
-                                </tr>
+                                                    <img src="../driver/<?php if ($cdata !== null) {
+                                                                            echo $cdata['collected_picture'];
+                                                                        } ?>" class="absolute inset-0 w-full h-full object-cover" alt="">
+                                                </p>
+                                            </td>
+                                        </tr>
 
-                                <tr>
-                                    <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Collection Status
-                                    </th>
-                                    <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
-                                        <?php
-                                        if ($cdata !== null) {
-                                            echo $cdata['collection_status'];;
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                        <tr>
+                                            <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                Collection Status
+                                            </th>
+                                            <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
+                                                <?php
+                                                if ($cdata !== null) {
+                                                    echo $cdata['collection_status'];;
+                                                }
+                                                ?>
+                                            </td>
+                                        </tr>
+                                        <!-- Add any additional data rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
 
             </div>

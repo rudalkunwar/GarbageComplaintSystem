@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
     <link rel="stylesheet" href="../style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -55,7 +54,7 @@
 
     <div id="popupForm" class="hidden">
         <div class="fixed inset-0 z-10 flex items-center justify-center backdrop-blur-md bg-gray-600 bg-opacity-40">
-            <div class=" w-2/5 bg-cyan-300 rounded-md shadow-lg">
+            <div class="w-2/5 bg-yellow-200 rounded-md shadow-lg h-4/5">
                 <div class="px-10 py-5 w-full ">
                     <div class="flex justify-between">
                         <h2 class="text-xl font-semibold mb-4">Reply to User Feedback</h2>

@@ -58,7 +58,7 @@ $updata = mysqli_fetch_assoc($result);
                     </div>
 
                     <div class="mb-6 text-center">
-                        <input type="submit" value="Update Bin" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="addbin">
+                        <input type="submit" value="Update Bin" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="addbin" onclick="return confirm('Are You Sure To Update Bin ?')">
                     </div>
                 </form>
             </div>

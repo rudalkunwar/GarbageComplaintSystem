@@ -1,6 +1,6 @@
 <?php session_start();
 if (isset($_SESSION['driverid'])) {
-  header('location:ddash.php');
+  header('location:driverdashboard.php');
 }
 ?>
 <!DOCTYPE html>

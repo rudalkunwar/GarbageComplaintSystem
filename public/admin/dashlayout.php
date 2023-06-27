@@ -15,8 +15,8 @@ $data = mysqli_fetch_assoc($result);
 ?>
 <script src="https://kit.fontawesome.com/62f9066fa7.js" crossorigin="anonymous"></script>
 <div class="flex">
-    <div class="fixed h-screen flex flex-col w-14 hover:w-64 md:w-64 bg-sky-600 text-white transition-all duration-300 border-none z-10 sidebar">
-        <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
+    <div class="fixed h-screen flex flex-col w-14 hover:w-64 md:w-64 bg-sky-600 text-white transition-all duration-300 border-none z-10 ">
+        <div class="flex flex-col justify-between flex-grow">
             <div class="fixed w-full flex items-center h-14 text-white z-10">
                 <div class="flex items-center justify-start  pl-3 w-14 md:w-64 h-14 bg-gray-700 border-none">
                     <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-sm overflow-hidden" src="../admin/<?php echo $data['picture'] ?>" />
@@ -45,8 +45,14 @@ $data = mysqli_fetch_assoc($result);
                     <a href="bins.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                         <!-- <i class="ml-4 fa-sharp fa-solid fa-dumpster"></i> -->
                         <span class="inline-flex justify-center items-center ml-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
-                                <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M4 7l16 0"></path>
+                                <path d="M10 11l0 6"></path>
+                                <path d="M14 11l0 6"></path>
+                                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                             </svg>
 
                         </span>
@@ -57,12 +63,15 @@ $data = mysqli_fetch_assoc($result);
                     <a href="driver.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                         <!-- <i class="ml-4 fa-solid fa-car-side"></i> -->
                         <span class="inline-flex justify-center items-center ml-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                                <rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect>
-                                <line x1="4" y1="10" x2="20" y2="10"></line>
-                                <line x1="4" y1="14" x2="20" y2="14"></line>
-                                <line x1="8" y1="16" x2="8" y2="20"></line>
-                                <line x1="16" y1="16" x2="16" y2="20"></line>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M6 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                <path d="M18 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                <path d="M4 17h-2v-11a1 1 0 0 1 1 -1h14a5 7 0 0 1 5 7v5h-2m-4 0h-8"></path>
+                                <path d="M16 5l1.5 7l4.5 0"></path>
+                                <path d="M2 10l15 0"></path>
+                                <path d="M7 5l0 5"></path>
+                                <path d="M12 5l0 5"></path>
                             </svg>
 
 
@@ -81,9 +90,6 @@ $data = mysqli_fetch_assoc($result);
                                 <path d="M12 8h.01"></path>
                                 <path d="M12 20h.01"></path>
                             </svg>
-
-
-
                         </span>
 
                         <span class="ml-2 text-sm tracking-wide truncate">User Complains</span>
@@ -92,15 +98,12 @@ $data = mysqli_fetch_assoc($result);
                 <li>
                     <a href="complainhistory.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                         <span class="inline-flex justify-center items-center ml-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18a8 8 0 100-16 8 8 0 000 16zm-2-9l4-4 4 4M10 8h4"></path>
                             </svg>
 
                         </span>
                         <span class="ml-2 text-sm tracking-wide truncate">Complains History</span>
-
-
-
                     </a>
                 </li>
                 <li>
@@ -143,14 +146,14 @@ $data = mysqli_fetch_assoc($result);
                     </a>
                 </li>
                 <li>
-                    <a href="../admin/logout.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
+                    <a href="../admin/logout.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6" onClick="return confirm('Do you want to Logout ?')">
                         <span class="inline-flex justify-center items-center ml-4">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                             </svg>
                         </span>
 
-                        <span class="ml-2 text-sm tracking-wide truncate"> Logout</span>
+                        <span class="ml-2 text-sm tracking-wide truncate"  > Logout</span>
                     </a>
                 </li>
             </ul>

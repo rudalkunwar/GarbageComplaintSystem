@@ -6,8 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaints Report</title>
-    <!-- <link rel="stylesheet" href="../style.css"> -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables CSS and JavaScript files -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body>
@@ -29,7 +34,7 @@
                 <div class="py-8 ">
                     <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
                         <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
-                            <table class="min-w-full leading-normal">
+                            <table class="min-w-full leading-normal" id="myTable">
                                 <thead>
                                     <tr>
                                         <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
@@ -114,6 +119,14 @@
                                     <?php } ?>
                                 </tbody>
                             </table>
+
+                            <script>
+                                $(document).ready(function() {
+                                    // Initialize the DataTable
+                                    $('#myTable').DataTable();
+                                });
+                            </script>
+
                         </div>
                     </div>
 
@@ -160,7 +173,7 @@
                         <div class="flex justify-between my-4">
                             <label for="complain_status" class="block text-gray-700 font-medium mr-2">Action:</label>
                             <select id="complain_status" name="complain_status" class="w-1/2  px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500">
-                                <option value="Accepted">Accept</option>
+                                <option value="In progress,Driver Assigned.">Accept</option>
                                 <option value="Rejected">Reject</option>
                             </select>
                         </div>

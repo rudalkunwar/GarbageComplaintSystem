@@ -45,7 +45,7 @@
                         <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="location" name="location" type="text" placeholder="Address" required />
                     </div>
                     <div class="mb-6 text-center">
-                        <input type="submit" value="Add Bin" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="addbin">
+                        <input type="submit" value="Add Bin" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="addbin" onclick="return confirm('Are You Sure To Add New Bin ?')">
                     </div>
                 </form>
             </div>

@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaints Report</title>
     <link rel="stylesheet" href="../style.css">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables CSS and JavaScript files -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body>
@@ -23,7 +29,7 @@
             <div class="py-8 ">
                 <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
                     <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
-                        <table class="min-w-full leading-normal">
+                        <table class="min-w-full leading-normal" id="myTable">
                             <thead>
                                 <tr>
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
@@ -89,14 +95,22 @@
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 text-sm border-b border-gray-200">
-                                            <a href="usercomplaindetail.php?complainid=<?php echo $data['complain_id'] ?>&userid=<?php echo $userid; ?>"  class="px-2 py-3 bg-green-300  rounded-md text-center">
-                                                Load More
-                                            </a >
+                                            <a href="usercomplaindetail.php?complainid=<?php echo $data['complain_id'] ?>&userid=<?php echo $userid; ?>" class="px-2 py-3 bg-green-300  rounded-md text-center">
+                                                View
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
+
+                        <script>
+                            $(document).ready(function() {
+                                // Initialize the DataTable
+                                $('#myTable').DataTable();
+                            });
+                        </script>
+
                     </div>
                 </div>
             </div>

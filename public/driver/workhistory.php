@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaints Report</title>
     <link rel="stylesheet" href="../style.css">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables CSS and JavaScript files -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body>
@@ -15,7 +21,7 @@
 
     // $dqry = "SELECT * FROM assigned_bin WHERE assigned_driver = '$driver'";
     $dqry = "SELECT * FROM assigned_bin a RIGHT JOIN collections c ON a.assign_id = c.assign_id WHERE assigned_driver = '$driver'";
-    $dres = mysqli_query($con,$dqry);
+    $dres = mysqli_query($con, $dqry);
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">
         <div class="w-full p-5 ">
@@ -27,22 +33,22 @@
             <div class="py-8 ">
                 <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
                     <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
-                        <table class="min-w-full leading-normal">
-                            <thead >
-                                <tr class="bg-gray-400" >
+                        <table class="min-w-full leading-normal" id="myTable">
+                            <thead>
+                                <tr class="bg-gray-400">
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase  border-b border-gray-200">
                                         Assigned Date
                                     </th>
-                                   
+
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase border-b border-gray-200">
                                         Assigned Driver
                                     </th>
-                                   
-                                  
+
+
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase border-b border-gray-200">
                                         Complain Message
                                     </th>
-                                  
+
                                     <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase border-b border-gray-200">
                                         Action
                                     </th>
@@ -51,7 +57,7 @@
                                 <?php
                                 while ($data = mysqli_fetch_assoc($dres)) {
                                 ?>
-                                    <tr >
+                                    <tr>
                                         <td class="px-5 py-5 text-sm border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                             <p class="text-gray-900 whitespace-no-wrap">
@@ -59,15 +65,15 @@
                                             </p>
                                             </p>
                                         </td>
-                                      
-                                      
+
+
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 <?php echo $data['assigned_driver'] ?>
 
                                             </p>
                                         </td>
-                                         
+
                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 <?php echo $data['assign_des'] ?>
@@ -83,6 +89,12 @@
                                 <?php } ?>
                             </tbody>
                         </table>
+                        <script>
+                            $(document).ready(function() {
+                                // Initialize the DataTable
+                                $('#myTable').DataTable();
+                            });
+                        </script>
                     </div>
                 </div>
 
@@ -94,5 +106,3 @@
         </div>
     </div>
     </div>
-
-    
