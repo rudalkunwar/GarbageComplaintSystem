@@ -4,7 +4,6 @@ if (!isset($_SESSION['username'])) {
     header('location:ulogin.php');
 }
 $user = $_SESSION['username'];
-// $uemail = $_SESSION['user_email'];
 ?>
 <?php
 $con = mysqli_connect("localhost", "root", "", "project_gcs");
@@ -15,6 +14,7 @@ $sql = "SELECT * FROM users WHERE user_name = '$user'";
 $result = mysqli_query($con, $sql);
 $data = mysqli_fetch_assoc($result);
 $userid = $data['user_id'];
+$useremail = $data['email'];
 ?>
 <div class="flex">
     <div class="fixed h-full flex flex-col w-14 hover:w-64 md:w-64 bg-gray-900 text-white transition-all duration-300 border-none z-10 sidebar">

@@ -19,7 +19,7 @@
     <div class="flex">
         <?php include('dashlayout.php') ?>
         <?php
-        $qry2 = " SELECT * FROM complaints C JOIN garbagebins b ON c.bin_id = b.bin_id WHERE bin_status='use' AND complain_status='new'";
+        $qry2 = " SELECT * FROM complaints C JOIN garbagebins b ON c.bin_id = b.bin_id WHERE complain_status='new'";
         $qry3  = "SELECT driver_name FROM drivers WHERE driver_status = 'Free'";
         $result = mysqli_query($con, $qry2);
         $result3 = mysqli_query($con, $qry3);
@@ -151,7 +151,7 @@
                                 </svg>
                             </button> </span>
                     </div>
-                    <form method="POST" action="updatecomplain.php">
+                    <form method="POST" action="updatecomplain.php" onsubmit="return checkDate(event);">
                         <input name="complain_id" id="hiddenid" type="hidden" value="">
                         <div class="my-4">
                             <label for="updateMessage" class="block text-gray-700 font-medium mb-2">Update Message:</label>
@@ -182,7 +182,7 @@
                             <input type="date" id="date" name="assigned_date" class="w-1/2  px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div class="text-right mt-2 mb-5">
-                            <input type="submit" value="Submit" name="update" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                            <input type="submit" value="Submit" name="update" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5" onsubmit="confirm('Are you sure to update complain.')">
                         </div>
                     </form>
                 </div>
@@ -194,6 +194,21 @@
 
 </html>
 <script>
+function checkDate(event) {
+  var dateInput = document.getElementById('date');
+  var selectedDate = new Date(dateInput.value);
+  var today = new Date();
+
+  if (selectedDate < today) {
+    alert("Cannot select a past date.");
+    event.preventDefault(); // Prevent form submission
+    return false;
+  }
+
+  return true;
+}
+
+
     function openPopupForm(x) {
         document.getElementById('hiddenid').value = x;
         const popupForm = document.getElementById('popupForm');

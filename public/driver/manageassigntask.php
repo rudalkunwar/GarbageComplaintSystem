@@ -148,15 +148,6 @@
                                         <?php echo $data['assigned_driver']; ?>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th class="px-5 py-3 text-lg font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Admin Update Message
-                                    </th>
-                                    <td class="px-5 py-3 text-lg bg-white border-b border-gray-200">
-                                        <?php echo $data['assign_des']; ?>
-                                    </td>
-                                </tr>
-                                <!-- Add any additional data rows as needed -->
                             </tbody>
                         </table>
                     </div>
@@ -187,7 +178,7 @@
                                 </svg>
                             </button> </span>
                     </div>
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form method="POST" action="" enctype="multipart/form-data" onsubmit="return checkDate(event)">
                         <input name="assign_id" id="assignid" type="hidden" value="">
                         <input name="complain_id" id="complainid" type="hidden" value="">
                         <input name="user_email" id="useremail" type="hidden" value="">
@@ -208,7 +199,7 @@
                             <input type="date" id="date" name="complete_date" class="w-1/2  px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div class="text-right mt-2 mb-5">
-                            <input type="submit" value="Submit" name="update" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                            <input type="submit" value="Submit" name="update" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5" onclick="confirm('Are you sure to submit your work.')">
                         </div>
                     </form>
                 </div>
@@ -216,6 +207,20 @@
         </div>
     </div>
     <script>
+        function checkDate(event) {
+            var dateInput = document.getElementById('date');
+            var selectedDate = new Date(dateInput.value);
+            var today = new Date();
+
+            if (selectedDate < today) {
+                alert("Cannot select a past date.");
+                event.preventDefault(); // Prevent form submission
+                return false;
+            }
+
+            return true;
+        }
+
         function openPopupForm(x, y, z) {
             document.getElementById('assignid').value = x;
             document.getElementById('complainid').value = y;
@@ -246,6 +251,16 @@
         $folder = "completedtask/" . $filename;
         move_uploaded_file($tempname, $folder);
 
+
+
+        //for bin id
+        $binsql = "SELECT bin_id FROM complaints WHERE complain_id = $complain";
+        $result = mysqli_query($con, $binsql);
+        // Fetch the bin ID from the result
+        $row = mysqli_fetch_assoc($result);
+        $binId = $row['bin_id'];
+
+
         // if collected
         $qrya = "INSERT INTO collections (complain_id,assign_id,collected_picture,collection_des,collection_date,collection_status) 
         VALUES($complain,$assign,'$folder','$drivermsg','$completed_date','$collectionstatus')";
@@ -256,7 +271,7 @@
 
         if (strcmp($collectionstatus, 'Rejected') == 0) {
             if (mysqli_query($con, $qryna)) {
-                
+
 
                 //update driver status
                 $updriver = "UPDATE drivers SET driver_status = 'Free' WHERE driver_id = $driverid";
@@ -266,11 +281,15 @@
                 $rsql = "UPDATE complaints set complain_status = 'Rejected by Driver.' WHERE complain_id = $complain";
                 mysqli_query($con, $rsql);
 
+
+                $assinsql = "UPDATE assigned_bin set assign_status = 'none' where assign_id =$assign ";
+                mysqli_query($con, $assinsql);
+
+
+
                 echo '<script>alert("Collection Rejected")</script>';
             }
-        } 
-        else 
-        {
+        } else {
             if (mysqli_query($con, $qrya)) {
 
                 //update driver status
@@ -285,15 +304,32 @@
                 $rsql2 = "UPDATE complaints set complain_status = 'Completed' WHERE complain_id = $complain";
                 mysqli_query($con, $rsql2);
 
-                //send mail to the user 
-                $to = $email;
-                $message = "I hope this email finds you well. I am writing to inform you that I have successfully collected the garbage bins from your address as per your complaint registered in our system. It is my pleasure to provide you with an update on the status of your request.";
+                //update bin
+                $qry4  = "UPDATE garbagebins set bin_status = 'use' WHERE bin_id = $binId";
+                mysqli_query($con, $qry4);
+
+                //for user
+                $to = $user_email;
                 $subject = "New Garbage Complaint System";
+                $message = "I hope this email finds you well.";
+                $message .= " I am writing to inform you that I have successfully collected the garbage bins from your address as per your complaint registered in our system.\n";
+                $message .= "It is my pleasure to provide you with an update on the status of your request.";
+                $message .= "Thank you.\n";
                 $header = "From:drivergcs@gmail.com";
-                if (mail($to, $subject, $message, $header)) {
+
+
+                //for admin
+                $ato = 'ankushruzal@gmail.com';
+                $adminSubject = 'Garbage Bin Collection Notification - Admin';
+                $adminMessage = "Hello Admin,\n\n";
+                $adminMessage .= "This is to inform you that assigned garbage bin has been Collected successfully .\n";
+                $adminMessage .= "Thank you.\n";
+                $adminHeader = 'From: drivergcs@gmail.com';
+                if (mail($to, $subject, $message, $header) && mail($ato,  $adminSubject, $adminMessage, $header)) {
                     echo '<script>alert("Bin Collection Completed")</script>';
+
+                    echo '<script>window.location.href = "driverdashboard.php";</script>';
                 }
-                header('location:driverdashboard.php');
             }
         }
     }

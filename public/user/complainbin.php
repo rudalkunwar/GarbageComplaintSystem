@@ -15,7 +15,7 @@
     $qry = "SELECT * FROM garbagebins WHERE bin_id = $binid";
     $result = mysqli_query($con, $qry);
     $row = mysqli_fetch_assoc($result);
-    $binid= $row['bin_id'] ?>
+    $binid = $row['bin_id'] ?>
     ?>
     <div class=" w-full h-full p-5 ml-14 md:ml-64">
         <div class="w-full">
@@ -54,7 +54,7 @@
                         <input id="bin_picture" type="file" name="bin_photo" class="border border-gray-300 p-2 w-full" required>
                     </div>
                     <div class="text-center">
-                        <input type="submit" value="Submit Complaint" name="submit" class="w-full bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600">
+                        <input type="submit" value="Submit Complaint" name="submit" class="w-full bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600" onclick="confirm('Are you sure to submit complain.')">
                     </div>
                 </form>
             </div>
@@ -62,10 +62,10 @@
     </div>
 
 </body>
+
 </html>
 <?php
-if(isset($_POST['submit']))
-{
+if (isset($_POST['submit'])) {
     $filename = $_FILES["bin_photo"]["name"];
     $tempname = $_FILES["bin_photo"]["tmp_name"];
     $folder = "binpic/" . $filename;
@@ -73,16 +73,36 @@ if(isset($_POST['submit']))
 
     $comp_msg = $_POST['complaint_message'];
 
-    // $qry2 = "INSERT INTO complaints VALUES(1,$uid,$binid,'$comp_msg','$folder')";
-    $qry2 = "INSERT INTO complaints (user_id, bin_id, description, bin_picture, timestamp) VALUES ($userid, $binid, '$comp_msg', '$folder', CURRENT_TIMESTAMP)";
-    if(mysqli_query($con,$qry2))
-    {
-        echo '<script> alert("Bin Complain Sucessfully"); </script> ';
-        echo '<script>window.location.href = "userdashboard.php";</script>';
+    $qry1 = "SELECT bin_status FROM garbagebins WHERE bin_id = $binid ";
+    $res = mysqli_query($con, $qry1);
+    $row = mysqli_fetch_assoc($res);
+    $binstatus = $row['bin_status'];
+    if (strcmp($binstatus, 'use') == 0) {
+        $qry2 = "INSERT INTO complaints (user_id, bin_id, description, bin_picture, timestamp) VALUES ($userid, $binid, '$comp_msg', '$folder', CURRENT_TIMESTAMP)";
+        if (mysqli_query($con, $qry2)) {
+            $qry2 = "UPDATE garbagebins set bin_status = 'Complained' WHERE bin_id = $binid ";
+            mysqli_query($con, $qry2);
 
-        
-    }else{
-        echo '<script> alert("Error:Please try agian."); </script>';
+            //mail to admin
+            $to = "ankushruzal@gmail.com";
+            $subject = "Complaint Notification";
+            $header = "From: $useremail";
+            $message = "Dear Admin,\n\n";
+            $message .= "I would like to report a complaint regarding the garbage bin.\n\n";
+            $message .= "Complaint details:   $comp_msg \n\n";
+            $message .= "Wating for your Reply.\n\n";
+            $message .= "Best regards,\n";
+            $message .= "$user";
+            
+            if (mail($to, $subject, $message, $header)) {
+                echo '<script> alert("Bin Complain Sucessfully"); </script> ';
+                echo '<script>window.location.href = "userdashboard.php";</script>';
+            }
+        } else {
+            echo '<script> alert("Error:Please try agian."); </script>';
+        }
+    } else {
+        echo '<script> alert("This bin is already Reported Or on collection."); </script>';
     }
 }
 ?>

@@ -137,15 +137,6 @@
                                         <?php echo $data['assigned_driver']; ?>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                        Update Message
-                                    </th>
-                                    <td class="px-5 py-3 text-sm bg-white border-b border-gray-200">
-                                        <?php echo $data['assign_des']; ?>
-                                    </td>
-                                </tr>
-                                <!-- Add any additional data rows as needed -->
                             </tbody>
                         </table>
                     </div>

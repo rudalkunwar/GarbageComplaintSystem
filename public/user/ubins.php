@@ -46,7 +46,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $qry = "SELECT * FROM garbagebins WHERE bin_status = 'use'";
+                                    $qry = "SELECT * FROM garbagebins";
                                     $result = mysqli_query($con, $qry);
                                     while ($d = mysqli_fetch_assoc($result)) {
                                     ?>
