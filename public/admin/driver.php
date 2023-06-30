@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Driver</title>
     <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <style>
         .dataTables_filter input {
@@ -53,7 +52,7 @@
                 <div class="container mx-auto px-4 py-8">
                     <div class="w-full flex flex-col">
                         <div class="flex-grow overflow-auto">
-                            <table id="myTable" class="w-full py-5 table-auto ">
+                            <table id="myTable" class="w-full py-2">
                                 <thead>
                                     <tr class="bg-green-100 ">
                                         <th class="border-gray-400 mx-auto text-left">Driver Id</th>
@@ -116,21 +115,9 @@
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script>
+   <script>
         $(document).ready(function() {
-            $('#myTable').DataTable({
-                "language": {
-                    "search": "Search:",
-                    "lengthMenu": "Show _MENU_ entries",
-                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                    "paginate": {
-                        "first": "First",
-                        "last": "Last",
-                        "next": "Next",
-                        "previous": "Previous"
-                    }
-                }
-            });
+            $('#myTable').DataTable();
         });
     </script>
 </body>

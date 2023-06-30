@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garbage Bins</title>
     <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <style>
         .dataTables_filter input {
@@ -20,7 +19,7 @@
     </style>
 </head>
 
-<body>
+<body">
     <div class="flex">
 
     <?php include('dashlayout.php')
