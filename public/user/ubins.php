@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bins</title>
-    <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+
     <style>
         .dataTables_filter input {
             background-color: green;
@@ -74,25 +74,14 @@
         </div>
     </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable({
-                "language": {
-                    "search": "Search:",
-                    "lengthMenu": "Show _MENU_ entries",
-                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                    "paginate": {
-                        "first": "First",
-                        "last": "Last",
-                        "next": "Next",
-                        "previous": "Previous"
-                    }
-                }
-            });
-        });
-    </script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
+
 </body>
 
 </html>

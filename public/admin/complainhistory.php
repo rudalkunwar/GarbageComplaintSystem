@@ -7,13 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaints Report</title>
     <link rel="stylesheet" href="../style.css">
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTables CSS and JavaScript files -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -99,18 +93,19 @@
                                     <?php } ?>
                                 </tbody>
                             </table>
-                            <script>
-                                $(document).ready(function() {
-                                    // Initialize the DataTable
-                                    $('#myTable').DataTable();
-                                });
-                            </script>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>
 
 </html>
