@@ -33,6 +33,11 @@
                             <table class="min-w-full leading-normal" id="myTable">
                                 <thead>
                                     <tr>
+
+                                        <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                            SN
+                                        </th>
+
                                         <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                             Report Date
                                         </th>
@@ -60,59 +65,67 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                    $d = 1;
                                     while ($data = mysqli_fetch_assoc($result)) {
                                     ?>
                                         <tr>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    <?php echo $data['timestamp'] ?>
+                                                    <?php echo $d; ?>
+                                                </p>
+                                                </p>
+                                            </td>
+                                            <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                <p class="text-gray-900 whitespace-no-wrap">
+                                                <p class="text-gray-900 whitespace-no-wrap">
+                                                    <?php echo $data['timestamp']; ?>
                                                 </p>
                                                 </p>
                                             </td>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap w-full h-16 pb-[75%] relative">
-                                                    <img src="../user/<?php echo $data['bin_picture'] ?>" class="absolute inset-0 w-full h-full object-cover" alt="">
+                                                    <img src="../user/<?php echo $data['bin_picture'] ;?>" class="absolute inset-0 w-full h-full object-cover" alt="">
                                                 </p>
                                             </td>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    <?php echo $data['user_id'] ?>
+                                                    <?php echo $data['user_id']; ?>
 
                                                 </p>
                                             </td>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    <?php echo $data['bin_id'] ?>
+                                                    <?php echo $data['bin_id']; ?>
                                                 </p>
                                             </td>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    <?php echo $data['location'] ?>
+                                                    <?php echo $data['location']; ?>
 
                                                 </p>
                                             </td>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    <?php echo $data['description'] ?>
+                                                    <?php echo $data['description']; ?>
 
                                                 </p>
                                             </td>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    <?php echo $data['complain_status'] ?>
+                                                    <?php echo $data['complain_status']; ?>
 
                                                 </p>
                                             </td>
 
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    <button onclick="openPopupForm(<?php echo $data['complain_id'] ?>)" class="px-3 py-1 font-semibold leading-tight text-green-500">Manage</button>
+                                                    <button onclick="openPopupForm(<?php echo $data['complain_id']; ?>)" class="px-3 py-1 font-semibold leading-tight text-green-500">Manage</button>
 
                                                 </p>
                                             </td>
                                         </tr>
-                                    <?php } ?>
+                                    <?php  $d++;} ?>
                                 </tbody>
                             </table>
                         </div>
@@ -212,4 +225,5 @@
         }
     </script>
 </body>
+
 </html>

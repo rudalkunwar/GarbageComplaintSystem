@@ -8,20 +8,10 @@
     <title>Driver</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" type="text/css" href="../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
-
-    <style>
-        .dataTables_filter input {
-            background-color: green;
-        }
-
-        .dataTables_wrapper {
-            padding: 20px;
-        }
-    </style>
-
+    <link rel="stylesheet" href="table.css">
 </head>
 
-<body>
+<body class="bg-gray-200">
     <div class="flex">
         <?php include('dashlayout.php')
         ?>
@@ -34,7 +24,7 @@
                 <h2 class="text-3xl border-b-2 border-blue-600">Drivers</h2>
             </div>
             <div class="w-full px-4 mb-8 ">
-                <div class="bg-gray-200 rounded-lg shadow-md p-6">
+                <div class="rounded-lg p-6">
                     <div class="flex justify-between p-2">
                         <div>
                             <a href="adddriver.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded">Add Driver</a>
@@ -53,28 +43,33 @@
                     <div class="container mx-auto px-4 py-8">
                         <div class="w-full flex flex-col">
                             <div class="flex-grow overflow-auto">
-                                <table id="myTable" class="w-full py-2">
+                                <table id="myTable" class="w-full">
                                     <thead>
                                         <tr class="bg-green-100 ">
-                                            <th class="border-gray-400 mx-auto text-left">Driver Id</th>
-                                            <th class="border-gray-400 text-left">Name</th>
-                                            <th class="border-gray-400 text-left">Address</th>
-                                            <th class="border-gray-400 text-left">Email</th>
-                                            <th class="border-gray-400 text-left">Delete</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SN</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Driver Id</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Address</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php while ($data = mysqli_fetch_assoc($result)) { ?>
+                                        <?php
+                                        $a = 1;
+                                        while ($data = mysqli_fetch_assoc($result)) { ?>
                                             <tr class="">
-                                                <td class="border-gray-400 py-2 w-1/5 "><?php echo $data['driver_id']; ?></td>
-                                                <td class="border-gray-400  py-2 w-1/5"><?php echo $data['driver_name']; ?></td>
-                                                <td class="border-gray-400  py-2 w-1/5"><?php echo $data['address']; ?></td>
-                                                <td class="border-gray-400  py-2 w-1/5"><?php echo $data['email']; ?></td>
-                                                <td class="border-gray-400 mt-3 px-4 w-1/5">
+                                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $a; ?></td>
+                                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $data['driver_id']; ?></td>
+                                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $data['driver_name']; ?></td>
+                                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $data['address']; ?></td>
+                                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $data['email']; ?></td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
                                                     <a onclick="showDelete(<?php echo $data['driver_id'] ?>);" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded cursor-pointer">Delete</a>
                                                 </td>
                                             </tr>
-                                        <?php } ?>
+                                        <?php $a++;
+                                        } ?>
                                     </tbody>
                                 </table>
                             </div>

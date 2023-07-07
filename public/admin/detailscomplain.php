@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaints Report</title>
     <link rel="stylesheet" href="../style.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 </head>
 
 <body>
@@ -34,16 +36,19 @@
         $binres = mysqli_query($con, $binqry);
         $bindata = mysqli_fetch_assoc($binres);
         ?>
-        <div class="h-full w-full p-5 ml-14 md:ml-64 ">
-            <div class="w-full p-5 ">
+
+        <div class="h-full w-full p-5 ml-14 md:ml-64">
+            <button id="downloadButton" onclick="CreatePDFfromHTML();" class="absolute z-10 top-8 right-5 bg-gray-800 text-white rounded-lg p-2 cursor-pointer">
+                <i class="fas fa-download mr-2"></i> Download
+            </button>
+            <div class="w-full p-5">
                 <h2 class="text-3xl border-b-2 border-blue-600">Complain Details</h2>
             </div>
             <div class="container max-w-full px-4 mx-auto sm:px-8">
-
                 <!-- Repeat the following code block for each data item -->
-                <div class="bg-white rounded-lg shadow mb-4">
+                <div class="bg-white rounded-lg shadow mb-4 html-content">
                     <div class="p-4">
-                        <table class="min-w-full">
+                        <table id="mytbl1" class="min-w-full">
                             <tbody>
                                 <tr>
                                     <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
@@ -141,7 +146,7 @@
                         </div>
                         <div class="bg-gray-100">
                             <div class="">
-                                <table class="min-w-full">
+                                <table id="mytbl2" class="min-w-full">
                                     <tbody>
                                         <tr>
                                             <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
@@ -173,7 +178,7 @@
                             </div>
                             <div class="bg-gray-100">
                                 <div class="">
-                                    <table class="min-w-full">
+                                    <table id="mytbl3" class="min-w-full">
                                         <tbody>
                                             <tr>
                                                 <th class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
@@ -233,11 +238,38 @@
                         <?php } ?>
                     <?php } ?>
                 </div>
-
             </div>
-
         </div>
     </div>
+
+    <script>
+        //Create PDf from HTML...
+        function CreatePDFfromHTML() {
+            var HTML_Width = $(".html-content").width();
+            var HTML_Height = $(".html-content").height();
+            var top_left_margin = 15;
+            var PDF_Width = HTML_Width + (top_left_margin * 2);
+            var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+            var canvas_image_width = HTML_Width;
+            var canvas_image_height = HTML_Height;
+
+            var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+            html2canvas($(".html-content")[0]).then(function(canvas) {
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+                pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+                for (var i = 1; i <= totalPDFPages; i++) {
+                    pdf.addPage(PDF_Width, PDF_Height);
+                    pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+                }
+                pdf.save("complainreport.pdf");
+                window.location.href = "dashboard.php";
+                $(".html-content").hide();
+            });
+        }
+    </script>
+
 </body>
 
 </html>

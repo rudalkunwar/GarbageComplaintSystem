@@ -1,0 +1,46 @@
+/* Table Style */
+.dataTables_wrapper {
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 1rem;
+    background-color: #f5f5f5;
+}
+
+/* Table Header */
+.dataTables_wrapper thead {
+    background-color: #e6e6e6;
+}
+
+.dataTables_wrapper th {
+    padding: 0.5rem;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Table Rows */
+/* .dataTables_wrapper tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+} */
+
+/* .dataTables_wrapper td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+} */
+
+/* Hover Effect */
+.dataTables_wrapper tbody tr:hover {
+    background-color: #eaeaea;
+}
+
+/* Pagination */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    font-weight: bold;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #e6e6e6;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}

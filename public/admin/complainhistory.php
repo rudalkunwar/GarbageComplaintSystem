@@ -8,6 +8,7 @@
     <title>Complaints Report</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" type="text/css" href="../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+
 </head>
 
 <body>
@@ -28,6 +29,9 @@
                             <table class="min-w-full leading-normal" id="myTable">
                                 <thead>
                                     <tr>
+                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                            SN
+                                        </th>
                                         <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                             Report Date
                                         </th>
@@ -50,10 +54,18 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                     $d=1;
                                     while ($data = mysqli_fetch_assoc($res)) {
                                     ?>
                                         <tr>
                                             <input id="aidpop" type="hidden" value="<?php echo $data['assign_id']; ?>">
+                                            <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                <p class="text-gray-900 whitespace-no-wrap">
+                                                <p class="text-gray-900 whitespace-no-wrap">
+                                                    <?php echo $d; ?>
+                                                </p>
+                                                </p>
+                                            </td>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap">
                                                 <p class="text-gray-900 whitespace-no-wrap">
@@ -86,11 +98,11 @@
                                                 <p class="text-gray-900 whitespace-no-wrap">
 
 
-                                                    <a href="detailscomplain.php?cid=<?php echo $data['complain_id'] ?>" class="px-2 py-3 bg-green-300  rounded-md text-black">View</a>
+                                                    <a href="detailscomplain.php?cid=<?php echo $data['complain_id'] ?>" class="bg-green-400 rounded-md hover:bg-green-500 ease text-white font-bold py-3 px-6">View</a>
                                                 </p>
                                             </td>
                                         </tr>
-                                    <?php } ?>
+                                    <?php  $d++; } ?>
                                 </tbody>
                             </table>
                         </div>

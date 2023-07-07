@@ -9,18 +9,10 @@
     <link rel="stylesheet" type="text/css" href="../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
 
     <link rel="stylesheet" href="../style.css">
-    <style>
-        .dataTables_filter input {
-            background-color: green;
-        }
-
-        .dataTables_wrapper {
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="table.css">
 </head>
 
-<body">
+<body class="bg-gray-200">
     <div class="flex">
 
         <?php include('dashlayout.php')
@@ -30,7 +22,7 @@
                 <h2 class="text-3xl border-b-2 border-blue-600">Bins</h2>
             </div>
             <div class="w-full px-4 mb-8 ">
-                <div class="bg-gray-200 rounded-lg shadow-md p-6">
+                <div class="rounded-lg p-6">
                     <div class="flex justify-between p-2">
                         <div>
                             <a href="addbin.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded">Add Bin</a>
@@ -49,35 +41,37 @@
                     <div class="container mx-auto px-4 py-8">
                         <div class="w-full flex flex-col">
                             <div class="flex-grow overflow-auto">
-                                <table id="myTable" class="w-full py-5 table-auto ">
+                                <table id="myTable" class="min-w-full">
                                     <thead>
                                         <tr class="bg-green-100 ">
-                                            <th class="border-gray-400 mx-auto text-left">Bin ID</th>
-                                            <th class="border-gray-400 text-left">Category</th>
-                                            <th class="border-gray-400 text-left">Capacity</th>
-                                            <th class="border-gray-400 text-left">Location</th>
-                                            <th class="border-gray-400 text-left">Acton</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bin ID</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Capacity</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acton</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $qry = " SELECT * FROM garbagebins ";
+                                        $a = 1;
+                                        $qry = " SELECT * FROM garbagebins ORDER BY bin_id ";
                                         $result = mysqli_query($con, $qry);
                                         while ($d = mysqli_fetch_assoc($result)) {
                                         ?>
                                             <tr class="">
-
-
-                                                <td class="border-gray-400 py-2 w-1/5"><?php echo $d['bin_id'] ?></td>
-                                                <td class="border-gray-400 py-2 w-1/5"><?php echo $d['type'] ?></td>
-                                                <td class="border-gray-400 py-2 w-1/5"><?php echo $d['capacity'] ?></td>
-                                                <td class="border-gray-400 py-2 w-1/5"><?php echo $d['location'] ?></td>
-                                                <td class="border-gray-400 mt-3 px-4 w-1/5">
-                                                    <a href="editbin.php?editid=<?php echo $d['bin_id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+                                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $a; ?></td>
+                                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $d['bin_id'] ?></td>
+                                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $d['type'] ?></td>
+                                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $d['capacity'] ?></td>
+                                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $d['location'] ?></td>
+                                                <td class="flex px-6 py-4 whitespace-nowrap justify-start space-x-1">
+                                                    <a href="editbinphp?editid=<?php echo $d['bin_id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">Edit</a>
                                                     <a onclick="showDelete(<?php echo $d['bin_id'] ?>);" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded cursor-pointer">Delete</a>
                                                 </td>
                                             </tr>
-                                        <?php } ?>
+                                        <?php $a++;
+                                        } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -125,6 +119,6 @@
             $('#myTable').DataTable();
         });
     </script>
-    </body>
+</body>
 
 </html>

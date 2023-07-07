@@ -6,18 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="table.css">
+
 </head>
 
 <body>
     <div class="flex">
         <?php include('dashlayout.php'); ?>
 
-        <div class="h-full w-full p-5 ml-14 md:ml-64 ">
-            <!-- Feedback data table -->
+        <div class="h-full w-full p-5 ml-14 md:ml-64  ">
             <div class="w-full p-5 ">
                 <h2 class="text-3xl border-b-2 border-blue-600">Users Feedbacks</h2>
             </div>
-            <table class="min-w-full">
+            <div class="container mx-auto px-4 py-8">
+            <table id="myTable" class="min-w-full">
                 <thead>
                     <tr>
                         <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
@@ -49,12 +52,13 @@
                     } ?>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 
     <div id="popupForm" class="hidden">
         <div class="fixed inset-0 z-10 flex items-center justify-center backdrop-blur-md bg-gray-600 bg-opacity-40">
-            <div class="w-2/5 bg-yellow-200 rounded-md shadow-lg h-4/5">
+            <div class="w-2/5 bg-white rounded-md shadow-lg h-4/5">
                 <div class="px-10 py-5 w-full ">
                     <div class="flex justify-between">
                         <h2 class="text-xl font-semibold mb-4">Reply to User Feedback</h2>
@@ -110,7 +114,14 @@
         }
     </script>
 
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>
 
 </html>
