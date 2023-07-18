@@ -66,7 +66,7 @@
                                                 <td class="px-6 py-4 whitespace-nowrap"><?php echo $d['capacity'] ?></td>
                                                 <td class="px-6 py-4 whitespace-nowrap"><?php echo $d['location'] ?></td>
                                                 <td class="flex px-6 py-4 whitespace-nowrap justify-start space-x-1">
-                                                    <a href="editbinphp?editid=<?php echo $d['bin_id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">Edit</a>
+                                                    <a href="editbin.php?editid=<?php echo $d['bin_id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">Edit</a>
                                                     <a onclick="showDelete(<?php echo $d['bin_id'] ?>);" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded cursor-pointer">Delete</a>
                                                 </td>
                                             </tr>
