@@ -60,21 +60,32 @@
 if (isset($_POST['updateprofile'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
+    if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+        
+        $filename = $_FILES["photo"]["name"];
+        $tempname = $_FILES["photo"]["tmp_name"];
+        $folder = "profilepic/" . $filename;
+        move_uploaded_file($tempname, $folder);
 
-    $filename = $_FILES["photo"]["name"];
-    $tempname = $_FILES["photo"]["tmp_name"];
-    $folder = "profilepic/" . $filename;
-    move_uploaded_file($tempname, $folder);
+        $qry = "UPDATE drivers SET driver_name='$name',email = '$email',driver_picture='$folder' WHERE driver_name='$driver' ";
+        if ($reslt = mysqli_query($con, $qry)) {
 
-    $qry = "UPDATE drivers SET driver_name='$name',email = '$email',driver_picture='$folder' WHERE driver_name='$driver' ";
-    if ($reslt = mysqli_query($con, $qry)) {
-
-        echo '<script> alert("Profile Updated Sucessfully"); </script> ';
-        session_unset();
-        session_destroy();
-        echo '<script>window.location.href = "dlogin.php";</script>';
+            echo '<script> alert("Profile Updated Sucessfully"); </script> ';
+            echo '<script>window.location.href = "driverdashboard.php";</script>';
+        } else {
+            echo '<script> alert("Unable to Update Profile"); </script> ';
+        }
     } else {
-        echo '<script> alert("Unable to Update Profile"); </script> ';
+        $qry = "UPDATE drivers SET driver_name='$name',email = '$email', WHERE driver_name='$driver' ";
+        if ($reslt = mysqli_query($con, $qry)) {
+
+            echo '<script> alert("Profile Updated Sucessfully"); </script> ';
+            session_unset();
+            session_destroy();
+            echo '<script>window.location.href = "dlogin.php";</script>';
+        } else {
+            echo '<script> alert("Unable to Update Profile"); </script> ';
+        }
     }
 }
 ?>

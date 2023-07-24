@@ -77,21 +77,37 @@ if (isset($_POST['updateprofile'])) {
     $addr = $_POST['address'];
     $contact = $_POST['contact'];
 
-    $filename = $_FILES["photo"]["name"];
-    $tempname = $_FILES["photo"]["tmp_name"];
-    $folder = "profilepic/" . $filename;
-    move_uploaded_file($tempname, $folder);
+    if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+        $filename = $_FILES["photo"]["name"];
+        $tempname = $_FILES["photo"]["tmp_name"];
+        $folder = "profilepic/" . $filename;
+        move_uploaded_file($tempname, $folder);
+    
+        $qry = "UPDATE users SET user_name='$name',email = '$email',address='$addr',contact='$contact',profilepic='$folder' WHERE user_id=$userid ";
+        if ($reslt = mysqli_query($con, $qry)) {
+    
+            echo '<script> alert("Profile Updated Sucessfully,Session Expired!!!"); </script> ';
+            session_unset();
+            session_destroy();
+            echo '<script>window.location.href = "ulogin.php";</script>';
+        } else {
+            echo '<script> alert("Unable to Update Profile"); </script> ';
+        }
+    }else{
+        $qry = "UPDATE users SET user_name='$name',email = '$email',address='$addr',contact='$contact' WHERE user_id=$userid ";
+        if ($reslt = mysqli_query($con, $qry)) {
+    
+            echo '<script> alert("Profile Updated Sucessfully,Session Expired!!!"); </script> ';
+            session_unset();
+            session_destroy();
+            echo '<script>window.location.href = "ulogin.php";</script>';
+        } else {
+            echo '<script> alert("Unable to Update Profile"); </script> ';
+        }
 
-    $qry = "UPDATE users SET user_name='$name',email = '$email',address='$addr',contact='$contact',profilepic='$folder' WHERE user_id=$userid ";
-    if ($reslt = mysqli_query($con, $qry)) {
-
-        echo '<script> alert("Profile Updated Sucessfully,Session Expired!!!"); </script> ';
-        session_unset();
-        session_destroy();
-        echo '<script>window.location.href = "ulogin.php";</script>';
-    } else {
-        echo '<script> alert("Unable to Update Profile"); </script> ';
     }
+
+
 }
 ?>
 </body>

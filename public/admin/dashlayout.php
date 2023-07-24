@@ -19,7 +19,7 @@ $data = mysqli_fetch_assoc($result);
         <div class="flex flex-col justify-between flex-grow">
             <div class="fixed w-full flex items-center h-14 text-white z-10">
                 <div class="flex items-center justify-start  pl-3 w-14 md:w-64 h-14 bg-gray-700 border-none">
-                    <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-sm overflow-hidden" src="../admin/<?php echo $data['picture'] ?>" />
+                    <a href="editprofile.php"><img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-sm overflow-hidden" src="../admin/<?php echo $data['picture'] ?>" /></a>
                     <span class="hidden md:block"><?php echo $data['name'] ?></span>
                 </div>
             </div>
