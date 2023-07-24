@@ -20,9 +20,10 @@ $data = mysqli_fetch_assoc($result);
         <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
             <div class="fixed w-full flex items-center h-14 text-white z-10">
                 <div class="flex items-center pl-3 w-14 md:w-64 h-24 bg-gray-800 border-none">
-                    <!-- <img class="w-7 h-7 md:w-10 md:h-10 mr-2 overflow-hidden" src="../images/aakas.jpg" /> -->
-                    <img class="mt-2 mr-2 h-16 w-16 md:w-10 md:h-10  overflow-hidden object-cover rounded-md" src="<?php echo $data['driver_picture'] ?>" onerror="this.src='profilepic/dummyuser.jpg';" />
-                    <span class="hidden md:block border-b-2 border-blue-400 "><?php echo $driver; ?> </span>
+                    <a href="editprofile.php">
+                        <img class="mt-2 mr-2 h-16 w-16 md:w-10 md:h-10  overflow-hidden object-cover rounded-md" src="<?php echo $data['driver_picture'] ?>" onerror="this.src='profilepic/dummyuser.jpg';" />
+
+                    </a> <span class="hidden md:block border-b-2 border-blue-400 "><?php echo $driver; ?> </span>
                 </div>
             </div>
             <ul class="flex flex-col mt-20 py-4 space-y-1">
