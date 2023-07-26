@@ -50,6 +50,9 @@
                         <input value="<?php echo $data['contact']; ?>" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="contact" name="contact" placeholder="Contact Number" type="text" required />
                     </div>
                     <div class="mb-4">
+                        <div class="w-full h-1/2 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none">
+                            <img src="<?php echo $data['profilepic']; ?>" alt="">
+                        </div>
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
                             Profile Picture
                         </label>
@@ -59,7 +62,7 @@
                         </div>
                     </div>
                     <div class="mb-6 text-center">
-                        <input type="submit" value="Update Profile" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="updateprofile" onclick="return confirm('Are You Sure To Edit Profile ?')" >
+                        <input type="submit" value="Update Profile" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="updateprofile" onclick="return confirm('Are You Sure To Edit Profile ?')">
                     </div>
                 </form>
             </div>
@@ -82,10 +85,10 @@ if (isset($_POST['updateprofile'])) {
         $tempname = $_FILES["photo"]["tmp_name"];
         $folder = "profilepic/" . $filename;
         move_uploaded_file($tempname, $folder);
-    
+
         $qry = "UPDATE users SET user_name='$name',email = '$email',address='$addr',contact='$contact',profilepic='$folder' WHERE user_id=$userid ";
         if ($reslt = mysqli_query($con, $qry)) {
-    
+
             echo '<script> alert("Profile Updated Sucessfully,Session Expired!!!"); </script> ';
             session_unset();
             session_destroy();
@@ -93,10 +96,10 @@ if (isset($_POST['updateprofile'])) {
         } else {
             echo '<script> alert("Unable to Update Profile"); </script> ';
         }
-    }else{
+    } else {
         $qry = "UPDATE users SET user_name='$name',email = '$email',address='$addr',contact='$contact' WHERE user_id=$userid ";
         if ($reslt = mysqli_query($con, $qry)) {
-    
+
             echo '<script> alert("Profile Updated Sucessfully,Session Expired!!!"); </script> ';
             session_unset();
             session_destroy();
@@ -104,10 +107,7 @@ if (isset($_POST['updateprofile'])) {
         } else {
             echo '<script> alert("Unable to Update Profile"); </script> ';
         }
-
     }
-
-
 }
 ?>
 </body>

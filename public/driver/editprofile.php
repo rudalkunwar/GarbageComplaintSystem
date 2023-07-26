@@ -39,10 +39,10 @@
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
                             Profile Picture
                         </label>
-                        <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="file" name="photo" id="uploadfile">
                         <div class="w-full h-1/2 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none">
                             <img src="<?php echo $data['driver_picture'] ?>" alt="">
                         </div>
+                        <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="file" name="photo" id="uploadfile">
                     </div>
                     <div class="mb-6 text-center">
                         <input type="submit" value="Update Profile" class="btn w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700" name="updateprofile" onclick="return confirm('Are You Sure To Edit Profile ?')">
@@ -61,7 +61,7 @@ if (isset($_POST['updateprofile'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
-        
+
         $filename = $_FILES["photo"]["name"];
         $tempname = $_FILES["photo"]["tmp_name"];
         $folder = "profilepic/" . $filename;
