@@ -77,6 +77,25 @@ if (isset($_POST['updatepass'])) {
             $result = mysqli_query($con, $qry);
             if ($result) {
                 echo '<script> alert("Password Updated Sucessfully,Session Expired!!!"); </script> ';
+
+                $to = $useremail;
+                $subject = "Password Changed - Account Security Notification";
+
+                $message = "Dear " . $user . ",\n\n";
+                $message .= "This is to inform you that your account password has been successfully changed.\n";
+                $message .= "Best regards,\n";
+                $message .= "The Garbage Complaint System Team";
+
+                $headers = "From: noreply@garbagecomplaintsystem.com\r\n";
+                $headers .= "Reply-To: support@garbagecomplaintsystem.com\r\n";
+                $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+                if (mail($to, $subject, $message, $headers)) {
+                    echo '<script> alert("Password changed email sent successfully."); </script> ';
+                } else {
+                    echo '<script> alert("Failed to send the password changed email."); </script> ';
+
+                }
                 session_unset();
                 session_destroy();
                 echo '<script>window.location.href = "ulogin.php";</script>';

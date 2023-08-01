@@ -53,6 +53,9 @@ if (isset($_POST['update'])) {
         $qry3  = "UPDATE drivers set driver_status = 'Assigned' WHERE driver_name ='$assigned_driver'";
         $qry4  = "UPDATE garbagebins set bin_status = 'On Collection' WHERE bin_id = $binId";
         if (mysqli_query($con, $qry1) &&  mysqli_query($con, $qry2) && mysqli_query($con, $qry3) &&   mysqli_query($con, $qry4)) {
+
+            echo '<script>alert("Complain Accepted and Updated.")</script>';
+
             //mail for user
             $to =  $useremail;
             $subject = "Complaint Reply";
@@ -70,14 +73,15 @@ if (isset($_POST['update'])) {
             $dmessage .= "You have been assigned to the bin.\n\n";
             $dmessage .= "Please check your assigned task for the more information. \n\n";
             $dmessage .= "Best regards,\n";
-            $dmessage .= "Garbage Complain System";
+            $dmessage .= "Garbage Complaint System";
             //qry 
             if (mail($to, $subject, $message, $header) && mail($dto, $dsubject, $dmessage, $header)) {
-                echo '<script>alert("Complain Accepted and Updated.")</script>';
-                echo '<script>window.location.href = "dashboard.php";</script>';
+                echo '<script>alert("Update Mail is sent to user and driver.")</script>';
             } else {
-                echo '<script>alert("Error Updating Complain.Please try again later.")</script>';
+                echo '<script>alert("Error sending mail.")</script>';
             }
+
+            echo '<script>window.location.href = "dashboard.php";</script>';
         }
         else{
             echo '<script>alert("Error Updating Complain.Please try again later.")</script>';

@@ -138,7 +138,7 @@ if (isset($_POST['submit'])) {
     $message .= "Thank you for your feedback.\n\n";
     $message .= "$msg \n\n";
     $message .= "Best regards,\n";
-    $message .= "Garbage Complain System";
+    $message .= "Garbage Complaint System";
 
 
     //qry 

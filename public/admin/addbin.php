@@ -7,6 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add bins</title>
     <link rel="stylesheet" href="../style.css">
+    <script>
+        function validate() {
+            var binId = document.forms["binForm"]["binid"].value;
+            var capacity = document.forms["binForm"]["capacity"].value;
+            var location = document.forms["binForm"]["location"].value;
+
+            // Check if any field is empty
+            if (binId === '' || capacity === '' || location === '') {
+                alert("Please fill in all the fields.");
+                return false;
+            }
+
+            // Check if Bin Id is an integer
+            if (!Number.isInteger(Number(binId))) {
+                alert("Bin Id must be an integer.");
+                return false;
+            }
+            return true; 
+        }
+    </script>
 </head>
 
 <body>
@@ -16,7 +36,7 @@
             <div class="flex justify-center">
                 <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
                     <h3 class="pt-4 text-2xl text-center ">Add New Bin</h3>
-                    <form class="px-8 pt-2 pb-8 mb-4 bg-white rounded" method="post" action="">
+                    <form class="px-8 pt-2 pb-8 mb-4 bg-white rounded" method="post" action="" name="binForm" onsubmit="return validate()">
                         <div class="mb-4">
                             <label class="block mb-2 text-sm font-bold text-gray-700" for="binid">
                                 Bin Id

@@ -8,7 +8,49 @@
   <title>User Register</title>
   <link rel="stylesheet" href="../style.css">
   <script src="https://kit.fontawesome.com/62f9066fa7.js" crossorigin="anonymous"></script>
+  <script>
+        function validate() {
+            var name = document.forms["form"]["name"].value;
+            var email = document.forms["form"]["email"].value;
+            var address = document.forms["form"]["address"].value;
+            var contact = document.forms["form"]["contact"].value;
+            var password = document.forms["form"]["password"].value;
+            var cpassword = document.forms["form"]["cpassword"].value;
 
+            // Check if any field is empty
+            if (name === '' || email === '' || address === '' || contact === '' || password === '' || cpassword === '') {
+                alert("Please fill in all the fields.");
+                return false;
+            }
+
+            // Check if the email is valid
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Check if the contact number is valid (using a simple pattern)
+            var contactRegex = /^\d{10}$/; // Assumes a 10-digit phone number
+            if (!contactRegex.test(contact)) {
+                alert("Please enter a valid 10-digit contact number.");
+                return false;
+            }
+
+            // Check if the password match the required length
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
+
+            // Check if the password and confirm password match
+            if (password !== cpassword) {
+                alert("Password and Confirm Password do not match.");
+                return false;
+            }
+            return true; 
+        }
+    </script>
 </head>
 
 <body class="backdrop-blur-sm bg-cover" style="background-image: url('regback.jpg');">
@@ -49,17 +91,6 @@
 </body>
 
 </html>
-<script>
-  function validate() {
-    var pass = document.forms['form']['password'].value;
-    var cpass = document.forms['form']['cpassword'].value;
-
-    if (pass != cpass) {
-      alert('password doesnot match');
-      return false;
-    }
-  }
-</script>
 <?php
 if (isset($_POST['register'])) {
   $con = mysqli_connect("localhost", "root", "", "project_gcs");

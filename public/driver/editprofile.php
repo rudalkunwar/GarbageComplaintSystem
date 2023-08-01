@@ -7,6 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
     <link rel="stylesheet" href="../style.css">
+    <script>
+        function validate() {
+            var name = document.forms["form"]["name"].value;
+            var email = document.forms["form"]["email"].value;
+            var photo = document.forms["form"]["photo"].value;
+
+            // Check if Name is not empty
+            if (name === '') {
+                alert("Please enter your name.");
+                return false;
+            }
+
+            // Check if Email is valid
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Check if Photo is selected
+            if (photo === '') {
+                alert("Please select a profile picture.");
+                return false;
+            }
+
+            return true; // Form will be submitted if all validations pass
+        }
+    </script>
 </head>
 
 <body>

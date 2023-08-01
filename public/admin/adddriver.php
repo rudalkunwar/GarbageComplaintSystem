@@ -7,6 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../style.css">
+    <script>
+        function validate() {
+            var driverId = document.forms["driverForm"]["driverid"].value;
+            var driverName = document.forms["driverForm"]["drivername"].value;
+            var email = document.forms["driverForm"]["email"].value;
+            var address = document.forms["driverForm"]["address"].value;
+            var password = document.forms["driverForm"]["password"].value;
+
+            // Check if any field is empty
+            if (driverId === '' || driverName === '' || email === '' || address === '' || password === '') {
+                alert("Please fill in all the fields.");
+                return false;
+            }
+
+            // Check if Driver ID is an integer
+            if (!Number.isInteger(Number(driverId))) {
+                alert("Driver ID must be an integer.");
+                return false;
+            }
+
+            // Check if Password is at least 8 characters long
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
+
+            return true; // Form will be submitted if all validations pass
+        }
+    </script>
 </head>
 
 <body>
@@ -16,7 +45,7 @@
         <div class="flex justify-center">
             <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
             <h3 class="pt-4 text-2xl text-center">Add New Driver</h3>
-            <form method="POST" action="" class="shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full flex flex-wrap">
+            <form name="driverForm" method="POST" action="" class="shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full flex flex-wrap" onsubmit="return validate();">
                     <div class="mb-4 w-full md:w-full pr-1">
                         <label for="driverid" class="block text-gray-700 text-sm font-bold mb-2">
                             Driver ID

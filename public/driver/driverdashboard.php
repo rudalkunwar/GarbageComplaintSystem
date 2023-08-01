@@ -22,7 +22,7 @@
                     <h2 class="text-lg font-semibold mb-4">Pending Pickups</h2>
                     <div class="flex justify-between">
                         <div class="text-gray-500">Total</div>
-                        <div class="text-2xl font-bold">10</div>
+                        <div class="text-2xl font-bold">1</div>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     <h2 class="text-lg font-semibold mb-4">Collected Pickups</h2>
                     <div class="flex justify-between">
                         <div class="text-gray-500">Total</div>
-                        <div class="text-2xl font-bold">50</div>
+                        <div class="text-2xl font-bold">0</div>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     <h2 class="text-lg font-semibold mb-4">Cancelled Pickups</h2>
                     <div class="flex justify-between">
                         <div class="text-gray-500">Total</div>
-                        <div class="text-2xl font-bold">5</div>
+                        <div class="text-2xl font-bold">0</div>
                     </div>
                 </div>
             </div>
