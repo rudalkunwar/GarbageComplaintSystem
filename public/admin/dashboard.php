@@ -31,7 +31,7 @@
 			</div>
 			<div class="flex flex-wrap -mx-4">
 				<!-- Card for pending pickups -->
-				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='usercomplain.php'">
 					<div class="bg-white rounded-lg shadow-md p-6 hover:bg-red-100">
 						<h2 class="text-lg font-semibold mb-4">Complaints</h2>
 						<div class="flex justify-between">
@@ -41,7 +41,7 @@
 					</div>
 				</div>
 
-				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='complainhistory.php'">
 					<div class="bg-white rounded-lg shadow-md p-6 hover:bg-gray-200">
 						<h2 class="text-lg font-semibold mb-4">Cancelled Complaints</h2>
 						<div class="flex justify-between">
@@ -50,7 +50,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='complainhistory.php'">
 					<div class="bg-white rounded-lg shadow-md p-6 hover:bg-green-100">
 						<h2 class="text-lg font-semibold mb-4">Collected Bins</h2>
 						<div class="flex justify-between">
