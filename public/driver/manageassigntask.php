@@ -282,9 +282,11 @@
                 mysqli_query($con, $rsql);
 
 
-                $assinsql = "UPDATE assigned_bin set assign_status = 'none' where assign_id =$assign ";
+                $assinsql = "UPDATE assigned_bin set assign_status = 'Rejected' where assign_id =$assign ";
                 mysqli_query($con, $assinsql);
 
+                $rqry2  = "UPDATE garbagebins set bin_status = 'use' WHERE bin_id = $binId";
+                mysqli_query($con, $rqry2);
 
 
                 echo '<script>alert("Collection Rejected")</script>';
