@@ -31,9 +31,11 @@ if (isset($_POST['update'])) {
     $driveremail =  $row3['email'];
 
     $qry1 = "UPDATE complaints set complain_status='$complainstatus' WHERE complain_id = $complain ";
+    $qryreject  = "UPDATE garbagebins set bin_status = 'use' WHERE bin_id = $binId";
+
     if (strcmp($complainstatus, 'Rejected') == 0) {
 
-        if (mysqli_query($con, $qry1)) {
+        if (mysqli_query($con, $qry1) &&  mysqli_query($con, $qryreject)) {
             $to =  $useremail;
             $subject = "Complaint Reply";
             $header = "From:admin@gcs.com";
@@ -82,8 +84,7 @@ if (isset($_POST['update'])) {
             }
 
             echo '<script>window.location.href = "dashboard.php";</script>';
-        }
-        else{
+        } else {
             echo '<script>alert("Error Updating Complain.Please try again later.")</script>';
         }
     }

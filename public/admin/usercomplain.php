@@ -45,7 +45,7 @@
                                             Report Picture
                                         </th>
                                         <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                            User ID
+                                            User Name
                                         </th>
                                         <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                             Bin ID
@@ -90,7 +90,13 @@
                                             </td>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    <?php echo $data['user_id']; ?>
+                                                    <?php
+                                                    $useridd=$data['user_id']; 
+                                                    $qqry = "SELECT user_name FROM users WHERE user_id = $useridd";
+                                                    $ress = mysqli_query($con,$qqry);
+                                                    $dat = mysqli_fetch_assoc($ress);
+                                                     echo $dat['user_name'];
+                                                    ?>
 
                                                 </p>
                                             </td>

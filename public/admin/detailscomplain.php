@@ -36,17 +36,16 @@
         $binres = mysqli_query($con, $binqry);
         $bindata = mysqli_fetch_assoc($binres);
         ?>
-
-        <div class="h-full w-full p-5 ml-14 md:ml-64">
-            <button id="downloadButton" onclick="CreatePDFfromHTML();" class="absolute z-10 top-8 right-5 bg-gray-800 text-white rounded-lg p-2 cursor-pointer">
-                <i class="fas fa-download mr-2"></i> Download
-            </button>
-            <div class="w-full p-5">
-                <h2 class="text-3xl border-b-2 border-blue-600">Complain Details</h2>
+        <button id="downloadButton" onclick="CreatePDFfromHTML();" class="absolute z-10 top-8 right-5 bg-gray-800 text-white rounded-lg p-2 cursor-pointer">
+            <i class="fas fa-download mr-2"></i> Download
+        </button>
+        <div class="h-full w-full p-5 ml-14 md:ml-64 html-content ">
+            <div class="w-full p-5 border-b-2 border-blue-600">
+                <h2 class="text-3xl ">Complain Details</h2>
             </div>
             <div class="container max-w-full px-4 mx-auto sm:px-8">
                 <!-- Repeat the following code block for each data item -->
-                <div class="bg-white rounded-lg shadow mb-4 html-content">
+                <div class="bg-white rounded-lg shadow mb-4 ">
                     <div class="p-4">
                         <table id="mytbl1" class="min-w-full">
                             <tbody>
