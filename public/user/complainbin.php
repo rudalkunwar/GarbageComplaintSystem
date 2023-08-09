@@ -79,7 +79,8 @@ if (isset($_POST['submit'])) {
     $binstatus = $row['bin_status'];
     if (strcmp($binstatus, 'use') == 0) {
         $qry2 = "INSERT INTO complaints (user_id, bin_id, description, bin_picture, timestamp) VALUES ($userid, $binid, '$comp_msg', '$folder', CURRENT_TIMESTAMP)";
-        if (mysqli_query($con, $qry2)) {
+        $notify1 = "INSERT INTO notification (from_id,to_id,message) VALUES ($userid,1,'New Complain is here.')";
+        if (mysqli_query($con, $qry2) && mysqli_query($con, $notify1)) {
             $qry2 = "UPDATE garbagebins set bin_status = 'Complained' WHERE bin_id = $binid ";
             mysqli_query($con, $qry2);
 
@@ -93,7 +94,7 @@ if (isset($_POST['submit'])) {
             $message .= "Wating for your Reply.\n\n";
             $message .= "Best regards,\n";
             $message .= "$user";
-            
+
             if (mail($to, $subject, $message, $header)) {
                 echo '<script> alert("Bin Complain Sucessfully"); </script> ';
                 echo '<script>window.location.href = "userdashboard.php";</script>';

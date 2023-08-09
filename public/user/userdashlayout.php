@@ -45,6 +45,29 @@ $useremail = $data['email'];
                         <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
                     </a>
                 </li>
+                <?php
+                $count = "SELECT * FROM notification WHERE to_id =$userid AND status=0";
+                $res = mysqli_query($con, $count);
+                $c = mysqli_num_rows($res);
+                ?>
+
+                <li>
+                    <a href="notification.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
+                        <?php if ($c != 0) { ?>
+                            <div class="absolute left-0 top-0  bg-red-500 rounded-full">
+                                <span class="text-sm text-white p-2"><?php echo $c; ?></span>
+                            </div>
+                        <?php } ?>
+                        <span class="inline-flex justify-center items-center ml-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bell" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"></path>
+                                <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
+                            </svg>
+                        </span>
+                        <span class="ml-2 text-sm tracking-wide truncate">Notifications</span>
+                    </a>
+                </li>
                 <li>
                     <a href="../user/ubins.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                         <span class="inline-flex justify-center items-center ml-4">
@@ -64,6 +87,16 @@ $useremail = $data['email'];
                             </svg>
                         </span>
                         <span class="ml-2 text-sm tracking-wide truncate">View Compalins</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="completedcomplain.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
+                        <span class="inline-flex justify-center items-center ml-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                            </svg>
+                        </span>
+                        <span class="ml-2 text-sm tracking-wide truncate">Compalin History</span>
                     </a>
                 </li>
                 <li class="px-5 hidden md:block">
@@ -106,8 +139,5 @@ $useremail = $data['email'];
                     </a>
                 </li>
             </ul>
-            <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">
-                Copyright @2023
-            </p>
         </div>
     </div>

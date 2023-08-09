@@ -25,14 +25,17 @@ if (isset($_POST['update'])) {
 
 
     //for driver email
-    $driversql = "SELECT email FROM drivers WHERE driver_name ='$assigned_driver'";
+    $driversql = "SELECT driver_id,email FROM drivers WHERE driver_name ='$assigned_driver'";
     $dresult = mysqli_query($con, $driversql);
     $row3 = mysqli_fetch_assoc($dresult);
     $driveremail =  $row3['email'];
+    $driverid = $row3['driver_id'];
 
     $qry1 = "UPDATE complaints set complain_status='$complainstatus' WHERE complain_id = $complain ";
     $qryreject  = "UPDATE garbagebins set bin_status = 'use' WHERE bin_id = $binId";
-
+    $notify1 = "INSERT INTO notification (from_id,to_id,message) VALUES (1,$userId,'Your Complain Status is here.')";
+    $notify2 = "INSERT INTO notification (from_id,to_id,message) VALUES (1,$driverid,'Your Assigned Work is here.')";
+    mysqli_query($con,$notify1);
     if (strcmp($complainstatus, 'Rejected') == 0) {
 
         if (mysqli_query($con, $qry1) &&  mysqli_query($con, $qryreject)) {
@@ -54,7 +57,7 @@ if (isset($_POST['update'])) {
         $qry2 = "INSERT INTO assigned_bin(complain_id,assigned_driver,assignment_date,assign_des) VALUES ($complain,'$assigned_driver','$assigned_date','$assign_desc')";
         $qry3  = "UPDATE drivers set driver_status = 'Assigned' WHERE driver_name ='$assigned_driver'";
         $qry4  = "UPDATE garbagebins set bin_status = 'On Collection' WHERE bin_id = $binId";
-        if (mysqli_query($con, $qry1) &&  mysqli_query($con, $qry2) && mysqli_query($con, $qry3) &&   mysqli_query($con, $qry4)) {
+        if (mysqli_query($con, $qry1) &&  mysqli_query($con, $qry2) && mysqli_query($con, $qry3) &&  mysqli_query($con, $qry4) && mysqli_query($con,$notify2)) {
 
             echo '<script>alert("Complain Accepted and Updated.")</script>';
 

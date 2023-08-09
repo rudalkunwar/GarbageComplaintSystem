@@ -23,7 +23,7 @@
     $res3 = mysqli_query($con, $qry3);
     $row3 = mysqli_num_rows($res3);
 
-    $qry4 = "SELECT * FROM complaints WHERE complain_status = 'Rejected' AND user_id = $userid ";
+    $qry4 = "SELECT * FROM complaints WHERE complain_status = 'Rejected' OR complain_status='Rejected by Driver.' AND user_id = $userid ";
     $res4 = mysqli_query($con, $qry4);
     $row4 = mysqli_num_rows($res4);
     ?>
@@ -55,7 +55,7 @@
             </div>
 
             <!-- Card for cancelled pickups -->
-            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='complainreport.php'">
+            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='completedcomplain.php'">
                 <div class="bg-white rounded-lg shadow-md p-6 hover:bg-gray-200">
                     <h2 class="text-lg font-semibold mb-4">Completed Request</h2>
                     <div class="flex justify-between">
@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='complainreport.php'">
+            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='completedcomplain.php'">
                 <div class="bg-white rounded-lg shadow-md p-6 hover:bg-gray-200">
                     <h2 class="text-lg font-semibold mb-4">Rejected Request</h2>
                     <div class="flex justify-between">

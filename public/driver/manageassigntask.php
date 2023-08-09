@@ -251,7 +251,9 @@
         $folder = "completedtask/" . $filename;
         move_uploaded_file($tempname, $folder);
 
-
+        //for notification
+        $notify1 = "INSERT INTO notification (from_id,to_id,message) VALUES ($driverid,1,'Your Assigned Work Status is here.')";
+        $notify2 = "INSERT INTO notification (from_id,to_id,message) VALUES ($driverid,$uid,'Your Comlain Report is here.[By Driver]')";
 
         //for bin id
         $binsql = "SELECT bin_id FROM complaints WHERE complain_id = $complain";
@@ -269,6 +271,8 @@
         $qryna = "INSERT INTO collections (complain_id,assign_id,collection_des,collection_status) 
         VALUES($complain,$assign,'$drivermsg','Rejected by Driver')";
 
+        mysqli_query($con, $notify1);
+        mysqli_query($con, $notify2);
         if (strcmp($collectionstatus, 'Rejected') == 0) {
             if (mysqli_query($con, $qryna)) {
 

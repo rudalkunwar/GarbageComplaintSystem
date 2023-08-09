@@ -45,6 +45,29 @@ $data = mysqli_fetch_assoc($result);
                         <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
                     </a>
                 </li>
+                <?php
+                $count = "SELECT * FROM notification WHERE to_id =$driverid AND status=0";
+                $res = mysqli_query($con, $count);
+                $c = mysqli_num_rows($res);
+                ?>
+
+                <li>
+                    <a href="notification.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
+                        <?php if ($c != 0) { ?>
+                            <div class="absolute left-0 top-0  bg-red-500 rounded-full">
+                                <span class="text-sm text-white p-2"><?php echo $c; ?></span>
+                            </div>
+                        <?php } ?>
+                        <span class="inline-flex justify-center items-center ml-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bell" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"></path>
+                                <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
+                            </svg>
+                        </span>
+                        <span class="ml-2 text-sm tracking-wide truncate">Notifications</span>
+                    </a>
+                </li>
                 <li>
                     <a href="assignedtask.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6">
                         <span class="inline-flex justify-center items-center ml-4">

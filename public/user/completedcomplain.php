@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +25,7 @@
         }
         ?>
     <?php
-    $joinqry = "SELECT * FROM complaints C JOIN garbagebins b ON c.bin_id = b.bin_id WHERE user_id = $userid AND complain_status = 'In progress,Driver Assigned.' OR complain_status='new' ";
+    $joinqry = "SELECT * FROM complaints C JOIN garbagebins b ON c.bin_id = b.bin_id WHERE user_id = $userid AND complain_status <> 'In progress,Driver Assigned.'";
     $r2 = mysqli_query($con, $joinqry);
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">

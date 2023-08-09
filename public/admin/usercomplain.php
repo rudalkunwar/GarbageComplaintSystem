@@ -15,6 +15,15 @@
     <div class="flex">
         <?php include('dashlayout.php') ?>
         <?php
+        if (isset($_GET['nid'])) {
+            $nid = $_GET['nid'];
+            $nqry = "UPDATE notification set status=1 WHERE id=$nid";
+            mysqli_query($con, $nqry);
+        }
+        ?>
+
+
+        <?php
         $qry2 = " SELECT * FROM complaints C JOIN garbagebins b ON c.bin_id = b.bin_id WHERE complain_status='new'";
         $qry3  = "SELECT driver_name FROM drivers WHERE driver_status = 'Free'";
         $result = mysqli_query($con, $qry2);
@@ -85,17 +94,17 @@
                                             </td>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap w-full h-16 pb-[75%] relative">
-                                                    <img src="../user/<?php echo $data['bin_picture'] ;?>" class="absolute inset-0 w-full h-full object-cover" alt="">
+                                                    <img src="../user/<?php echo $data['bin_picture']; ?>" class="absolute inset-0 w-full h-full object-cover" alt="">
                                                 </p>
                                             </td>
                                             <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <p class="text-gray-900 whitespace-no-wrap">
                                                     <?php
-                                                    $useridd=$data['user_id']; 
+                                                    $useridd = $data['user_id'];
                                                     $qqry = "SELECT user_name FROM users WHERE user_id = $useridd";
-                                                    $ress = mysqli_query($con,$qqry);
+                                                    $ress = mysqli_query($con, $qqry);
                                                     $dat = mysqli_fetch_assoc($ress);
-                                                     echo $dat['user_name'];
+                                                    echo $dat['user_name'];
                                                     ?>
 
                                                 </p>
@@ -131,7 +140,8 @@
                                                 </p>
                                             </td>
                                         </tr>
-                                    <?php  $d++;} ?>
+                                    <?php $d++;
+                                    } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -217,7 +227,6 @@
 
             return true;
         }
-
 
         function openPopupForm(x) {
             document.getElementById('hiddenid').value = x;

@@ -18,6 +18,13 @@
 <body>
     <?php include('driverdashlayout.php') ?>
     <?php
+    if (isset($_GET['nid'])) {
+        $nid = $_GET['nid'];
+        $nqry = "UPDATE notification set status=1 WHERE id=$nid";
+        mysqli_query($con, $nqry);
+    }
+    ?>
+    <?php
 
     // $dqry = "SELECT * FROM assigned_bin WHERE assigned_driver = '$driver'";
     $dqry = "SELECT * FROM assigned_bin WHERE assigned_driver = '$driver' AND assign_status='none' ";
@@ -59,14 +66,14 @@
                                 while ($data = mysqli_fetch_assoc($dres)) {
                                 ?>
                                     <tr>
-                                    <td class="px-5 py-5 text-sm border-b border-gray-200">
+                                        <td class="px-5 py-5 text-sm border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 <?php echo $a ?>
                                             </p>
                                             </p>
                                         </td>
-                                        
+
                                         <td class="px-5 py-5 text-sm border-b border-gray-200">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                             <p class="text-gray-900 whitespace-no-wrap">
