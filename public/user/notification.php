@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Notifications</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -18,7 +18,7 @@
             <div class="bg-yellow-300 text-xl px-2"><span>Recent Notifications</span></div>
             <?php
             // Query to retrieve notifications
-            $query = "SELECT * FROM notification WHERE to_id=1 AND status=0";
+            $query = "SELECT * FROM notification WHERE to_id=$userid AND status=0";
             $result = mysqli_query($con, $query);
 
             if ($result->num_rows > 0) {
@@ -55,7 +55,7 @@
             <div class="bg-blue-300 text-xl px-2"><span>Past Notifications</span></div>
             <?php
             // Query to retrieve notifications
-            $query = "SELECT * FROM notification WHERE to_id=1 AND status=1";
+            $query = "SELECT * FROM notification WHERE to_id=$userid AND status=1";
             $result = mysqli_query($con, $query);
 
             if ($result->num_rows > 0) {
@@ -74,7 +74,7 @@
                                     <?php } else { ?>
                                         <a href="completedcomplain.php?nid=<?php echo $row['id']; ?>" class="px-2 my-4 mx-2 rounded bg-green-400 ">Visit.</a>
                                     <?php } ?>
-                                    <a href="deletenotification.php" class="px-2 my-4 mx-2 rounded bg-red-500 text-white ">Delete</a>
+                                    <a href="deletenotification.php?nid=<?php echo $row['id']; ?>" class="px-2 my-4 mx-2 rounded bg-red-500 text-white ">Delete</a>
                                 </div>
                             </div>
                         </div>

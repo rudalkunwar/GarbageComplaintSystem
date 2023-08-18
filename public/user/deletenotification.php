@@ -6,6 +6,9 @@ if (isset($_GET['nid'])) {
         die("Error connection");
     }
     $nqry = "DELETE FROM notification WHERE id = $nid";
-    mysqli_query($con, $nqry);
+    if(mysqli_query($con, $nqry)){
+        echo '<script>alert("Notification Deleted Sucessfully");</script>';
+        header('location:notification.php');
+    }
 }
 ?>

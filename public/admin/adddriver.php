@@ -105,6 +105,8 @@ if (isset($_POST['adddriver'])) {
 
         if (mysqli_query($con, $qry)) {
             $_SESSION['message'] = "Driver Added successfully!";
+            
+            echo '<script>window.location.href = "driver.php";</script>';
         } else {
             echo '<script>alert("An error occurred while adding the bin.")</script>';
         }

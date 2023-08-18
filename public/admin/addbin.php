@@ -24,7 +24,7 @@
                 alert("Bin Id must be an integer.");
                 return false;
             }
-            return true; 
+            return true;
         }
     </script>
 </head>
@@ -91,6 +91,7 @@ if (isset($_POST['addbin'])) {
 
         if (mysqli_query($con, $qry)) {
             $_SESSION['message'] = "Bin Added successfully!";
+            echo '<script>window.location.href = "bins.php";</script>';
         } else {
             echo '<script>alert("An error occurred while adding the bin.")</script>';
         }

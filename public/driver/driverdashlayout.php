@@ -129,8 +129,5 @@ $data = mysqli_fetch_assoc($result);
                     </a>
                 </li>
             </ul>
-            <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">
-                Copyright @2023
-            </p>
         </div>
     </div>

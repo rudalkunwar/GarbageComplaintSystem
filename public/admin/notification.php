@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Notifications</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="ml-4 flex">
                                     <h3 class="text-xl"><?php echo $row['message']; ?></h3>
-                                    <a href="usercomplain.php?nid=<?php echo $row['id']; ?>" class="block px-2  mx-2 rounded bg-green-400 ">Visit.</a>
+                                    <a href="usercomplain.php?nid=<?php echo $row['id']; ?>" class="block px-2 mx-2 rounded bg-green-400 ">Visit.</a>
                                 </div>
                             </div>
                         </div>
@@ -63,8 +63,8 @@
                                 </div>
                                 <div class="ml-4 flex">
                                     <h3 class="text-xl"><?php echo $row['message']; ?></h3>
-                                    <a href="usercomplain.php?nid=<?php echo $row['id']; ?>" class="block px-2  mx-2 rounded bg-green-400 ">Visit.</a>
-                                    <a href="deletenotification.php" class="px-2 my-4 mx-2 rounded bg-red-500 text-white ">Delete</a>
+                                    <a href="usercomplain.php?nid=<?php echo $row['id']; ?>" class="block px-2 py-2 my-4 mx-2 rounded bg-green-400 ">Visit.</a>
+                                    <a href="deletenotification.php?nid=<?php echo $row['id']; ?>" class="px-2 my-4 mx-2 rounded bg-red-500 text-white ">Delete</a>
                                 </div>
                             </div>
                         </div>
