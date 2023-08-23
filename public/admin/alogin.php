@@ -44,7 +44,7 @@ if (isset($_SESSION['admin'])) {
                     </div>
 
                     <div class="text-center">
-                        <a class="text-blue-500" href="#">Forgot your password?</a>
+                        <a class="text-blue-500" href="../index.php">Home</a>
                     </div>
                 </form>
             </div>

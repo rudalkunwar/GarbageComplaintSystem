@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,14 +17,20 @@
 <body>
     <?php include('userdashlayout.php') ?>
     <?php
-        if (isset($_GET['nid'])) {
-            $nid = $_GET['nid'];
-            $nqry = "UPDATE notification set status=1 WHERE id=$nid";
-            mysqli_query($con, $nqry);
-        }
-        ?>
+    if (isset($_GET['nid'])) {
+        $nid = $_GET['nid'];
+        $nqry = "UPDATE notification set status=1 WHERE id=$nid";
+        mysqli_query($con, $nqry);
+    }
+    ?>
     <?php
-    $joinqry = "SELECT * FROM complaints C JOIN garbagebins b ON c.bin_id = b.bin_id WHERE user_id = $userid AND complain_status = 'Completed'";
+    // $asqry = "SELECT * FROM assigned_bin a RIGHT JOIN complaints c ON a.complain_id = c.complain_id WHERE c.complain_status ='Rejected' OR c.complain_status ='Rejected by Driver.'";
+
+    $joinqry = "SELECT DISTINCT * FROM complaints C
+    JOIN garbagebins b ON c.bin_id = b.bin_id
+    WHERE c.user_id = $userid
+    AND (c.complain_status ='Rejected' OR c.complain_status ='Rejected by Driver.')
+    ";
     $r2 = mysqli_query($con, $joinqry);
     ?>
     <div class="h-full w-full p-5 ml-14 md:ml-64 ">

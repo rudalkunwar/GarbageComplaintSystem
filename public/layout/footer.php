@@ -18,10 +18,10 @@
     <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
       <h3 class="font-bold text-xl mb-4">Follow Us</h3>
       <ul class="list-reset flex justify-start">
-        <li><a href="#" class="text-gray-500 hover:text-blue-600 px-3"><i class="fab fa-facebook-f text-2xl"></i></a></li>
-        <li><a href="#" class="text-gray-500 hover:text-blue-600 px-3"><i class="fab fa-twitter text-2xl"></i></a></li>
-        <li><a href="#" class="text-gray-500 hover:text-blue-600 px-3"><i class="fab fa-instagram text-2xl"></i></a></li>
-        <li><a href="#" class="text-gray-500 hover:text-blue-600 px-3"><i class="fab fa-linkedin-in text-2xl"></i></a></li>
+        <li><a href="https://www.facebook.com/" class="text-gray-500 hover:text-blue-600 px-3"><i class="fab fa-facebook-f text-2xl"></i></a></li>
+        <li><a href="https://www.x.com/" class="text-gray-500 hover:text-blue-600 px-3"><i class="fa-brands fa-x-twitter text-2xl"></i></a></li>
+        <li><a href="https://www.instagram.com/" class="text-gray-500 hover:text-blue-600 px-3"><i class="fab fa-instagram text-2xl"></i></a></li>
+        <li><a href="https://www.linkedin.com/" class="text-gray-500 hover:text-blue-600 px-3"><i class="fab fa-linkedin-in text-2xl"></i></a></li>
       </ul>
     </div>
   </div>

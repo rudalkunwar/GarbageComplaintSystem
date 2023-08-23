@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='completedcomplain.php'">
+            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='cancelledcomplain.php'">
                 <div class="bg-white rounded-lg shadow-md p-6 hover:bg-gray-200">
                     <h2 class="text-lg font-semibold mb-4">Rejected Request</h2>
                     <div class="flex justify-between">

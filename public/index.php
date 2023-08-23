@@ -118,7 +118,7 @@
                             Welcome to the Garbage Complaint System! We are committed to creating a cleaner and more sustainable environment by addressing the issue of garbage disposal. Our platform serves as a dedicated space for individuals and communities to voice their concerns regarding waste management and work towards effective solutions.
                         </p>
                         <p class="text-lg leading-7 text-gray-700 mb-4">
-                            We provide a wide range of services, including residential, commercial, and industrial waste collection, recycling, and composting. Our team of trained professionals is dedicated to delivering excellent customer service and ensuring that all waste materials are properly handled and disposed of.
+                            We provide a wide range of services, including residential waste collection, recycling, and composting. Our team of trained professionals is dedicated to delivering excellent customer service and ensuring that all waste materials are properly handled and disposed of.
                         </p>
                         <p class="text-lg leading-7 text-gray-700 mb-4">
                             At Garbage Complaint System, we are committed to sustainability and reducing our carbon footprint. We continuously seek ways to improve our operations and minimize our impact on the environment.
