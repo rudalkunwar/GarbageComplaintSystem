@@ -15,7 +15,7 @@
     <div class="flex">
         <?php include('dashlayout.php') ?>
         <?php
-        $asqry = "SELECT * FROM assigned_bin a RIGHT JOIN complaints c ON a.complain_id = c.complain_id WHERE c.complain_status <> 'new'";
+        $asqry = "SELECT * FROM assigned_bin a RIGHT JOIN complaints c ON a.complain_id = c.complain_id WHERE c.complain_status ='In progress,Driver Assigned.'";
         $res = mysqli_query($con, $asqry);
         ?>
         <div class="h-full w-full p-5 ml-14 md:ml-64">
@@ -23,13 +23,13 @@
                 <h2 class="text-3xl border-b-2 border-blue-600">Complain Histories</h2>
             </div>
             <div class="container max-w-full px-4 mx-auto sm:px-8">
-                <div class="py-5">
+                <div class="py-8 ">
                     <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
                         <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
                             <table class="min-w-full leading-normal" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                    <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                             SN
                                         </th>
                                         <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
@@ -54,7 +54,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $d = 1;
+                                     $d=1;
                                     while ($data = mysqli_fetch_assoc($res)) {
                                     ?>
                                         <tr>
@@ -95,16 +95,14 @@
                                                 </p>
                                             </td>
                                             <td class="px-5 py-5 text-sm border-b border-gray-200">
-                                                <p class="flex text-gray-900 whitespace-no-wrap">
+                                                <p class="text-gray-900 whitespace-no-wrap">
 
 
                                                     <a href="detailscomplain.php?cid=<?php echo $data['complain_id'] ?>" class="bg-green-400 rounded-md hover:bg-green-500 ease text-white font-bold py-3 px-6">View</a>
-                                                    <a onclick="return confirm('Are you sure to delete this Complain')" href="deletecomplain.php?cid=<?php echo $data['complain_id'] ?>" class="mx-2 bg-red-500 rounded-md hover:bg-red-500 ease text-white font-bold py-3 px-6">Delete</a>
                                                 </p>
                                             </td>
                                         </tr>
-                                    <?php $d++;
-                                    } ?>
+                                    <?php  $d++; } ?>
                                 </tbody>
                             </table>
                         </div>

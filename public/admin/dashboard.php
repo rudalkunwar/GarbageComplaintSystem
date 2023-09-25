@@ -14,16 +14,21 @@
 		<?php include('dashlayout.php');
 
 		$qry1 = "SELECT * FROM collections WHERE collection_status = 'Completed'";
-		$res1 = mysqli_query($con,$qry1);
+		$res1 = mysqli_query($con, $qry1);
 		$row1 = mysqli_num_rows($res1);
 
 		$qry2 = "SELECT * FROM complaints WHERE complain_status = 'Rejected'";
-		$res2 = mysqli_query($con,$qry2);
+		$res2 = mysqli_query($con, $qry2);
 		$row2 = mysqli_num_rows($res2);
 
 		$qry3 = "SELECT * FROM complaints WHERE complain_status = 'new'";
-		$res3 = mysqli_query($con,$qry3);
+		$res3 = mysqli_query($con, $qry3);
 		$row3 = mysqli_num_rows($res3);
+
+		$qry4 = "SELECT * FROM complaints WHERE complain_status = 'In progress,Driver Assigned.'";
+		$res4 = mysqli_query($con, $qry4);
+		$row4 = mysqli_num_rows($res4);
+	
 		?>
 		<div class="h-full w-full p-5 ml-14 md:ml-64">
 			<div class="w-full p-5">
@@ -50,6 +55,15 @@
 						</div>
 					</div>
 				</div>
+				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='pendingcomplain.php'">
+					<div class="bg-white rounded-lg shadow-md p-6 hover:bg-green-100">
+						<h2 class="text-lg font-semibold mb-4">Pending Collections</h2>
+						<div class="flex justify-between">
+							<div class="text-gray-500">Total</div>
+							<div class="text-2xl font-bold"><?php echo $row4 ?> </div>
+						</div>
+					</div>
+				</div>
 				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8" onclick="window.location.href='completedcomplain.php'">
 					<div class="bg-white rounded-lg shadow-md p-6 hover:bg-green-100">
 						<h2 class="text-lg font-semibold mb-4">Collected Bins</h2>
@@ -59,7 +73,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<?php
 				$qry = "SELECT * FROM garbagebins";
 				$result = mysqli_query($con, $qry);

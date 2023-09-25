@@ -20,46 +20,57 @@
                 <h2 class="text-3xl border-b-2 border-blue-600">Users Feedbacks</h2>
             </div>
             <div class="container mx-auto px-4 py-8">
-            <table id="myTable" class="min-w-full">
-                <thead>
-                    <tr>
-                        <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-                        <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Timestamp</th>
-                        <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                        <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                        <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
-                        <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql = "SELECT * FROM feedback WHERE status = 0";
-                    $res = mysqli_query($con, $sql);
-                    $x = 1;
-                    while ($data = mysqli_fetch_assoc($res)) {
-                        $timestamp = $data['timestamp'];
-                        $date = date('F j, Y', strtotime($timestamp));
-                    ?>
+                <table id="myTable" class="min-w-full">
+                    <thead>
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap"><?php echo $x ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap"> <?php echo $date ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap"><?php echo $data['name'] ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap"><?php echo $data['email'] ?></td>
-                            <td class="px-6 py-4 whitespace-wrap"><?php echo $data['message'] ?></td>
-                            <td><button onclick="openPopupForm(<?php echo $data['id'] ?>,'<?php echo $data['name'] ?>','<?php echo $data['message'] ?>','<?php echo $data['email'] ?>');" class="px-3 py-2 bg-sky-400 rounded-lg text-white hover:bg-blue-700">Reply</button></td>
+                            <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+                            <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Timestamp</th>
+                            <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                            <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
                         </tr>
-                    <?php $x++;
-                    } ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $sql = "SELECT * FROM feedback ORDER BY status ASC";
+                        $res = mysqli_query($con, $sql);
+                        $x = 1;
+                        while ($data = mysqli_fetch_assoc($res)) {
+                            $timestamp = $data['timestamp'];
+                            $date = date('F j, Y', strtotime($timestamp));
+                        ?>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $x ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap"> <?php echo $date ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $data['name'] ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap"><?php echo $data['email'] ?></td>
+                                <td class="px-6 py-4 whitespace-wrap"><?php echo $data['message'] ?></td>
+                                <td class="px-6 py-4 whitespace-wrap">
+                                    <?php echo ($data['status'] == 1) ? "Replied" : "Not Replied"; ?>
+                                </td>
+
+                                <td class="flex">
+                                    <button onclick="openPopupForm(<?php echo $data['id'] ?>,'<?php echo $data['name'] ?>','<?php echo $data['message'] ?>','<?php echo $data['email'] ?>','<?php echo $data['status'] ?>');" class="mx-2 px-3 py-2 bg-sky-400 rounded-lg text-white hover:bg-blue-700">Reply</button>
+                                    <a href="deletefeedback.php?id=<?php echo $data['id'] ?>">
+                                        <button onclick="return confirm('Are you sure to delete?');" class="px-3 py-2 bg-red-500 rounded-lg text-white hover:bg-red-300">Delete</button>
+                                    </a>
+                                </td>
+
+                            </tr>
+                        <?php $x++;
+                        } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
     <div id="popupForm" class="hidden">
-        <div class="fixed inset-0 z-10 flex items-center justify-center backdrop-blur-md bg-gray-600 bg-opacity-40">
+        <div class="h-96 fixed inset-0 z-10 flex items-center justify-center backdrop-blur-md bg-gray-400 bg-opacity-40">
             <div class="w-2/5 bg-white rounded-md shadow-lg h-4/5">
-                <div class="px-10 py-5 w-full ">
+                <div class="px-10 py-5 w-full h-full">
                     <div class="flex justify-between">
                         <h2 class="text-xl font-semibold mb-4">Reply to User Feedback</h2>
                         <span onclick=" closePopupForm()"> <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="default-modal">
@@ -69,7 +80,7 @@
                             </button>
                         </span>
                     </div>
-                    <div class="p-6">
+                    <div>
                         <form method="post">
                             <input type="hidden" name="fid" id="fid" value="">
                             <div class="mb-4">
@@ -82,24 +93,28 @@
                             </div>
                             <div class="mb-4">
                                 <label for="user-feedback" class="block font-medium text-gray-700 mb-2">User Feedback:</label>
-                                <textarea id="user-feedback" class="w-full border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500" rows="4" readonly></textarea>
+                                <textarea id="user-feedback" class="w-full border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500" rows="3" readonly></textarea>
                             </div>
                             <div class="mb-4">
                                 <label for="admin-reply" class="block font-medium text-gray-700 mb-2">Admin Reply:</label>
-                                <textarea id="admin-reply" name="admin-msg" class="w-full border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500" rows="4" placeholder="Enter your reply..."></textarea>
+                                <textarea id="admin-reply" name="admin-msg" class="w-full border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500" rows="3" placeholder="Enter your reply..."></textarea>
                             </div>
                             <div class="flex justify-end">
                                 <button type="submit" name="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Submit Reply</button>
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
     <script>
-        function openPopupForm(id, x, y, z) {
+        function openPopupForm(id, x, y, z, o) {
+
+            if (o == 1) {
+                alert("Already Replied");
+                return;
+            }
             document.getElementById('fid').value = id;
             document.getElementById('user-name').value = x;
             document.getElementById('user-feedback').value = y;
