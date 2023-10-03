@@ -81,6 +81,8 @@ if (isset($_POST['updateprofile'])) {
     $contact = $_POST['contact'];
 
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+
+
         $filename = $_FILES["photo"]["name"];
         $tempname = $_FILES["photo"]["tmp_name"];
         $folder = "profilepic/" . $filename;

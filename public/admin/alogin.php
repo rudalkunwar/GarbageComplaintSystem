@@ -15,6 +15,27 @@ if (isset($_SESSION['admin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
     <link rel="stylesheet" href="../style.css">
+    <script>
+        function validate() {
+            var email = document.forms["form"]["email"].value;
+            var password = document.forms["form"]["password"].value;
+
+            // Check if any field is empty
+            if (email === '' || password === '') {
+                alert("Please fill in all the fields.");
+                return false;
+            }
+
+            // Check if the email is valid
+            var emailRegex = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </head>
 
 <body class="font-sans antialiased">
@@ -30,8 +51,8 @@ if (isset($_SESSION['admin'])) {
 
                 <form class="space-y-4" method="post" action="">
                     <div>
-                        <label class="block text-gray-700 font-bold mb-2" for="username">Username</label>
-                        <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" name="username" type="text" placeholder="Enter your username" required="">
+                        <label class="block text-gray-700 font-bold mb-2" for="email">Email</label>
+                        <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="text" placeholder="Enter your Email" required="">
                     </div>
 
                     <div>
@@ -59,10 +80,10 @@ if (isset($_POST['login'])) {
     if ($con === false) {
         die("Error connection ");
     }
-    $user = $_POST['username'];
+    $user = $_POST['email'];
     $pass = $_POST['password'];
 
-    $qry  = "SELECT * FROM admin WHERE name = '$user' AND password=md5('$pass')";
+    $qry  = "SELECT * FROM admin WHERE email = '$user' AND password=md5('$pass')";
 
     if ($res = mysqli_query($con, $qry)) {
         if (mysqli_num_rows($res) > 0) {
@@ -70,7 +91,7 @@ if (isset($_POST['login'])) {
             $_SESSION['auth'] = "yes";
             header('location:dashboard.php');
         } else {
-            echo '<script> alert("Invalid Username or Password"); </script> ';
+            echo '<script> alert("Invalid email or Password"); </script> ';
         }
     }
     mysqli_close($con);

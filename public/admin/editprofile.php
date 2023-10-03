@@ -14,7 +14,7 @@
             var photo = document.forms["form"]["photo"].value;
 
             // Check if Email is valid
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var emailRegex = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
             if (!emailRegex.test(email)) {
                 alert("Please enter a valid email address.");
                 return false;

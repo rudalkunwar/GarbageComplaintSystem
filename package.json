@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
-    "datatables.net-dt": "^1.13.5"
+    "datatables.net-dt": "^1.13.5",
+    "validator": "^13.11.0"
   }
 }

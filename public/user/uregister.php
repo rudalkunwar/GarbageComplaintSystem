@@ -9,48 +9,39 @@
   <link rel="stylesheet" href="../style.css">
   <script src="https://kit.fontawesome.com/62f9066fa7.js" crossorigin="anonymous"></script>
   <script>
-        function validate() {
-            var name = document.forms["form"]["name"].value;
-            var email = document.forms["form"]["email"].value;
-            var address = document.forms["form"]["address"].value;
-            var contact = document.forms["form"]["contact"].value;
-            var password = document.forms["form"]["password"].value;
-            var cpassword = document.forms["form"]["cpassword"].value;
+    function validate() {
+      var name = document.forms["form"]["name"].value;
+      var email = document.forms["form"]["email"].value;
+      var address = document.forms["form"]["address"].value;
+      var contact = document.forms["form"]["contact"].value;
+      var password = document.forms["form"]["password"].value;
+      var cpassword = document.forms["form"]["cpassword"].value;
 
-            // Check if any field is empty
-            if (name === '' || email === '' || address === '' || contact === '' || password === '' || cpassword === '') {
-                alert("Please fill in all the fields.");
-                return false;
-            }
+      if (name === '' || email === '' || address === '' || contact === '' || password === '' || cpassword === '') {
+        alert("Please fill in all the fields.");
+        return false;
+      }
+      var contactRegex = /^\d{10}$/; 
+      if (!contactRegex.test(contact)) {
+        alert("Please enter a valid 10-digit contact number.");
+        return false;
+      }
 
-            // Check if the email is valid
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert("Please enter a valid email address.");
-                return false;
-            }
-
-            // Check if the contact number is valid (using a simple pattern)
-            var contactRegex = /^\d{10}$/; // Assumes a 10-digit phone number
-            if (!contactRegex.test(contact)) {
-                alert("Please enter a valid 10-digit contact number.");
-                return false;
-            }
-
-            // Check if the password match the required length
-            if (password.length < 8) {
-                alert("Password must be at least 8 characters long.");
-                return false;
-            }
-
-            // Check if the password and confirm password match
-            if (password !== cpassword) {
-                alert("Password and Confirm Password do not match.");
-                return false;
-            }
-            return true; 
-        }
-    </script>
+      if (password.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return false;
+      }
+      if (password !== cpassword) {
+        alert("Password and Confirm Password do not match.");
+        return false;
+      }
+      var emailRegex = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
+      if (!emailRegex.test(email)) {
+        alert("Enter valid email address.");
+      }
+      return true;
+    }
+  </script>
 </head>
 
 <body class="backdrop-blur-sm bg-cover" style="background-image: url('regback.jpg');">
@@ -94,18 +85,14 @@
 <?php
 if (isset($_POST['register'])) {
   $con = mysqli_connect("localhost", "root", "", "project_gcs");
-    if ($con === false) {
-        die("Error connection ");
-    }
+  if ($con === false) {
+    die("Error connection ");
+  }
   $name = $_POST['name'];
   $email = $_POST['email'];
   $addr = $_POST['address'];
   $contact = $_POST['contact'];
   $pass = md5($_POST['password']);
-
-  //encrypting password
-  // $hpass = md5($pass);
-  // $chpass = md5($cpass);
 
   $qry1 = "SELECT user_id FROM users where email = '$email' ";
   $result = mysqli_query($con, $qry1);

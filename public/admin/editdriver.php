@@ -7,6 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Driver</title>
     <link rel="stylesheet" href="../style.css">
+    <script>
+        function validate() {
+            var driverId = document.forms["driverForm"]["driverid"].value;
+            var driverName = document.forms["driverForm"]["drivername"].value;
+            var email = document.forms["driverForm"]["email"].value;
+            var address = document.forms["driverForm"]["address"].value;
+            var password = document.forms["driverForm"]["password"].value;
+
+            // Check if any field is empty
+            if (driverId === '' || driverName === '' || email === '' || address === '' || password === '') {
+                alert("Please fill in all the fields.");
+                return false;
+            }
+
+            // Check if Driver ID is an integer
+            if (!Number.isInteger(Number(driverId))) {
+                alert("Driver ID must be an integer.");
+                return false;
+            }
+
+            // Check if Password is at least 8 characters long
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
+            var emailRegex = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            return true; // Form will be submitted if all validations pass
+        }
+    </script>
 </head>
 
 <body>
@@ -23,7 +57,7 @@
         <div class="flex justify-center px-6 my-12 ">
             <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
                 <h3 class="pt-4 text-2xl text-center">Edit Driver</h3>
-                <form method="post" action="" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:w-[50%] m-[30px_auto] flex flex-wrap">
+                <form method="post" action="" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full md:w-[50%] m-[30px_auto] flex flex-wrap" onsubmit="return validate();">
                     <div class="mb-4 w-full pr-1">
                         <label for="driverid" class="block text-gray-700 text-sm font-bold mb-2">
                             Driver ID
