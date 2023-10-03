@@ -61,7 +61,7 @@ Please note that it's crucial to change the default password after your initial 
 
 ## License
 
-This project is licensed under the Rudal Kunwar.
+This project is licensed under the AAAAAAAAAAAAAkash .
 
 
 
