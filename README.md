@@ -34,7 +34,9 @@ The Garbage Complaint System is a web-based application developed using PHP and 
 
 - **PHP**: The project's backend is built using PHP, which handles server-side logic and database interactions.
 
-- **Tailwind CSS**: The Tailwind CSS framework is used for styling and creating a responsive user interface.
+- **Tailwind CSS**: The Tailwind CSS framework is used for styling and creating a responsive user interface.If you failed to load 
+any styles then run this command in your terminal 
+-> npx tailwindcss -i ./src/tailwind.css -o ./public/style.css --watch
 
 ## Getting Started
 
@@ -46,9 +48,7 @@ To get started with the Garbage Complaint System, follow these steps:
 
 3. Import the database schema provided in the project.
 
-4. Configure the database connection settings in the PHP files where necessary.
-
-5. Access the system in your web browser and create an admin account to begin using the application.
+4. Run this project
 
 ## Default Admin Login Credentials
 
