@@ -18,9 +18,11 @@ The Garbage Complaint System is a web-based application developed using PHP and 
 
 - **Bin Creation**: Admins can create new bins for garbage collection areas.
 
-- **Driver Assignment**: Admins can assign drivers to specific tasks or areas.
-
 - **Complaint Verification**: Admins can review and verify user complaints.
+
+- **Driver Assignment**: Admins can assign drivers to specific tasks or areas to the driver.
+
+- **Collection Report**: Drivers can update the assigned task and submit collection reports.
 
 - **View Bins**: Users can view available bins in their area.
 
