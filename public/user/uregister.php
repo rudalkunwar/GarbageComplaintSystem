@@ -38,6 +38,7 @@
       var emailRegex = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
       if (!emailRegex.test(email)) {
         alert("Enter valid email address.");
+        return false;
       }
       return true;
     }

@@ -7,6 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
     <link rel="stylesheet" href="../style.css">
+    <script>
+    function validate() {
+      var name = document.forms["form"]["name"].value;
+      var email = document.forms["form"]["email"].value;
+      var address = document.forms["form"]["address"].value;
+      var contact = document.forms["form"]["contact"].value;
+
+      if (name === '' || email === '' || address === '' || contact === '' || password === '' || cpassword === '') {
+        alert("Please fill in all the fields.");
+        return false;
+      }
+      var contactRegex = /^\d{10}$/; 
+      if (!contactRegex.test(contact)) {
+        alert("Please enter a valid 10-digit contact number.");
+        return false;
+      }
+      var emailRegex = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
+      if (!emailRegex.test(email)) {
+        alert("Enter valid email address.");
+        return false;
+      }
+      return true;
+    }
+  </script>
 </head>
 
 <body>
