@@ -48,7 +48,7 @@ To get started with the Garbage Complaint System, follow these steps:
 
 3. Import the database schema provided in the project.
 
-4. Run this project
+4. Run this project as http://localhost/GarbageComplaintSystem/public/
 
 ## Default Admin Login Credentials
 
