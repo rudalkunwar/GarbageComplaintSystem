@@ -12,6 +12,8 @@ The Garbage Complaint System is a web-based application developed using PHP and 
 
 - **Layout**: The Layout directory contains header and footer layouts that are used across the application to maintain a consistent look and feel.
 
+- **Database**: The Database directory contains MySQL file of the Garbage Complaint System Database.
+
 ## Features
 
 - **User Registration**: Users can sign up for the platform, providing their necessary information.
