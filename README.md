@@ -54,6 +54,9 @@ To get started with the Garbage Complaint System, follow these steps:
 
 4. Run this project as http://localhost/GarbageComplaintSystem/public/
 
+## Important Note:
+Please be aware that to successfully use the mailing features in this application, you must configure the email settings in XAMPP correctly. Failure to do so may result in certain actions not functioning as expected.
+
 ## Default Admin Login Credentials
 
 To access the admin panel, you can use the following default login credentials:
